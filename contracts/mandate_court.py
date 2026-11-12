@@ -386,7 +386,7 @@ class MandateCourt(gl.Contract):
             cr = bundle["chain_record"]
             both = {"payment": extract_facts(cr["payment"]), "grant": extract_grant(cr["grant"])}
         if both.get("unreachable"):
-            return refusal("chain_unreachable")
+            return refusal("chain_unreachable", {"http": both.get("http")})
         facts, gf = both["payment"], both["grant"]
         if not facts["ok"]:
             return refusal(facts["code"])
@@ -427,8 +427,9 @@ class MandateCourt(gl.Contract):
 
         def fetch():
             r = gl.nondet.web.post(url, body=json.dumps(batch).encode("utf-8"), headers={"Content-Type": "application/json"})
-            if _status(r) != 200:
-                return canon({"unreachable": True})
+            st = _status(r)
+            if st != 200:
+                return canon({"unreachable": True, "http": st})
             replies = json.loads(r.body.decode("utf-8"))
             a, b = reply_by_id(replies, 1), reply_by_id(replies, 2)
             if a is None or b is None:
