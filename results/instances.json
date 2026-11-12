@@ -151,5 +151,21 @@
       "ACCEPTED": 7538,
       "FINALIZED": 36352
     }
+  },
+  "live3": {
+    "name": "live3",
+    "chain_source": "rpc",
+    "max_bytes": 65536,
+    "seller_keys": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0xBB68D07a1D0e9981F75959721b0238e9480e023f",
+    "deploy_tx": "0x1abc92b3237327981fa85f9ec45e51d45e472de8830c8086e47eeec8064eba23",
+    "deployed_at": "2026-11-12T21:39:43.443Z",
+    "seen": {
+      "PROPOSING": 1534,
+      "COMMITTING": 4737,
+      "ACCEPTED": 7942,
+      "FINALIZED": 36532
+    }
   }
 }

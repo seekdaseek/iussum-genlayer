@@ -1,0 +1,26 @@
+{
+ "rr-1-seller-overcap": {
+  "case_id": "rr-1-seller-overcap",
+  "genlayer_txs": [
+   "0x30b4e011ff6b6d2fb4bff89a9739e2ffa5f0c488cea00cc45a77cd5fbb21aca7"
+  ],
+  "outcome": [
+   "valid",
+   "seller",
+   "amount_over_cap"
+  ],
+  "source": "genlayer"
+ },
+ "rr-2-onpurpose": {
+  "case_id": "rr-2-onpurpose",
+  "genlayer_txs": [
+   "0xab91c91fda1f0c05006794a0621a0d728c38efad9e0191168961773959ed616e"
+  ],
+  "outcome": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "source": "genlayer"
+ }
+}

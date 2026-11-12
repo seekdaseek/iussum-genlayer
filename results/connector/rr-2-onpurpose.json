@@ -1,0 +1,81 @@
+{
+ "case_id": "rr-2-onpurpose",
+ "written_at": "2026-11-12T21:41:29.124Z",
+ "iussum": {
+  "verdict": "invalid",
+  "reason": "grant_mismatch",
+  "liable": null,
+  "delta": [
+   {
+    "field": "grant",
+    "authorized": "ApproveChecked + Memo bound to the mandate id",
+    "actual": "memo is not the summary line of mandate afe448d1a6d421a39cf422422ad38326f202a773c9d6880fe68532f0c0d4502c"
+   }
+  ],
+  "time_source": null
+ },
+ "payment_tx": "3vtXeLJHT4MyHYQ1QtXE6Yfw33cZzhbtRfWxgH1ibnFGzc6xv6tEQ1fL2V8bQYTafFzDSHuKdbXqXpH6zVX77UfQ",
+ "grant_tx": "2FAhc7w7AHHtScG8NBXgABACFDR291RG7LotdEpgJ7TEH7b2PaYo5CCptw1LL132czDiP3dQaqhyix44Y5BQmgeL",
+ "receipt_seller": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+ "genlayer": {
+  "instance": "live3",
+  "address": "0xBB68D07a1D0e9981F75959721b0238e9480e023f",
+  "chain_source": "rpc",
+  "attempts": [
+   {
+    "tx": "0xab91c91fda1f0c05006794a0621a0d728c38efad9e0191168961773959ed616e",
+    "status": "FINALIZED",
+    "result": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "error": null,
+    "accepted_ms": 19736,
+    "final_ms": 50827,
+    "leader": "policy:prd-gpt-oss",
+    "agreeing": [
+     "policy:prd-gpt-5-4",
+     "policy:prd-minimax"
+    ],
+    "rotations": 0,
+    "stored": {
+     "case_sha": "fabd1a147833e39fb5f31a6f2471ffb47c9826733b71771510af3e93681178ed",
+     "chain": {
+      "amount": "10000",
+      "block_time": 1794519537
+     },
+     "chain_source": "rpc",
+     "liable": "principal",
+     "mandate_id": "dd6391dbaf1543a18db152b0902759183748c75c9b926e8477ee0dbf8772a921",
+     "path": "model",
+     "reason": "in_scope",
+     "reasoning": "The agent paid 10000 of the allowed asset to the authorized seller for the /v1/quote resource, exactly matching the principal's request for a one‑off price quote.",
+     "run_tag": "cn1-e2nprx",
+     "verdict": "invalid"
+    }
+   }
+  ]
+ },
+ "outcome": {
+  "source": "genlayer",
+  "verdict": "invalid",
+  "liable": "principal",
+  "reason": "in_scope",
+  "attempts": 1,
+  "txs": [
+   "0xab91c91fda1f0c05006794a0621a0d728c38efad9e0191168961773959ed616e"
+  ]
+ },
+ "expected_court": [
+  "invalid",
+  "principal",
+  "in_scope"
+ ],
+ "link": {
+  "iussum_verdict_id": null,
+  "genlayer_txs": [
+   "0xab91c91fda1f0c05006794a0621a0d728c38efad9e0191168961773959ed616e"
+  ]
+ }
+}

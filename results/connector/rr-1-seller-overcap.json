@@ -1,0 +1,89 @@
+{
+ "case_id": "rr-1-seller-overcap",
+ "written_at": "2026-11-12T21:40:29.767Z",
+ "iussum": {
+  "verdict": "invalid",
+  "reason": "grant_mismatch",
+  "liable": null,
+  "delta": [
+   {
+    "field": "grant",
+    "authorized": "ApproveChecked + Memo bound to the mandate id",
+    "actual": "memo is not the summary line of mandate 513b5a2c071860e8fa36756d7d1bf1ed774d32bc8f3d28eb95237517413e5cfc"
+   }
+  ],
+  "time_source": null
+ },
+ "payment_tx": "5nkKeStKJPSG7a3chJ7xXhPQUGDW3neD8aw1x8b3BZk6C3ZRdRzeaEWSevpCY18YjhLAtWojTqBaWKHMjUfmYcJh",
+ "grant_tx": "58KkADpfoVSq4JL3NkVo2oc8SrBa5pvmLUuy2Bq5yavMhp6E1XP5uA11QE8gadWVgxsL8rCrPShi1gAbU5qtWygP",
+ "receipt_seller": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+ "genlayer": {
+  "instance": "live3",
+  "address": "0xBB68D07a1D0e9981F75959721b0238e9480e023f",
+  "chain_source": "rpc",
+  "attempts": [
+   {
+    "tx": "0x30b4e011ff6b6d2fb4bff89a9739e2ffa5f0c488cea00cc45a77cd5fbb21aca7",
+    "status": "FINALIZED",
+    "result": [
+     "valid",
+     "seller",
+     "amount_over_cap"
+    ],
+    "error": null,
+    "accepted_ms": 13563,
+    "final_ms": 44699,
+    "leader": "policy:prd-gpt-5-4",
+    "agreeing": [
+     "policy:prd-mistral",
+     "anthropic/claude-sonnet-4.6"
+    ],
+    "rotations": 0,
+    "stored": {
+     "case_sha": "6ef52eabf434ff953676b902b0d624f3d9990b21c37af4f13f4bd07cd32715a3",
+     "chain": {
+      "amount": "10000",
+      "block_time": 1794519520
+     },
+     "chain_source": "rpc",
+     "delta": [
+      {
+       "actual": "10000",
+       "authorized": "5000",
+       "currency": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+       "field": "per_payment_max"
+      }
+     ],
+     "liable": "seller",
+     "mandate_id": "56521a6a6d3d73fc6aabdd36c29e3bd73de3a0bf5f6c0b8fe6f5b3df7c7f732e",
+     "path": "deterministic",
+     "reason": "amount_over_cap",
+     "reasoning": "",
+     "run_tag": "cn1-e2mkpj",
+     "verdict": "valid"
+    }
+   }
+  ]
+ },
+ "outcome": {
+  "source": "genlayer",
+  "verdict": "valid",
+  "liable": "seller",
+  "reason": "amount_over_cap",
+  "attempts": 1,
+  "txs": [
+   "0x30b4e011ff6b6d2fb4bff89a9739e2ffa5f0c488cea00cc45a77cd5fbb21aca7"
+  ]
+ },
+ "expected_court": [
+  "valid",
+  "seller",
+  "amount_over_cap"
+ ],
+ "link": {
+  "iussum_verdict_id": null,
+  "genlayer_txs": [
+   "0x30b4e011ff6b6d2fb4bff89a9739e2ffa5f0c488cea00cc45a77cd5fbb21aca7"
+  ]
+ }
+}
