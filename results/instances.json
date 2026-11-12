@@ -4,14 +4,14 @@
     "chain_source": "rpc",
     "max_bytes": 65536,
     "rpc_url": "https://api.devnet.solana.com",
-    "address": "0xcce9d6006f673Be672365b96A061D7CED7E5E98c",
-    "deploy_tx": "0x13daba3e79ad582cb8cdf27b5d6f1ce81f4ff10031f30d496dfbb65782f09f0a",
-    "deployed_at": "2026-11-12T17:06:10.401Z",
+    "address": "0x9470268Caa0a38262d56255a10921b6c456a2E53",
+    "deploy_tx": "0x86cec3862697128cc04b85eda2e79f2347c919962d49113966a7f6a89e4737bc",
+    "deployed_at": "2026-11-12T17:15:55.809Z",
     "seen": {
-      "PENDING": 1347,
-      "COMMITTING": 4513,
-      "ACCEPTED": 7686,
-      "FINALIZED": 36396
+      "PENDING": 1515,
+      "COMMITTING": 7882,
+      "ACCEPTED": 11080,
+      "FINALIZED": 39874
     }
   }
 }

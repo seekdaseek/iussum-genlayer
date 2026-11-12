@@ -112,11 +112,11 @@ def chain(direct_vm, monkeypatch):
     def handler(vm, data):
         body = data.get("body")
         req = json.loads(body.decode() if isinstance(body, (bytes, bytearray)) else body)
+        assert isinstance(req, dict), "one JSON-RPC request per POST, never a batch"
         STATE["requests"].append(req)
-        pd = ov["pay"] if ov["pay"] is not None else docs["pay"]
-        gd = ov["grant"] if ov["grant"] is not None else docs["grant"]
-        replies = [dict(pd, id=req[0]["id"]), dict(gd, id=req[1]["id"])]
-        return {"ok": {"response": {"status": ov["status"], "headers": {}, "body": json.dumps(replies).encode()}}}
+        is_grant = req["params"][0] == GRANT_SIG
+        doc = (ov["grant"] if ov["grant"] is not None else docs["grant"]) if is_grant else (ov["pay"] if ov["pay"] is not None else docs["pay"])
+        return {"ok": {"response": {"status": ov["status"], "headers": {}, "body": json.dumps(dict(doc, id=req["id"])).encode()}}}
 
     monkeypatch.setattr(wasi_mock, "_handle_web_request", handler)
 
