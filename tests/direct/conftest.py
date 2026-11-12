@@ -14,6 +14,42 @@ SELLER_A = "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7"
 SELLER_B = "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
 GRANT_SIG = "G" * 88
 
+# ---- a test seller key (independent signer: the `cryptography` package; the contract has its own pure-Python verifier) ----------------
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from cryptography.hazmat.primitives import serialization
+import base64
+
+B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+
+def b58encode(b: bytes) -> str:
+    n = int.from_bytes(b, "big"); out = ""
+    while n:
+        n, r = divmod(n, 58); out = B58[r] + out
+    return "1" * (len(b) - len(b.lstrip(b"\0"))) + out
+
+
+def _key(seed_byte):
+    k = Ed25519PrivateKey.from_private_bytes(bytes([seed_byte]) * 32)
+    return k, b58encode(k.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw))
+
+
+SELLER_KEY, SELLER_PUB = _key(7)
+OTHER_KEY, OTHER_PUB = _key(9)
+
+
+def sign_receipt(body: dict, key=SELLER_KEY) -> dict:
+    b = {k: v for k, v in body.items() if k != "signature"}
+    msg = ("iussum/0.2 receipt\n" + canon(b)).encode()
+    return {**b, "signature": base64.b64encode(key.sign(msg)).decode()}
+
+
+def mandate_v02_id(m: dict) -> str:
+    """iussum's id of the v0.2 mandate this v0.3 mandate extends: drop purpose, v back to iussum/0.2."""
+    m2 = {k: v for k, v in m.items() if k != "purpose"}
+    m2["v"] = "iussum/0.2"
+    return sha(canon(m2))
+
 
 def canon(o):
     return json.dumps(o, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
@@ -50,7 +86,7 @@ def grant_doc(mandate, memo_id=None, **over):
             "transaction": {"message": {"accountKeys": keys, "instructions": ixs}}}}
 
 
-def make_bundle(mandate_over=None, receipt=True, receipt_over=None, payment_over=None, purpose=PURPOSE,
+def make_bundle(mandate_over=None, receipt=True, receipt_over=None, payment_over=None, purpose=PURPOSE, bad_sig=False, signer=None,
                 delivered="quote delivered: BTC price feed, 10 calls", presented=True, grant_over=None,
                 grant_tx=GRANT_SIG, pay=None, grant=None, chain_record=False, drop=()):
     """The real iussum devnet payment 5KsYz26T... with a v0.3 mandate that allows it. Returns (bundle_json, sha)."""
@@ -65,8 +101,12 @@ def make_bundle(mandate_over=None, receipt=True, receipt_over=None, payment_over
     d = {}
     if receipt:
         r = copy.deepcopy(c["receipt"])
-        r["mandate_id"] = mid if presented else "0" * 64
+        r["mandate_id"] = mandate_v02_id(m) if presented else "0" * 64
+        r["seller"] = SELLER_PUB
         r.update(receipt_over or {})
+        r = sign_receipt(r, signer or SELLER_KEY)
+        if bad_sig:
+            r["signature"] = base64.b64encode(b"\0" * 64).decode()
         d["receipt"] = r
     if delivered is not None:
         d["delivered"] = delivered
@@ -90,13 +130,13 @@ STATE = {"serve": None, "mid": None, "m": None, "pay": None, "status": 200, "vm"
 @pytest.fixture
 def court(direct_vm, direct_deploy, direct_alice):
     direct_vm.sender = direct_alice
-    return direct_deploy("contracts/mandate_court.py", RPC, 65536, "rpc", sdk_version=SDK)
+    return direct_deploy("contracts/mandate_court.py", RPC, 65536, "rpc", SELLER_PUB, sdk_version=SDK)
 
 
 @pytest.fixture
 def replay(direct_vm, direct_deploy, direct_alice):
     direct_vm.sender = direct_alice
-    return direct_deploy("contracts/mandate_court.py", RPC, 65536, "bundle", sdk_version=SDK)
+    return direct_deploy("contracts/mandate_court.py", RPC, 65536, "bundle", SELLER_PUB, sdk_version=SDK)
 
 
 @pytest.fixture

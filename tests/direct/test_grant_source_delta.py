@@ -1,7 +1,7 @@
 """Phase 1.5: grant memo check, purpose bound by the mandate id, chain_source flag, delta output."""
 import json
 import pytest
-from conftest import make_bundle, canon, sha, pay_doc, grant_doc, llm, SDK, RPC, PURPOSE, AGENT, MINT, SELLER_A, SELLER_B
+from conftest import make_bundle, canon, sha, pay_doc, grant_doc, llm, SDK, RPC, PURPOSE, AGENT, MINT, SELLER_A, SELLER_B, SELLER_PUB
 
 RUN = "g1"
 
@@ -80,7 +80,7 @@ def test_prompt_uses_purpose_not_an_instruction_field(court, chain, direct_vm, p
 def test_constructor_accepts_only_rpc_or_bundle(direct_deploy, direct_vm, direct_alice):
     direct_vm.sender = direct_alice
     with pytest.raises(Exception):
-        direct_deploy("contracts/mandate_court.py", RPC, 65536, "mock", sdk_version=SDK)
+        direct_deploy("contracts/mandate_court.py", RPC, 65536, "mock", SELLER_PUB, sdk_version=SDK)
 
 
 def test_live_instance_never_accepts_a_chain_record(court, chain, prompts):

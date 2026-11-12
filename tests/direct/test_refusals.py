@@ -1,7 +1,7 @@
 """Every refusal path. A refusal is verdict invalid, liable none, reason <code>, path refusal, and the model is never asked."""
 import json
 import pytest
-from conftest import make_bundle, canon, sha, pay_doc, SDK
+from conftest import make_bundle, canon, sha, pay_doc, SDK, SELLER_PUB
 
 RUN = "t1"
 
@@ -28,7 +28,7 @@ def test_too_large(court, chain):
 def test_size_cap_is_exact(direct_vm, direct_deploy, chain, direct_alice):
     bj, h = make_bundle()
     n = len(bj.encode())
-    ok = direct_deploy("contracts/mandate_court.py", "https://api.devnet.solana.com", n - 1, "rpc", sdk_version=SDK)
+    ok = direct_deploy("contracts/mandate_court.py", "https://api.devnet.solana.com", n - 1, "rpc", SELLER_PUB, sdk_version=SDK)
     refused(json.loads(ok.judge(bj, h, "", RUN)), "bundle_too_large")
 
 
