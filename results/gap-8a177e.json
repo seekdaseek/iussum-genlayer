@@ -1,0 +1,105 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "sol_genesis",
+  "argBytes": 30,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T17:12:36.500Z",
+  "hash": "0xffc7a9693672520079099050d5f7f6079514c2408b5f90c23a627a1e657a930f",
+  "seen": {
+    "PENDING": 184,
+    "COMMITTING": 3357,
+    "ACCEPTED": 9691
+  },
+  "last": "ACCEPTED",
+  "pollErrors": 0,
+  "votes": {
+    "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2": "agree",
+    "0x722474B013fA39E5aA8785f927dCeB0e3F89815B": "idle",
+    "0x8ADae333478F9D037c78b0E3E8279DdAAb20a1B3": "agree",
+    "0xC65Ec56a1141866951B34D846be8EF433764A48B": "agree",
+    "0xD0eD149D26E76cf49fB588c970E608E44Dd4DAB8": "idle"
+  },
+  "leader": {
+    "address": "0x8ADae333478F9D037c78b0E3E8279DdAAb20a1B3",
+    "model": "policy:prd-gpt-5-4",
+    "provider": "llm-router",
+    "execution_result": "SUCCESS",
+    "result_status": "return",
+    "result_payload": {
+      "raw": [
+        0
+      ],
+      "readable": "null"
+    },
+    "eq_outputs": {
+      "0": {
+        "raw": "AERodHRwXzQwMA==",
+        "status": "return",
+        "payload": {
+          "raw": [
+            68,
+            104,
+            116,
+            116,
+            112,
+            95,
+            52,
+            48,
+            48
+          ],
+          "readable": "\"http_400\""
+        }
+      }
+    },
+    "stderr": "",
+    "processing_time": 1219
+  },
+  "validators": [
+    {
+      "address": "0xD0eD149D26E76cf49fB588c970E608E44Dd4DAB8",
+      "model": "policy:prd-gemini",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0xC65Ec56a1141866951B34D846be8EF433764A48B",
+      "model": "openai/gpt-5.4",
+      "provider": "openrouter",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 4372
+    },
+    {
+      "address": "0x722474B013fA39E5aA8785f927dCeB0e3F89815B",
+      "model": "anthropic/claude-sonnet-4.6",
+      "provider": "openrouter",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2",
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 2017
+    }
+  ],
+  "status": 5,
+  "statusName": "ACCEPTED",
+  "result": 6,
+  "stateAfter": {
+    "calls": 6,
+    "last_label": "yes",
+    "last_len": 520000,
+    "last_web": "http_400"
+  }
+}

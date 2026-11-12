@@ -171,3 +171,17 @@ def test_model_and_refusal_results_carry_no_delta(court, chain, direct_vm):
     bj, h = make_bundle()
     assert "delta" not in judge(court, bj, h)
     assert "delta" not in judge(court, bj, "0" * 64)
+
+
+# ---- request ids: every run sends a request body no earlier run sent -----------------------------------
+def test_request_ids_carry_the_run_tag_and_the_sha(court, chain, direct_vm):
+    import conftest
+    llm(direct_vm, "invalid", "principal", "in_scope")
+    bj, h = make_bundle()
+    judge(court, bj, h, tag="aaa")
+    judge(court, bj, h, tag="bbb")
+    reqs = conftest.STATE["requests"]
+    assert len(reqs) == 2 and reqs[0] != reqs[1]
+    for tag, r in zip(("aaa", "bbb"), reqs):
+        assert [x["id"] for x in r] == [f"{tag}:{h[:8]}:p", f"{tag}:{h[:8]}:g"]
+        assert [x["method"] for x in r] == ["getTransaction", "getTransaction"]

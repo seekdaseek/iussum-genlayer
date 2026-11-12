@@ -100,16 +100,28 @@ def replay(direct_vm, direct_deploy, direct_alice):
 
 
 @pytest.fixture
-def chain(direct_vm):
-    """Serves one batch answer [payment, grant]. chain(pay_doc, status=...) overrides the payment answer;
-    chain(grant=doc) the grant answer; the default grant always matches the latest make_bundle mandate."""
+def chain(direct_vm, monkeypatch):
+    """Serves one batch answer [payment, grant], echoing the request ids. chain(pay_doc, status=...) overrides the payment
+    answer; chain(grant=doc) the grant answer; the default grant matches the latest make_bundle mandate.
+    STATE["requests"] collects every request body the contract sent."""
+    from gltest.direct import wasi_mock
     ov = {"pay": None, "grant": None, "status": 200}
+    docs = {}
+    STATE["requests"] = []
+
+    def handler(vm, data):
+        body = data.get("body")
+        req = json.loads(body.decode() if isinstance(body, (bytes, bytearray)) else body)
+        STATE["requests"].append(req)
+        pd = ov["pay"] if ov["pay"] is not None else docs["pay"]
+        gd = ov["grant"] if ov["grant"] is not None else docs["grant"]
+        replies = [dict(pd, id=req[0]["id"]), dict(gd, id=req[1]["id"])]
+        return {"ok": {"response": {"status": ov["status"], "headers": {}, "body": json.dumps(replies).encode()}}}
+
+    monkeypatch.setattr(wasi_mock, "_handle_web_request", handler)
 
     def serve(pd, gd):
-        direct_vm._web_mocks.clear()
-        direct_vm._web_mocks_hit.clear()
-        body = json.dumps([ov["pay"] if ov["pay"] is not None else pd, ov["grant"] if ov["grant"] is not None else gd]).encode()
-        direct_vm.mock_web(r"api\.devnet\.solana\.com", {"response": {"status": ov["status"], "headers": {}, "body": body}, "method": "POST"})
+        docs["pay"], docs["grant"] = pd, gd
 
     STATE["serve"] = serve
     STATE["mid"] = None

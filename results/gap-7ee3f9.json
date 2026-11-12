@@ -1,0 +1,87 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "sol_genesis",
+  "argBytes": 30,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T17:12:48.915Z",
+  "hash": "0x0fb2048fbaf27347099fd9ab6b8a141768084880ce9166a02220aa97853839c3",
+  "seen": {
+    "PENDING": 184,
+    "COMMITTING": 3346,
+    "ACCEPTED": 9686
+  },
+  "last": "ACCEPTED",
+  "pollErrors": 0,
+  "votes": {
+    "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2": "agree",
+    "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c": "idle",
+    "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b": "agree",
+    "0xC65Ec56a1141866951B34D846be8EF433764A48B": "agree",
+    "0xc675c2B7E1F066B7c1D2fe54EF7B76C91CdFa5F4": "idle"
+  },
+  "leader": {
+    "address": "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2",
+    "model": "google/gemini-3-flash-preview",
+    "provider": "openrouter",
+    "execution_result": "ERROR",
+    "result_status": "contract_error",
+    "result_payload": "exit_code 1",
+    "eq_outputs": {
+      "0": {
+        "raw": "AmV4aXRfY29kZSAx",
+        "status": "contract_error",
+        "payload": "exit_code 1"
+      }
+    },
+    "stderr": "Traceback (most recent call last):\n  File \"/py/libs/_genlayer_runner.py\", line 193, in <module>\n    _give_result(lambda: runner(stage_data))\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/py/libs/_genlayer_runner.py\", line 65, in _give_result\n    res = res_fn()\n  File \"/py/libs/_genlayer_runner.py\", line 193, in <lambda>\n    _give_result(lambda: runner(stage_data))\n                         ~~~~~~^^^^^^^^^^^^\n  File \"/py/libs/genlayer/gl/vm.py\", line 181, in <lambda>\n    'data_leader': cloudpickle.dumps(lambda _: leader_fn()),\n                                               ~~~~~~~~~^^\n  File \"/contract.py\", line 75, in fetch\n    res = gl.nondet.web.post(\n        rpc_url,\n        body=json.dumps(payload).encode(\"utf-8\"),\n        headers={\"Content-Type\": \"application/json\"},\n    )\n  Fi",
+    "processing_time": 1172
+  },
+  "validators": [
+    {
+      "address": "0xC65Ec56a1141866951B34D846be8EF433764A48B",
+      "model": "openai/gpt-5.4",
+      "provider": "openrouter",
+      "vote": "agree",
+      "execution_result": "ERROR",
+      "error_code": null,
+      "processing_time": 4544
+    },
+    {
+      "address": "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b",
+      "model": "policy:prd-qwen",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "ERROR",
+      "error_code": null,
+      "processing_time": 2208
+    },
+    {
+      "address": "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c",
+      "model": "policy:prd-gpt-oss",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0xc675c2B7E1F066B7c1D2fe54EF7B76C91CdFa5F4",
+      "model": "policy:prd-deepseek",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    }
+  ],
+  "status": 5,
+  "statusName": "ACCEPTED",
+  "result": 6,
+  "stateAfter": {
+    "calls": 6,
+    "last_label": "yes",
+    "last_len": 520000,
+    "last_web": "http_400"
+  }
+}
