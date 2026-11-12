@@ -1,0 +1,88 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "render_has",
+  "argBytes": 59,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T12:03:36.396Z",
+  "hash": "0xd8d79237507a5259657604f5986899049a2f759e190ffe925301444eca047336",
+  "seen": {
+    "PENDING": 155,
+    "PROPOSING": 3374,
+    "COMMITTING": 6540,
+    "ACCEPTED": 12881
+  },
+  "last": "ACCEPTED",
+  "pollErrors": 0,
+  "votes": {
+    "0x709a1dDECA594C16AB3864A00Eaa2BB1Cd9b5305": "idle",
+    "0x711353514049EAc21213834ADd07eF552aF394E6": "idle",
+    "0x722474B013fA39E5aA8785f927dCeB0e3F89815B": "agree",
+    "0xc675c2B7E1F066B7c1D2fe54EF7B76C91CdFa5F4": "agree",
+    "0xe1626534791FC675ED813Cc2C89C427866526113": "agree"
+  },
+  "leader": {
+    "address": "0x722474B013fA39E5aA8785f927dCeB0e3F89815B",
+    "model": "anthropic/claude-sonnet-4.6",
+    "provider": "openrouter",
+    "execution_result": "ERROR",
+    "result_status": "contract_error",
+    "result_payload": "exit_code 1",
+    "eq_outputs": {
+      "0": {
+        "raw": "AmV4aXRfY29kZSAx",
+        "status": "contract_error",
+        "payload": "exit_code 1"
+      }
+    },
+    "stderr": "Traceback (most recent call last):\n  File \"/py/libs/_genlayer_runner.py\", line 193, in <module>\n    _give_result(lambda: runner(stage_data))\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/py/libs/_genlayer_runner.py\", line 65, in _give_result\n    res = res_fn()\n  File \"/py/libs/_genlayer_runner.py\", line 193, in <lambda>\n    _give_result(lambda: runner(stage_data))\n                         ~~~~~~^^^^^^^^^^^^\n  File \"/py/libs/genlayer/gl/vm.py\", line 181, in <lambda>\n    'data_leader': cloudpickle.dumps(lambda _: leader_fn()),\n                                               ~~~~~~~~~^^\n  File \"/contract.py\", line 104, in fetch\n    text = gl.nondet.web.render(url, mode=\"html\")\n  File \"/py/libs/genlayer/gl/_internal/__init__.py\", line 22, in eager\n    return fn(*args, **kwargs).get()\n  ",
+    "processing_time": 1951
+  },
+  "validators": [
+    {
+      "address": "0x711353514049EAc21213834ADd07eF552aF394E6",
+      "model": "policy:prd-gpt-5-4",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0x709a1dDECA594C16AB3864A00Eaa2BB1Cd9b5305",
+      "model": "policy:prd-gemma",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0xe1626534791FC675ED813Cc2C89C427866526113",
+      "model": "policy:prd-mistral",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "ERROR",
+      "error_code": "LLM_RATE_LIMITED",
+      "processing_time": 4287
+    },
+    {
+      "address": "0xc675c2B7E1F066B7c1D2fe54EF7B76C91CdFa5F4",
+      "model": "policy:prd-deepseek",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "ERROR",
+      "error_code": "LLM_RATE_LIMITED",
+      "processing_time": 4120
+    }
+  ],
+  "status": 5,
+  "statusName": "ACCEPTED",
+  "result": 6,
+  "stateAfter": {
+    "calls": 5,
+    "last_label": "yes",
+    "last_len": 520000,
+    "last_web": "{\"has\": false, \"status\": 429}"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "startedAt": "2026-11-12T12:04:58.468Z",
+  "timeline": [
+    {
+      "ms": 1116,
+      "k": "submitted",
+      "v": "0x75f7f78c8b64acbf8572be781aa1d5d8a12d6f4235f5cb67b3e5ca3201d99bc9"
+    },
+    {
+      "ms": 1282,
+      "k": "status",
+      "v": "PROPOSING"
+    },
+    {
+      "ms": 9319,
+      "k": "status",
+      "v": "COMMITTING"
+    },
+    {
+      "ms": 14822,
+      "k": "status",
+      "v": "ACCEPTED"
+    },
+    {
+      "ms": 14822,
+      "k": "pre-appeal",
+      "v": {}
+    },
+    {
+      "ms": 15605,
+      "k": "appeal-sent",
+      "v": "0x75f7f78c8b64acbf8572be781aa1d5d8a12d6f4235f5cb67b3e5ca3201d99bc9"
+    },
+    {
+      "ms": 18295,
+      "k": "status",
+      "v": "COMMITTING"
+    },
+    {
+      "ms": 23668,
+      "k": "status",
+      "v": "ACCEPTED"
+    },
+    {
+      "ms": 45164,
+      "k": "status",
+      "v": "FINALIZED"
+    }
+  ],
+  "hash": "0x75f7f78c8b64acbf8572be781aa1d5d8a12d6f4235f5cb67b3e5ca3201d99bc9",
+  "canAppealErr": "canAppeal not supported on this chain (missing appealsContract)",
+  "minAppealBondErr": "Appeal bond calculation not supported on this chain (missing feeManagerContract/roundsStorageContract)",
+  "appealResult": "0x75f7f78c8b64acbf8572be781aa1d5d8a12d6f4235f5cb67b3e5ca3201d99bc9",
+  "finalVotes": {
+    "0x0174b4D7494Be33F46B76976f6c9F94004F1b27f": "agree",
+    "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2": "agree",
+    "0x1Cd67946A11E6410a3DF1b27d35F4a511e93c882": "agree",
+    "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c": "agree",
+    "0x37CD8552B86b2B662eCfb69C4A1253dBE41EB4C1": "idle",
+    "0x711353514049EAc21213834ADd07eF552aF394E6": "idle",
+    "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b": "idle",
+    "0xC65Ec56a1141866951B34D846be8EF433764A48B": "agree",
+    "0xc675c2B7E1F066B7c1D2fe54EF7B76C91CdFa5F4": "idle",
+    "0xe1626534791FC675ED813Cc2C89C427866526113": "agree",
+    "0xe83D7241D0FF0f1f808B9ab3cb06dD2565bDc605": "idle",
+    "0xf1EAD5E5f876eae701eF1881b42861079cd9A287": "agree"
+  },
+  "validatorCount": 11,
+  "appealFields": {
+    "appealed": false,
+    "timestamp_awaiting_finalization": 1794485111,
+    "appeal_failed": 1,
+    "appeal_undetermined": false,
+    "timestamp_appeal": 1794485113,
+    "appeal_processing_time": 7,
+    "config_rotation_rounds": 3,
+    "last_vote_timestamp": "1794485119",
+    "rotation_count": 0,
+    "appeal_leader_timeout": false,
+    "appeal_validators_timeout": false,
+    "current_timestamp": "1794485144",
+    "created_timestamp": "1794485099",
+    "num_of_rounds": "2",
+    "last_round": {
+      "round": "1",
+      "leader_index": "0",
+      "votes_committed": "7",
+      "votes_revealed": "7",
+      "appeal_bond": "0",
+      "rotations_left": "3",
+      "result": 6,
+      "round_validators": [
+        "0x37CD8552B86b2B662eCfb69C4A1253dBE41EB4C1",
+        "0xe1626534791FC675ED813Cc2C89C427866526113",
+        "0x1Cd67946A11E6410a3DF1b27d35F4a511e93c882",
+        "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2",
+        "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c",
+        "0xe83D7241D0FF0f1f808B9ab3cb06dD2565bDc605",
+        "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b"
+      ],
+      "validator_votes_hash": [
+        "0x068530691ecad5e820a8a340fe0912d23366cca3e4705a07ade721a99250c340",
+        "0x6da8e7155bf932771ed1556ce760cf07484e3536af4eb1b5a732ddbbde9206f6",
+        "0x2d84970029a0dc8d7062cfa9800d7f149c8ffcfeb74a504d304f51dccaa0083c",
+        "0x3b979ec3433c8604d058bdf88412e8637d3dd3af0568efc16141c317a721036c",
+        "0x054fd7e39d9618892d04d6bd2bb100093d7a8e58d4bf2e947418127f05940950",
+        "0xba29e58237e8980fa012b4cf840f80810878ff75270ff0ac378f8e829c983b36",
+        "0x610d133306b675a15428a3dfe6132aeb1368a71d1241f6228afb8d1fea100370"
+      ],
+      "validator_votes": [
+        5,
+        1,
+        1,
+        1,
+        1,
+        5,
+        5
+      ],
+      "validator_votes_name": [
+        "IDLE",
+        "AGREE",
+        "AGREE",
+        "AGREE",
+        "AGREE",
+        "IDLE",
+        "IDLE"
+      ]
+    }
+  },
+  "balanceAfter": "0"
+}

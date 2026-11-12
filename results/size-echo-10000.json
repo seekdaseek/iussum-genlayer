@@ -1,0 +1,85 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "echo_len",
+  "argBytes": 10000,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T12:00:43.274Z",
+  "hash": "0xd369e102a6da27639d1dbace77451c1206e0332a98460f5f0d0713923e28b04b",
+  "seen": {
+    "PROPOSING": 185,
+    "ACCEPTED": 3474
+  },
+  "last": "ACCEPTED",
+  "pollErrors": 0,
+  "votes": {
+    "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2": "agree",
+    "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c": "agree",
+    "0x722474B013fA39E5aA8785f927dCeB0e3F89815B": "agree",
+    "0x8ADae333478F9D037c78b0E3E8279DdAAb20a1B3": "agree",
+    "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b": "idle"
+  },
+  "leader": {
+    "address": "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c",
+    "model": "policy:prd-gpt-oss",
+    "provider": "llm-router",
+    "execution_result": "SUCCESS",
+    "result_status": "return",
+    "result_payload": {
+      "raw": [
+        0
+      ],
+      "readable": "null"
+    },
+    "eq_outputs": {},
+    "stderr": "",
+    "processing_time": 1006
+  },
+  "validators": [
+    {
+      "address": "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b",
+      "model": "policy:prd-qwen",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0x722474B013fA39E5aA8785f927dCeB0e3F89815B",
+      "model": "anthropic/claude-sonnet-4.6",
+      "provider": "openrouter",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 1213
+    },
+    {
+      "address": "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2",
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 1195
+    },
+    {
+      "address": "0x8ADae333478F9D037c78b0E3E8279DdAAb20a1B3",
+      "model": "policy:prd-gpt-5-4",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 1128
+    }
+  ],
+  "status": 5,
+  "statusName": "ACCEPTED",
+  "result": 6,
+  "stateAfter": {
+    "calls": 3,
+    "last_label": "could_not_decide",
+    "last_len": 10000,
+    "last_web": ""
+  }
+}

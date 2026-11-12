@@ -1,0 +1,111 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "render_has",
+  "argBytes": 34,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T12:04:29.866Z",
+  "hash": "0xc39fbef70038c1113e69feb391fece3fcfc2bdc7af7ec11d884d8362c200a6dd",
+  "seen": {
+    "PENDING": 167,
+    "COMMITTING": 3368,
+    "ACCEPTED": 9794
+  },
+  "last": "ACCEPTED",
+  "pollErrors": 0,
+  "votes": {
+    "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2": "agree",
+    "0x37CD8552B86b2B662eCfb69C4A1253dBE41EB4C1": "idle",
+    "0x560FBD37a10bC2B96F118071e922c9106c12Ba1d": "agree",
+    "0xe83D7241D0FF0f1f808B9ab3cb06dD2565bDc605": "agree",
+    "0xf1EAD5E5f876eae701eF1881b42861079cd9A287": "idle"
+  },
+  "leader": {
+    "address": "0x0cf3809a31B0c7E0742d126451aDE1977e3748D2",
+    "model": "google/gemini-3-flash-preview",
+    "provider": "openrouter",
+    "execution_result": "SUCCESS",
+    "result_status": "return",
+    "result_payload": {
+      "raw": [
+        0
+      ],
+      "readable": "null"
+    },
+    "eq_outputs": {
+      "0": {
+        "raw": "AHR7ImhhcyI6IGZhbHNlfQ==",
+        "status": "return",
+        "payload": {
+          "raw": [
+            116,
+            123,
+            34,
+            104,
+            97,
+            115,
+            34,
+            58,
+            32,
+            102,
+            97,
+            108,
+            115,
+            101,
+            125
+          ],
+          "readable": "\"{\\\"has\\\": false}\""
+        }
+      }
+    },
+    "stderr": "",
+    "processing_time": 1909
+  },
+  "validators": [
+    {
+      "address": "0xe83D7241D0FF0f1f808B9ab3cb06dD2565bDc605",
+      "model": "policy:prd-grok",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 5822
+    },
+    {
+      "address": "0x560FBD37a10bC2B96F118071e922c9106c12Ba1d",
+      "model": "policy:prd-minimax",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 5915
+    },
+    {
+      "address": "0x37CD8552B86b2B662eCfb69C4A1253dBE41EB4C1",
+      "model": "policy:prd-gpt-5-4",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0xf1EAD5E5f876eae701eF1881b42861079cd9A287",
+      "model": "policy:prd-kimi",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    }
+  ],
+  "status": 5,
+  "statusName": "ACCEPTED",
+  "result": 6,
+  "stateAfter": {
+    "calls": 5,
+    "last_label": "yes",
+    "last_len": 520000,
+    "last_web": "{\"has\": false}"
+  }
+}

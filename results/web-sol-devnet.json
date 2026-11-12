@@ -1,0 +1,143 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "sol_genesis",
+  "argBytes": 29,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T12:02:31.463Z",
+  "hash": "0x57c4bcd528b9efb3833c96976dd94b8fb4244a7a51c4c0b08aa4b4dd2ef26b6e",
+  "seen": {
+    "PENDING": 529,
+    "PROPOSING": 3683,
+    "COMMITTING": 6883,
+    "ACCEPTED": 13201
+  },
+  "last": "ACCEPTED",
+  "pollErrors": 0,
+  "votes": {
+    "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c": "agree",
+    "0x709a1dDECA594C16AB3864A00Eaa2BB1Cd9b5305": "idle",
+    "0x711353514049EAc21213834ADd07eF552aF394E6": "agree",
+    "0x8ADae333478F9D037c78b0E3E8279DdAAb20a1B3": "agree",
+    "0xe1626534791FC675ED813Cc2C89C427866526113": "idle"
+  },
+  "leader": {
+    "address": "0x8ADae333478F9D037c78b0E3E8279DdAAb20a1B3",
+    "model": "policy:prd-gpt-5-4",
+    "provider": "llm-router",
+    "execution_result": "SUCCESS",
+    "result_status": "return",
+    "result_payload": {
+      "raw": [
+        0
+      ],
+      "readable": "null"
+    },
+    "eq_outputs": {
+      "0": {
+        "raw": "AOQCRXRXVFJBQlphWXE2aU1mZVlLb3VSdTE2NlZVMnhxYTF3Y2FXb3hQa3JaQkc=",
+        "status": "return",
+        "payload": {
+          "raw": [
+            228,
+            2,
+            69,
+            116,
+            87,
+            84,
+            82,
+            65,
+            66,
+            90,
+            97,
+            89,
+            113,
+            54,
+            105,
+            77,
+            102,
+            101,
+            89,
+            75,
+            111,
+            117,
+            82,
+            117,
+            49,
+            54,
+            54,
+            86,
+            85,
+            50,
+            120,
+            113,
+            97,
+            49,
+            119,
+            99,
+            97,
+            87,
+            111,
+            120,
+            80,
+            107,
+            114,
+            90,
+            66,
+            71
+          ],
+          "readable": "\"EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG\""
+        }
+      }
+    },
+    "stderr": "",
+    "processing_time": 1906
+  },
+  "validators": [
+    {
+      "address": "0xe1626534791FC675ED813Cc2C89C427866526113",
+      "model": "policy:prd-mistral",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0x711353514049EAc21213834ADd07eF552aF394E6",
+      "model": "policy:prd-gpt-5-4",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 5427
+    },
+    {
+      "address": "0x709a1dDECA594C16AB3864A00Eaa2BB1Cd9b5305",
+      "model": "policy:prd-gemma",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c",
+      "model": "policy:prd-gpt-oss",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 5769
+    }
+  ],
+  "status": 5,
+  "statusName": "ACCEPTED",
+  "result": 6,
+  "stateAfter": {
+    "calls": 4,
+    "last_label": "yes",
+    "last_len": 520000,
+    "last_web": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG"
+  }
+}

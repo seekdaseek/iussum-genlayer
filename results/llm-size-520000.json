@@ -1,0 +1,10 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "classify",
+  "argBytes": 640000,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T12:02:30.138Z",
+  "submitError": "An unknown RPC error occurred.",
+  "submitErrorDetails": "Unexpected token '<', \"<html>\r\n<h\"... is not valid JSON"
+}

@@ -1,0 +1,86 @@
+{
+  "net": "studionet",
+  "address": "0xC11B909aD3B895883DF5aD1c56f23DaF8d24EabB",
+  "method": "echo_len",
+  "argBytes": 200000,
+  "sender": "0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec",
+  "submittedAt": "2026-11-12T12:01:10.445Z",
+  "hash": "0x4e93e3f60b10dc46b9a248a4e6dc73a2de09fae567c06b62e86182fb2f55fade",
+  "seen": {
+    "PENDING": 462,
+    "COMMITTING": 3803,
+    "ACCEPTED": 7274
+  },
+  "last": "ACCEPTED",
+  "pollErrors": 0,
+  "votes": {
+    "0x0174b4D7494Be33F46B76976f6c9F94004F1b27f": "agree",
+    "0x2C93031BCCd12836A67f81a249e68abAFEaac2E5": "idle",
+    "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c": "idle",
+    "0x711353514049EAc21213834ADd07eF552aF394E6": "agree",
+    "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b": "agree"
+  },
+  "leader": {
+    "address": "0x711353514049EAc21213834ADd07eF552aF394E6",
+    "model": "policy:prd-gpt-5-4",
+    "provider": "llm-router",
+    "execution_result": "SUCCESS",
+    "result_status": "return",
+    "result_payload": {
+      "raw": [
+        0
+      ],
+      "readable": "null"
+    },
+    "eq_outputs": {},
+    "stderr": "",
+    "processing_time": 1004
+  },
+  "validators": [
+    {
+      "address": "0x0174b4D7494Be33F46B76976f6c9F94004F1b27f",
+      "model": "policy:prd-gemini",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 1120
+    },
+    {
+      "address": "0x2bB088e4E6Fd1faBBd23d93F38D01f28a954A49c",
+      "model": "policy:prd-gpt-oss",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0x2C93031BCCd12836A67f81a249e68abAFEaac2E5",
+      "model": "policy:prd-sonnet",
+      "provider": "llm-router",
+      "vote": "idle",
+      "execution_result": "ERROR",
+      "error_code": "CONSENSUS_VALIDATOR_QUORUM_REACHED",
+      "processing_time": 0
+    },
+    {
+      "address": "0x8f1abcAF0fF10678Af925f83b2Bb8b3534c4b94b",
+      "model": "policy:prd-qwen",
+      "provider": "llm-router",
+      "vote": "agree",
+      "execution_result": "SUCCESS",
+      "error_code": null,
+      "processing_time": 1333
+    }
+  ],
+  "status": 5,
+  "statusName": "ACCEPTED",
+  "result": 6,
+  "stateAfter": {
+    "calls": 3,
+    "last_label": "could_not_decide",
+    "last_len": 200000,
+    "last_web": ""
+  }
+}
