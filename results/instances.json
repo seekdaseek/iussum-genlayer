@@ -4,14 +4,74 @@
     "chain_source": "rpc",
     "max_bytes": 65536,
     "rpc_url": "https://api.devnet.solana.com",
-    "address": "0x0Cf7185AAAF6F63E02243B13230b5386d8dD3b05",
-    "deploy_tx": "0x7e837e7ff59c4bf68dbc75f6e122076cf4f669c73ff29b96726cd10b0d600e39",
-    "deployed_at": "2026-11-12T17:24:32.551Z",
+    "address": "0x4F9FB18B782Bd9dfd026DA068A7903960e623169",
+    "deploy_tx": "0xcf54928bea411192869439107490102209d267e32b6684ec3a0f745d753d61fb",
+    "deployed_at": "2026-11-12T17:34:51.035Z",
     "seen": {
-      "PENDING": 1332,
-      "PROPOSING": 4528,
-      "ACCEPTED": 7719,
-      "FINALIZED": 39647
+      "PENDING": 1556,
+      "COMMITTING": 4723,
+      "ACCEPTED": 7949,
+      "FINALIZED": 36623
+    }
+  },
+  "replay-a": {
+    "name": "replay-a",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0xc13a60a3ED19a32B6634d109eee523601CF0D765",
+    "deploy_tx": "0x8b7c14ecce4ba0c3d27d8befce80edd909b57073b02643c368e2460f03062b4c",
+    "deployed_at": "2026-11-12T17:35:27.224Z",
+    "seen": {
+      "PENDING": 1176,
+      "COMMITTING": 4369,
+      "ACCEPTED": 7543,
+      "FINALIZED": 36174
+    }
+  },
+  "replay-b": {
+    "name": "replay-b",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x240E794a2726eFcDE8Efe89821e7668A9F0FaD2B",
+    "deploy_tx": "0xc633cdd131b1f2a7b469ab8923913730e02844dfd591dfab0e7fb02b2293c2c0",
+    "deployed_at": "2026-11-12T17:36:06.822Z",
+    "seen": {
+      "PENDING": 1102,
+      "COMMITTING": 7435,
+      "ACCEPTED": 10640,
+      "FINALIZED": 39591
+    }
+  },
+  "replay-c": {
+    "name": "replay-c",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0xD84864271DC503AfAAfD9bAE4F58faB95C7545C7",
+    "deploy_tx": "0xe79a2a251635af67ff779af2d74bc317088fd3630233724c19f59199d965110d",
+    "deployed_at": "2026-11-12T17:36:43.051Z",
+    "seen": {
+      "PENDING": 1222,
+      "COMMITTING": 4394,
+      "ACCEPTED": 7589,
+      "FINALIZED": 36219
+    }
+  },
+  "trunc": {
+    "name": "trunc",
+    "chain_source": "bundle",
+    "max_bytes": 450000,
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x21D5f26fcAB70B275c6d3256E5CbBc242Cd41532",
+    "deploy_tx": "0x34ff12f03fbef9ce16b875dfc22c857e0be79670f0243b8ded9d26342c6f89b1",
+    "deployed_at": "2026-11-12T17:37:22.533Z",
+    "seen": {
+      "PENDING": 1185,
+      "PROPOSING": 4347,
+      "ACCEPTED": 7563,
+      "FINALIZED": 39454
     }
   }
 }

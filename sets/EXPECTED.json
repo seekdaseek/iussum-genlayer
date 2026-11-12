@@ -930,6 +930,35 @@
     ],
     "note": "control: same filler, no deciding sentence"
    }
+  ],
+  "U": [
+   {
+    "id": "U-end",
+    "expected": [
+     "valid",
+     "agent_operator",
+     "purpose_mismatch"
+    ],
+    "note": "deciding sentence at the very end of ~400 KB (filler v2)"
+   },
+   {
+    "id": "U-start",
+    "expected": [
+     "valid",
+     "agent_operator",
+     "purpose_mismatch"
+    ],
+    "note": "control: deciding sentence at the start (filler v2)"
+   },
+   {
+    "id": "U-none",
+    "expected": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "note": "control: filler v2 only, no deciding sentence"
+   }
   ]
  }
 }

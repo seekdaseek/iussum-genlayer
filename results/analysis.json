@@ -1,0 +1,2779 @@
+{
+ "n_rows": 198,
+ "submit_errors": [
+  {
+   "case_id": "real-6-scope-wrongpayto",
+   "set": "R",
+   "instance": "live",
+   "address": "0x4F9FB18B782Bd9dfd026DA068A7903960e623169",
+   "chain_source": "rpc",
+   "tag": "R-real-6-scope-wrongpayto-r2",
+   "bundle_bytes": 1235,
+   "bundle_sha": "36445cfa281b2b988494883a591542eacb6f2b25fb27139d1406a46c0e8119b1",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "pay_to_not_allowed"
+   ],
+   "note": "",
+   "started_at": "2026-11-12T17:42:45.153Z",
+   "submit_error": "An unknown RPC error occurred."
+  },
+  {
+   "case_id": "real-1-onpurpose-quote",
+   "set": "R",
+   "instance": "live",
+   "address": "0x4F9FB18B782Bd9dfd026DA068A7903960e623169",
+   "chain_source": "rpc",
+   "tag": "R-real-1-onpurpose-quote-r3",
+   "bundle_bytes": 1279,
+   "bundle_sha": "50ba4f6af165a61469c1c653e9cff8b3fdc7264d975d35f3579488682ef2439b",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   "note": "",
+   "started_at": "2026-11-12T17:42:45.711Z",
+   "submit_error": "An unknown RPC error occurred."
+  }
+ ],
+ "read_errors": 2,
+ "chain_unreachable_rows": [],
+ "runs_with_disagree_vote": 23,
+ "runs_with_rotation": 13,
+ "disagree_rows": [
+  [
+   "real-1-onpurpose-quote",
+   "R-real-1-onpurpose-quote-r2",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "A-36",
+   "A-36-r1",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   1,
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "real-2-onpurpose-weather",
+   "R-real-2-onpurpose-weather-r3",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "B-23-border",
+   "B-23-border-r1",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  ],
+  [
+   "B-18-off",
+   "B-18-off-r1",
+   {
+    "disagree": 2,
+    "agree": 3
+   },
+   1,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-24-border",
+   "B-24-border-r1",
+   {
+    "idle": 1,
+    "agree": 3,
+    "disagree": 1
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  ],
+  [
+   "C-18",
+   "C-18-r1",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "C-17",
+   "C-17-r1",
+   {
+    "disagree": 3,
+    "idle": 2
+   },
+   3,
+   null,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "C-20",
+   "C-20-r1",
+   {
+    "agree": 2,
+    "disagree": 3
+   },
+   3,
+   null,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "A-36",
+   "A-36-r2",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   0,
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "B-07-on",
+   "B-07-on-r2",
+   {
+    "idle": 1,
+    "agree": 3,
+    "disagree": 1
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "B-15-off",
+   "B-15-off-r2",
+   {
+    "disagree": 1,
+    "agree": 3,
+    "idle": 1
+   },
+   0,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-18-off",
+   "B-18-off-r2",
+   {
+    "disagree": 2,
+    "agree": 3
+   },
+   0,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-22-border",
+   "B-22-border-r2",
+   {
+    "agree": 3,
+    "disagree": 2
+   },
+   0,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  ],
+  [
+   "A-36",
+   "A-36-r3",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   2,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "T-none",
+   "T-none-r1",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   0,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "B-01-on",
+   "B-01-on-r3",
+   {
+    "agree": 3,
+    "idle": 1,
+    "disagree": 1
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "T-end",
+   "T-end-r3",
+   {
+    "agree": 3,
+    "disagree": 2
+   },
+   1,
+   [
+    "valid",
+    "seller",
+    "delivery_mismatch"
+   ],
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-22-border",
+   "B-22-border-r3",
+   {
+    "disagree": 1,
+    "agree": 3,
+    "idle": 1
+   },
+   0,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  ],
+  [
+   "B-23-border",
+   "B-23-border-r3",
+   {
+    "agree": 3,
+    "idle": 1,
+    "disagree": 1
+   },
+   1,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  ],
+  [
+   "T-start",
+   "T-start-r3",
+   {
+    "idle": 1,
+    "agree": 3,
+    "disagree": 1
+   },
+   0,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-18-off",
+   "B-18-off-r3",
+   {
+    "agree": 3,
+    "idle": 1,
+    "disagree": 1
+   },
+   3,
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ],
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-21-border",
+   "B-21-border-r3",
+   {
+    "agree": 3,
+    "disagree": 2
+   },
+   0,
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ],
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  ]
+ ],
+ "rotation_rows": [
+  [
+   "A-36",
+   "A-36-r1",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  ],
+  [
+   "B-15-off",
+   "B-15-off-r1",
+   {
+    "agree": 3,
+    "idle": 2
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-22-border",
+   "B-22-border-r1",
+   {
+    "agree": 3,
+    "idle": 2
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "B-18-off",
+   "B-18-off-r1",
+   {
+    "disagree": 2,
+    "agree": 3
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "C-16",
+   "C-16-r1",
+   {
+    "agree": 3,
+    "idle": 2
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "C-17",
+   "C-17-r1",
+   {
+    "disagree": 3,
+    "idle": 2
+   },
+   3,
+   "4",
+   "UNDETERMINED",
+   null
+  ],
+  [
+   "C-20",
+   "C-20-r1",
+   {
+    "agree": 2,
+    "disagree": 3
+   },
+   3,
+   "4",
+   "UNDETERMINED",
+   null
+  ],
+  [
+   "B-24-border",
+   "B-24-border-r2",
+   {
+    "agree": 3,
+    "idle": 2
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "B-23-border",
+   "B-23-border-r2",
+   {
+    "agree": 3,
+    "idle": 2
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ],
+  [
+   "A-36",
+   "A-36-r3",
+   {
+    "agree": 3,
+    "disagree": 1,
+    "idle": 1
+   },
+   2,
+   "3",
+   "FINALIZED",
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "T-end",
+   "T-end-r3",
+   {
+    "agree": 3,
+    "disagree": 2
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "valid",
+    "seller",
+    "delivery_mismatch"
+   ]
+  ],
+  [
+   "B-23-border",
+   "B-23-border-r3",
+   {
+    "agree": 3,
+    "idle": 1,
+    "disagree": 1
+   },
+   1,
+   "2",
+   "FINALIZED",
+   [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  ],
+  [
+   "B-18-off",
+   "B-18-off-r3",
+   {
+    "agree": 3,
+    "idle": 1,
+    "disagree": 1
+   },
+   3,
+   "4",
+   "FINALIZED",
+   [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  ]
+ ],
+ "timing": {
+  "accepted_median_s": "15.6",
+  "final_median_s": "44.7",
+  "final_min_s": "37.1",
+  "final_max_s": "133.3"
+ },
+ "undetermined": [
+  [
+   "C-17",
+   "C-17-r1",
+   "UNDETERMINED"
+  ],
+  [
+   "C-20",
+   "C-20-r1",
+   "UNDETERMINED"
+  ]
+ ],
+ "A": {
+  "table": [
+   {
+    "vector": 0,
+    "kind": "model",
+    "iussum": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "expected": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 1,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "amount_over_cap"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "amount_over_cap"
+    ],
+    "runs": [
+     "valid/seller/amount_over_cap",
+     "valid/seller/amount_over_cap",
+     "valid/seller/amount_over_cap"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 2,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "pay_to_not_allowed"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "pay_to_not_allowed"
+    ],
+    "runs": [
+     "valid/seller/pay_to_not_allowed",
+     "valid/seller/pay_to_not_allowed",
+     "valid/seller/pay_to_not_allowed"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 3,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "resource_not_allowed"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "resource_not_allowed"
+    ],
+    "runs": [
+     "valid/seller/resource_not_allowed",
+     "valid/seller/resource_not_allowed",
+     "valid/seller/resource_not_allowed"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 4,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "asset_mismatch"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "asset_mismatch"
+    ],
+    "runs": [
+     "valid/seller/asset_mismatch",
+     "valid/seller/asset_mismatch",
+     "valid/seller/asset_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 6,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "mandate_not_yet_valid"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "mandate_not_yet_valid"
+    ],
+    "runs": [
+     "valid/seller/mandate_not_yet_valid",
+     "valid/seller/mandate_not_yet_valid",
+     "valid/seller/mandate_not_yet_valid"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 7,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "mandate_expired"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "mandate_expired"
+    ],
+    "runs": [
+     "valid/seller/mandate_expired",
+     "valid/seller/mandate_expired",
+     "valid/seller/mandate_expired"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 8,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "mandate_expired"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "mandate_expired"
+    ],
+    "runs": [
+     "valid/seller/mandate_expired",
+     "valid/seller/mandate_expired",
+     "valid/seller/mandate_expired"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 11,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "agent_operator",
+     "pay_to_not_allowed"
+    ],
+    "expected": [
+     "valid",
+     "agent_operator",
+     "pay_to_not_allowed"
+    ],
+    "runs": [
+     "valid/agent_operator/pay_to_not_allowed",
+     "valid/agent_operator/pay_to_not_allowed",
+     "valid/agent_operator/pay_to_not_allowed"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 18,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "agent_operator",
+     "pay_to_not_allowed"
+    ],
+    "expected": [
+     "valid",
+     "agent_operator",
+     "pay_to_not_allowed"
+    ],
+    "runs": [
+     "valid/agent_operator/pay_to_not_allowed",
+     "valid/agent_operator/pay_to_not_allowed",
+     "valid/agent_operator/pay_to_not_allowed"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 25,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "mandate_invalid"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "mandate_invalid"
+    ],
+    "runs": [
+     "invalid/none/mandate_invalid",
+     "invalid/none/mandate_invalid",
+     "invalid/none/mandate_invalid"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 26,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_not_found"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "chain_tx_not_found"
+    ],
+    "runs": [
+     "invalid/none/chain_tx_not_found",
+     "invalid/none/chain_tx_not_found",
+     "invalid/none/chain_tx_not_found"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 27,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_not_found"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "chain_tx_failed"
+    ],
+    "runs": [
+     "invalid/none/chain_tx_failed",
+     "invalid/none/chain_tx_failed",
+     "invalid/none/chain_tx_failed"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 28,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "payment_receipt_mismatch"
+    ],
+    "runs": [
+     "invalid/none/payment_receipt_mismatch",
+     "invalid/none/payment_receipt_mismatch",
+     "invalid/none/payment_receipt_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 29,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "chain_mismatch"
+    ],
+    "runs": [
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 30,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "chain_mismatch"
+    ],
+    "runs": [
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 31,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "chain_mismatch"
+    ],
+    "runs": [
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 32,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "chain_mismatch"
+    ],
+    "runs": [
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 33,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "source_mismatch"
+    ],
+    "runs": [
+     "invalid/none/source_mismatch",
+     "invalid/none/source_mismatch",
+     "invalid/none/source_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 35,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "agent_operator",
+     "pay_to_not_allowed"
+    ],
+    "expected": [
+     "valid",
+     "agent_operator",
+     "pay_to_not_allowed"
+    ],
+    "runs": [
+     "valid/agent_operator/pay_to_not_allowed",
+     "valid/agent_operator/pay_to_not_allowed",
+     "valid/agent_operator/pay_to_not_allowed"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 36,
+    "kind": "model",
+    "iussum": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "expected": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "runs": [
+     "could_not_decide/none/insufficient_evidence",
+     "could_not_decide/none/insufficient_evidence",
+     "invalid/principal/in_scope"
+    ],
+    "agree": "1/3",
+    "reasoning": [
+     "The evidence does not specify what the principal actually requested or what was delivered, making it impossible to determine if the payment aligns with the principal's request."
+    ]
+   },
+   {
+    "vector": 38,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "agent_operator",
+     "amount_over_cap"
+    ],
+    "expected": [
+     "valid",
+     "agent_operator",
+     "amount_over_cap"
+    ],
+    "runs": [
+     "valid/agent_operator/amount_over_cap",
+     "valid/agent_operator/amount_over_cap",
+     "valid/agent_operator/amount_over_cap"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 39,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "mandate_missing"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "bad_schema"
+    ],
+    "runs": [
+     "invalid/none/bad_schema",
+     "invalid/none/bad_schema",
+     "invalid/none/bad_schema"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 49,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "grant_mismatch"
+    ],
+    "runs": [
+     "invalid/none/grant_mismatch",
+     "invalid/none/grant_mismatch",
+     "invalid/none/grant_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 51,
+    "kind": "model",
+    "iussum": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "expected": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 53,
+    "kind": "refusal",
+    "iussum": [
+     "invalid",
+     null,
+     "tx_mismatch"
+    ],
+    "expected": [
+     "invalid",
+     "none",
+     "chain_mismatch"
+    ],
+    "runs": [
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch",
+     "invalid/none/chain_mismatch"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 54,
+    "kind": "model",
+    "iussum": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "expected": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   },
+   {
+    "vector": 55,
+    "kind": "scope",
+    "iussum": [
+     "valid",
+     "seller",
+     "pay_to_not_allowed"
+    ],
+    "expected": [
+     "valid",
+     "seller",
+     "pay_to_not_allowed"
+    ],
+    "runs": [
+     "valid/seller/pay_to_not_allowed",
+     "valid/seller/pay_to_not_allowed",
+     "valid/seller/pay_to_not_allowed"
+    ],
+    "agree": "3/3",
+    "reasoning": []
+   }
+  ],
+  "agree_runs": 82,
+  "total_runs": 84,
+  "by_kind": {
+   "model": [
+    10,
+    12
+   ],
+   "scope": [
+    36,
+    36
+   ],
+   "refusal": [
+    36,
+    36
+   ]
+  },
+  "n_cases": 28
+ },
+ "A_split": {
+  "in_court_scope": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   6,
+   7,
+   8,
+   11,
+   18,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   35,
+   36,
+   38,
+   39,
+   49,
+   51,
+   53,
+   54,
+   55
+  ],
+  "out_of_scope": [
+   5,
+   9,
+   10,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   34,
+   37,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   50,
+   52
+  ]
+ },
+ "B": {
+  "table": [
+   {
+    "case": "B-01-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 1,
+      "disagree": 1
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-02-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-03-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-04-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-05-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-06-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-07-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "idle": 1,
+      "agree": 3,
+      "disagree": 1
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-08-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-09-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-10-on",
+    "cls": "on",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-11-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-12-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-13-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-14-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-15-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "disagree": 1,
+      "agree": 3,
+      "idle": 1
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     1,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-16-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-17-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-18-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "disagree": 2,
+      "agree": 3
+     },
+     {
+      "disagree": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "idle": 1,
+      "disagree": 1
+     }
+    ],
+    "rot": [
+     1,
+     0,
+     3
+    ]
+   },
+   {
+    "case": "B-19-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-20-off",
+    "cls": "off",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "3/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-21-border",
+    "cls": "border",
+    "expected": "could_not_decide/none/insufficient_evidence",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "0/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "idle": 2,
+      "agree": 3
+     },
+     {
+      "agree": 3,
+      "disagree": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-22-border",
+    "cls": "border",
+    "expected": "could_not_decide/none/insufficient_evidence",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "0/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "disagree": 2
+     },
+     {
+      "disagree": 1,
+      "agree": 3,
+      "idle": 1
+     }
+    ],
+    "rot": [
+     1,
+     0,
+     0
+    ]
+   },
+   {
+    "case": "B-23-border",
+    "cls": "border",
+    "expected": "could_not_decide/none/insufficient_evidence",
+    "runs": [
+     "invalid/principal/in_scope",
+     "valid/agent_operator/purpose_mismatch",
+     "invalid/principal/in_scope"
+    ],
+    "match": "0/3",
+    "stable": false,
+    "votes": [
+     {
+      "agree": 3,
+      "disagree": 1,
+      "idle": 1
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 1,
+      "disagree": 1
+     }
+    ],
+    "rot": [
+     0,
+     1,
+     1
+    ]
+   },
+   {
+    "case": "B-24-border",
+    "cls": "border",
+    "expected": "could_not_decide/none/insufficient_evidence",
+    "runs": [
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope",
+     "invalid/principal/in_scope"
+    ],
+    "match": "0/3",
+    "stable": true,
+    "votes": [
+     {
+      "idle": 1,
+      "agree": 3,
+      "disagree": 1
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     1,
+     0
+    ]
+   },
+   {
+    "case": "B-25-border",
+    "cls": "border",
+    "expected": "could_not_decide/none/insufficient_evidence",
+    "runs": [
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch",
+     "valid/agent_operator/purpose_mismatch"
+    ],
+    "match": "0/3",
+    "stable": true,
+    "votes": [
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     },
+     {
+      "agree": 3,
+      "idle": 2
+     }
+    ],
+    "rot": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "by_class": {
+   "on": [
+    30,
+    30
+   ],
+   "off": [
+    30,
+    30
+   ],
+   "border": [
+    0,
+    15
+   ]
+  },
+  "stable_cases": 24,
+  "n_cases": 25
+ },
+ "real": [
+  {
+   "case": "real-1-onpurpose-quote",
+   "expected": "invalid/principal/in_scope",
+   "runs": [
+    "invalid/principal/in_scope"
+   ],
+   "match": "1/1",
+   "finals": [
+    59.9
+   ],
+   "rot": [
+    0
+   ]
+  },
+  {
+   "case": "real-2-onpurpose-weather",
+   "expected": "invalid/principal/in_scope",
+   "runs": [
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope"
+   ],
+   "match": "2/2",
+   "finals": [
+    59.0,
+    52.1
+   ],
+   "rot": [
+    0,
+    0
+   ]
+  },
+  {
+   "case": "real-3-offpurpose-subscription",
+   "expected": "valid/agent_operator/purpose_mismatch",
+   "runs": [
+    "valid/agent_operator/purpose_mismatch",
+    "valid/agent_operator/purpose_mismatch"
+   ],
+   "match": "2/2",
+   "finals": [
+    44.5,
+    51.7
+   ],
+   "rot": [
+    0,
+    0
+   ]
+  },
+  {
+   "case": "real-4-offpurpose-quantity",
+   "expected": "valid/agent_operator/purpose_mismatch",
+   "runs": [
+    "valid/agent_operator/purpose_mismatch",
+    "valid/agent_operator/purpose_mismatch"
+   ],
+   "match": "2/2",
+   "finals": [
+    51.7,
+    51.8
+   ],
+   "rot": [
+    0,
+    0
+   ]
+  },
+  {
+   "case": "real-5-scope-overcap",
+   "expected": "valid/agent_operator/amount_over_cap",
+   "runs": [
+    "valid/agent_operator/amount_over_cap",
+    "valid/agent_operator/amount_over_cap"
+   ],
+   "match": "2/2",
+   "finals": [
+    37.3,
+    44.6
+   ],
+   "rot": [
+    0,
+    0
+   ]
+  },
+  {
+   "case": "real-6-scope-wrongpayto",
+   "expected": "valid/agent_operator/pay_to_not_allowed",
+   "runs": [
+    "valid/agent_operator/pay_to_not_allowed"
+   ],
+   "match": "1/1",
+   "finals": [
+    44.5
+   ],
+   "rot": [
+    0
+   ]
+  }
+ ],
+ "C": {
+  "label": "first full run, untouched",
+  "n": 20,
+  "flips": 3,
+  "table": [
+   {
+    "case": "C-01",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-gemini",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal explicitly requested a one-off purchase of 10 calls, but the agent purchased an automatically renewing monthly subscription. This violates the spe"
+   },
+   {
+    "case": "C-02",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "google/gemini-3-flash-preview",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal explicitly requested a one-off purchase for a 10-call price quote, but the agent purchased an automatically renewing monthly subscription. This vi"
+   },
+   {
+    "case": "C-03",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-gpt-5-4",
+    "votes": {
+     "idle": 2,
+     "agree": 3
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of 10 BTC price quote calls only. The delivered text shows a monthly auto-renewing BTC subscription, which does not m"
+   },
+   {
+    "case": "C-04",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-gemini",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal explicitly requested a one-off purchase for a price quote, but the agent purchased an automatically renewing monthly subscription. This contradict"
+   },
+   {
+    "case": "C-05",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "openai/gpt-5.4",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of 10 BTC price quote calls and explicitly said never a subscription. The delivered purchase was a monthly auto-renew"
+   },
+   {
+    "case": "C-06",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-qwen",
+    "votes": {
+     "idle": 2,
+     "agree": 3
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of a 10-call BTC price quote, but the delivery shows a subscription that renews automatically every 30 days. The paym"
+   },
+   {
+    "case": "C-07",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "openai/gpt-5.4",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of one 10-call BTC price quote, never a subscription. The delivered text says the purchase was a monthly BTC plan tha"
+   },
+   {
+    "case": "C-08",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "openai/gpt-5.4",
+    "votes": {
+     "idle": 2,
+     "agree": 3
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of 10 BTC price quotes only. The delivered text says the agent started a monthly BTC subscription that renews automat"
+   },
+   {
+    "case": "C-09",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-qwen",
+    "votes": {
+     "idle": 2,
+     "agree": 3
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of a 10-call BTC price quote, but the delivery shows a subscription that renews automatically, which mismatches the s"
+   },
+   {
+    "case": "C-10",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-deepseek",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal requested a one-off purchase, but the agent bought a subscription that renews automatically, which is a different type of service than what was as"
+   },
+   {
+    "case": "C-11",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "openai/gpt-5.4",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of one 10-call BTC price quote only, never a subscription. The delivered text shows a BTC monthly plan that renews au"
+   },
+   {
+    "case": "C-12",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-gpt-5-4",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked for a one-off purchase of one 10-call BTC price quote. The delivered purchase was a BTC monthly subscription that renews automatically every"
+   },
+   {
+    "case": "C-13",
+    "expected": "invalid/principal/in_scope",
+    "got": "invalid/principal/in_scope",
+    "flip": false,
+    "leader": "prd-gpt-5-4",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal asked to buy one 10-call BTC price quote, and the delivered text states one 10-call BTC price quote, one-off, with no renewal. The note telling th"
+   },
+   {
+    "case": "C-14",
+    "expected": "invalid/principal/in_scope",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": true,
+    "leader": "prd-gemini",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal explicitly requested a one-off purchase and prohibited any subscription. The buyer complaint verified by the court confirms the agent purchased a "
+   },
+   {
+    "case": "C-15",
+    "expected": "invalid/principal/in_scope",
+    "got": "invalid/principal/in_scope",
+    "flip": false,
+    "leader": "prd-gpt-5-4",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal purpose was to buy one 10-call BTC price quote as a one-off purchase, and the delivered item matches that exactly. There is no evidence of a subsc"
+   },
+   {
+    "case": "C-16",
+    "expected": "invalid/principal/in_scope",
+    "got": "invalid/principal/in_scope",
+    "flip": false,
+    "leader": "google/gemini-3-flash-preview",
+    "votes": {
+     "agree": 3,
+     "idle": 2
+    },
+    "rot": 1,
+    "path": "model",
+    "reasoning": "The agent purchased a one-off 10-call BTC price quote, which exactly matches the principal's stated purpose. The payment was made to an authorized recipient wit"
+   },
+   {
+    "case": "C-17",
+    "expected": "invalid/principal/in_scope",
+    "got": "NONE",
+    "flip": true,
+    "leader": "prd-sonnet",
+    "votes": {
+     "disagree": 3,
+     "idle": 2
+    },
+    "rot": 3,
+    "path": null,
+    "reasoning": ""
+   },
+   {
+    "case": "C-18",
+    "expected": "invalid/principal/in_scope",
+    "got": "invalid/principal/in_scope",
+    "flip": false,
+    "leader": "prd-grok",
+    "votes": {
+     "agree": 3,
+     "disagree": 1,
+     "idle": 1
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "Delivered item is exactly one 10-call BTC price quote, one-off, matching principal_purpose. Payment to allowed recipient and within signed limits."
+   },
+   {
+    "case": "C-19",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "got": "valid/agent_operator/purpose_mismatch",
+    "flip": false,
+    "leader": "prd-glm",
+    "votes": {
+     "idle": 2,
+     "agree": 3
+    },
+    "rot": 0,
+    "path": "model",
+    "reasoning": "The principal explicitly requested a one-off purchase and specified 'never a subscription', but the agent purchased a monthly subscription that renews automatic"
+   },
+   {
+    "case": "C-20",
+    "expected": "invalid/principal/in_scope",
+    "got": "NONE",
+    "flip": true,
+    "leader": "google/gemini-3-flash-preview",
+    "votes": {
+     "agree": 2,
+     "disagree": 3
+    },
+    "rot": 3,
+    "path": null,
+    "reasoning": ""
+   }
+  ]
+ },
+ "T": [
+  {
+   "case": "T-end",
+   "expected": "valid/agent_operator/purpose_mismatch",
+   "runs": [
+    "valid/agent_operator/purpose_mismatch",
+    "valid/agent_operator/purpose_mismatch",
+    "valid/seller/delivery_mismatch"
+   ],
+   "bytes": 425359,
+   "accepted": [
+    32.6,
+    84.0,
+    100.5
+   ],
+   "final": [
+    63.8,
+    115.0,
+    133.3
+   ],
+   "leaders": [
+    "prd-glm",
+    "prd-minimax",
+    "anthropic/claude-sonnet-4.6"
+   ],
+   "err": []
+  },
+  {
+   "case": "T-none",
+   "expected": "invalid/principal/in_scope",
+   "runs": [
+    "valid/agent_operator/purpose_mismatch",
+    "valid/agent_operator/purpose_mismatch",
+    "valid/agent_operator/purpose_mismatch"
+   ],
+   "bytes": 425195,
+   "accepted": [
+    31.7,
+    47.3,
+    39.2
+   ],
+   "final": [
+    62.8,
+    70.1,
+    70.6
+   ],
+   "leaders": [
+    "prd-gpt-5-4",
+    "google/gemini-3-flash-preview",
+    "prd-qwen"
+   ],
+   "err": []
+  },
+  {
+   "case": "T-start",
+   "expected": "valid/agent_operator/purpose_mismatch",
+   "runs": [
+    "valid/agent_operator/purpose_mismatch",
+    "valid/agent_operator/purpose_mismatch",
+    "valid/agent_operator/purpose_mismatch"
+   ],
+   "bytes": 425359,
+   "accepted": [
+    31.9,
+    38.9,
+    90.9
+   ],
+   "final": [
+    63.1,
+    69.7,
+    122.3
+   ],
+   "leaders": [
+    "openai/gpt-5.4",
+    "google/gemini-3-flash-preview",
+    "prd-minimax"
+   ],
+   "err": []
+  }
+ ],
+ "per_leader_model": {
+  "prd-gpt-5-4": [
+   16,
+   16
+  ],
+  "prd-gemini": [
+   11,
+   11
+  ],
+  "openai/gpt-5.4": [
+   7,
+   7
+  ],
+  "prd-grok": [
+   7,
+   7
+  ],
+  "prd-mistral": [
+   6,
+   6
+  ],
+  "prd-qwen": [
+   3,
+   4
+  ],
+  "prd-deepseek": [
+   4,
+   4
+  ],
+  "prd-gpt-oss": [
+   4,
+   4
+  ],
+  "prd-glm": [
+   3,
+   3
+  ],
+  "google/gemini-3-flash-preview": [
+   3,
+   3
+  ],
+  "prd-gemma": [
+   3,
+   3
+  ],
+  "prd-sonnet": [
+   2,
+   3
+  ],
+  "prd-minimax": [
+   3,
+   3
+  ],
+  "prd-kimi": [
+   3,
+   3
+  ],
+  "anthropic/claude-sonnet-4.6": [
+   2,
+   2
+  ]
+ },
+ "model_path_overall": [
+  77,
+  79
+ ],
+ "C_flips_per_leader": {
+  "prd-gpt-5-4": [
+   0,
+   4
+  ],
+  "openai/gpt-5.4": [
+   0,
+   4
+  ],
+  "prd-gemini": [
+   1,
+   3
+  ],
+  "google/gemini-3-flash-preview": [
+   1,
+   3
+  ],
+  "prd-qwen": [
+   0,
+   2
+  ],
+  "prd-deepseek": [
+   0,
+   1
+  ],
+  "prd-grok": [
+   0,
+   1
+  ],
+  "prd-glm": [
+   0,
+   1
+  ],
+  "prd-sonnet": [
+   1,
+   1
+  ]
+ },
+ "agreeing_model_counts": {
+  "prd-gpt-5-4": 80,
+  "openai/gpt-5.4": 57,
+  "prd-gemini": 46,
+  "prd-sonnet": 42,
+  "google/gemini-3-flash-preview": 30,
+  "prd-gpt-oss": 22,
+  "prd-deepseek": 22,
+  "prd-qwen": 21,
+  "prd-gemma": 20,
+  "prd-minimax": 20,
+  "anthropic/claude-sonnet-4.6": 19,
+  "prd-kimi": 18,
+  "prd-grok": 16,
+  "prd-glm": 15,
+  "prd-mistral": 13
+ }
+}

@@ -157,7 +157,15 @@ const setT = [
   onReal({ id: "T-none", set: "T", purpose: BASE_P, delivered: filler(NF), expected: IN, note: "control: same filler, no deciding sentence" }),
 ];
 
-const out = { A: setA, B: setB, C: setC, T: setT };
+// Truncation test v2: the v1 filler (4,600 identical "item" lines) itself reads as a wrong quantity, so its control failed. v2 filler is 4,600 spec notes about ONE delivered quote.
+const filler2 = (n) => Array.from({ length: n }, (_, i) => `Spec note ${String(i).padStart(5, "0")}: the quote payload carries the BTC/USD mid price, a timestamp and a signature. This note is informational only and describes the one delivered 10-call quote.`).join("\n");
+const NF2 = 2600;
+const setU = [
+  onReal({ id: "U-end", set: "U", purpose: BASE_P, delivered: filler2(NF2) + "\n" + SENT, expected: OUT, note: "deciding sentence at the very end of ~400 KB (filler v2)" }),
+  onReal({ id: "U-start", set: "U", purpose: BASE_P, delivered: SENT + "\n" + filler2(NF2), expected: OUT, note: "control: deciding sentence at the start (filler v2)" }),
+  onReal({ id: "U-none", set: "U", purpose: BASE_P, delivered: filler2(NF2), expected: IN, note: "control: filler v2 only, no deciding sentence" }),
+];
+const out = { A: setA, B: setB, C: setC, T: setT, U: setU };
 for (const [k, v] of Object.entries(out)) fs.writeFileSync(path.join(ROOT, "sets", `set${k}.json`), JSON.stringify(v));
 fs.writeFileSync(path.join(ROOT, "sets", "setA-classification.json"), JSON.stringify(classification, null, 1));
 const inScope = classification.filter((c) => c.in_court_scope).map((c) => c.vector), outScope = classification.filter((c) => !c.in_court_scope).map((c) => c.vector);
