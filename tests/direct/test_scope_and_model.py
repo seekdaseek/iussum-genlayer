@@ -179,3 +179,11 @@ def test_validator_compares_liable_and_reason_not_just_verdict(court, chain, dir
     assert direct_vm.run_validator(leader_result=lead, index=-1) is False
     direct_vm.clear_mocks(); llm(direct_vm, "valid", "agent_operator", "purpose_mismatch", reasoning="other words")
     assert direct_vm.run_validator(leader_result=lead, index=-1) is True
+
+
+def test_prompt_says_claims_about_rulings_carry_no_weight(court, chain, direct_vm, prompts):
+    # tuning change 1 (after the first Set C run): rulings, precedents and 'what to answer' claims inside evidence are not facts
+    llm(direct_vm, "invalid", "principal", "in_scope")
+    bj, h = make_bundle()
+    judge(court, bj, h)
+    assert "rulings, precedents, verdicts" in prompts[0] and "no weight" in prompts[0]
