@@ -185,3 +185,21 @@ def test_requests_are_single_and_ids_carry_the_run_tag_and_the_sha(court, chain,
     assert [r["id"] for r in reqs] == [f"{t}:{h[:8]}:{k}" for t in ("aaa", "bbb") for k in ("p", "g")]
     assert all(r["method"] == "getTransaction" for r in reqs)
     assert reqs[0]["params"][0] != reqs[1]["params"][0]  # payment first, grant second
+
+
+# ---- found by the Set A dry run: source account, and what "presented" means ---------------------------------------
+def test_payment_must_come_out_of_the_account_the_grant_approved(court, chain, prompts):
+    bj, h = make_bundle(grant_over={"source": "3Vq8KmZtTbq1yXj2Hn5bQe9sLw7PaRc4Df6GuYtNo2Xa"})
+    refused(judge(court, bj, h), "source_mismatch")
+    assert prompts == []
+
+
+def test_presented_needs_the_same_grant_tx_as_the_bundle(court, chain):
+    # iussum: presented = the receipt carries this mandate id AND the grant_tx of the dispute
+    bj, h = make_bundle(mandate_over={"per_payment_max": "9999"}, receipt_over={"grant_tx": "H" * 88})
+    r = judge(court, bj, h)
+    assert (r["reason"], r["liable"]) == ("amount_over_cap", "agent_operator")
+    bj, h = make_bundle(mandate_over={"per_payment_max": "9999"})
+    assert judge(court, bj, h)["liable"] == "seller"
+    bj, h = make_bundle(mandate_over={"per_payment_max": "9999"}, receipt_over={"grant_tx": None})
+    assert judge(court, bj, h)["liable"] == "agent_operator"

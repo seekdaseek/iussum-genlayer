@@ -1,0 +1,674 @@
+[
+ {
+  "vector": 0,
+  "name": "R1 in scope, receipt bound: principal bears it, dispute invalid",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": true,
+  "court_kind": "model",
+  "why_out": null
+ },
+ {
+  "vector": 1,
+  "name": "R2 amount over cap, mandate presented: seller bears it",
+  "iussum": [
+   "valid",
+   "seller",
+   "amount_over_cap"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 2,
+  "name": "R2 pay_to not allowed, mandate presented: seller",
+  "iussum": [
+   "valid",
+   "seller",
+   "pay_to_not_allowed"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 3,
+  "name": "R2 resource outside the prefix: seller",
+  "iussum": [
+   "valid",
+   "seller",
+   "resource_not_allowed"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 4,
+  "name": "R2 asset mismatch: seller",
+  "iussum": [
+   "valid",
+   "seller",
+   "asset_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 5,
+  "name": "R2 network mismatch (resolver watches another cluster): seller",
+  "iussum": [
+   "valid",
+   "seller",
+   "network_mismatch"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "receipt names another network than the resolver's: the court refuses on receipt-vs-payment consistency, not network_mismatch"
+ },
+ {
+  "vector": 6,
+  "name": "R2 payment before not_before: seller",
+  "iussum": [
+   "valid",
+   "seller",
+   "mandate_not_yet_valid"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 7,
+  "name": "R2 payment after expiry: seller",
+  "iussum": [
+   "valid",
+   "seller",
+   "mandate_expired"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 8,
+  "name": "settled_at inside the window but block time outside it: block time wins",
+  "iussum": [
+   "valid",
+   "seller",
+   "mandate_expired"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 9,
+  "name": "no block time on chain: fall back to settled_at, say so",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "no block time on chain: iussum falls back to settled_at, the court refuses (chain_shape)"
+ },
+ {
+  "vector": 10,
+  "name": "a payment the agent did not sign (authority is the thief) is not under this mandate: tx_mismatch, liable null ",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "iussum: no agent debit, tx_mismatch; the court sees a payer/agent mismatch instead (agent_mismatch)"
+ },
+ {
+  "vector": 11,
+  "name": "R3 receipt with no mandate binding, out of scope: agent operator",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "pay_to_not_allowed"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 12,
+  "name": "receipt bound to a different mandate id than the dispute carries: mandate_mismatch, liable null (the disputer ",
+  "iussum": [
+   "invalid",
+   null,
+   "mandate_mismatch"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "mandate_mismatch: no court equivalent (the court treats an unbound receipt as not presented)"
+ },
+ {
+  "vector": 13,
+  "name": "mandate superseded before the payment slot: mandate_superseded, liable null",
+  "iussum": [
+   "invalid",
+   null,
+   "mandate_superseded"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "supersession: the court does not check it"
+ },
+ {
+  "vector": 14,
+  "name": "mandate superseded AFTER the payment slot: still judged",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "supersession: the court does not check it"
+ },
+ {
+  "vector": 15,
+  "name": "history not shown to be complete: history_incomplete, never in_scope",
+  "iussum": [
+   "invalid",
+   null,
+   "history_incomplete"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "history/period: not checked by the court"
+ },
+ {
+  "vector": 16,
+  "name": "history missing (could not be read): history_incomplete",
+  "iussum": [
+   "invalid",
+   null,
+   "history_incomplete"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "history/period: not checked by the court"
+ },
+ {
+  "vector": 17,
+  "name": "the disputed payment is not in the history: history_incomplete",
+  "iussum": [
+   "invalid",
+   null,
+   "history_incomplete"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "history/period: not checked by the court"
+ },
+ {
+  "vector": 18,
+  "name": "R3 receipt names another grant_tx than the dispute: not presented",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "pay_to_not_allowed"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 19,
+  "name": "R4 tampered receipt (amount edited after signing)",
+  "iussum": [
+   "invalid",
+   null,
+   "signature_invalid"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "receipt signature: not verified by the court"
+ },
+ {
+  "vector": 20,
+  "name": "R4 receipt signed by another key",
+  "iussum": [
+   "invalid",
+   null,
+   "signature_invalid"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "receipt signature: not verified by the court"
+ },
+ {
+  "vector": 21,
+  "name": "R4 seller key unknown to the resolver",
+  "iussum": [
+   "invalid",
+   null,
+   "signature_invalid"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "receipt signature: not verified by the court"
+ },
+ {
+  "vector": 22,
+  "name": "R4 tampered mandate (does not match its grant memo)",
+  "iussum": [
+   "invalid",
+   null,
+   "grant_mismatch"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "v0.2 grant tamper cases cannot be replayed against the v0.3 grant check"
+ },
+ {
+  "vector": 23,
+  "name": "R4 grant transaction not found",
+  "iussum": [
+   "invalid",
+   null,
+   "grant_not_found"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "grant lookup is replayed from a synthesised v0.3 grant"
+ },
+ {
+  "vector": 24,
+  "name": "R4 grant with an extra instruction",
+  "iussum": [
+   "invalid",
+   null,
+   "grant_mismatch"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "v0.2 grant tamper cases cannot be replayed against the v0.3 grant check"
+ },
+ {
+  "vector": 25,
+  "name": "R4 invalid mandate document",
+  "iussum": [
+   "invalid",
+   null,
+   "mandate_invalid"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 26,
+  "name": "transaction not found on chain",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_not_found"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 27,
+  "name": "transaction failed on chain",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_not_found"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 28,
+  "name": "receipt says another tx_sig",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 29,
+  "name": "receipt amount differs from chain (tx_mismatch)",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 30,
+  "name": "receipt pay_to differs from the chain destination owner",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 31,
+  "name": "receipt payer differs from the chain authority",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 32,
+  "name": "receipt asset differs from chain mint",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 33,
+  "name": "payment is not out of the granted account (source differs)",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 34,
+  "name": "two debits by the agent in one transaction cannot have gone through x402: debit_not_x402, agent operator",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "debit_not_x402"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "debit_not_x402 (several debits): court refuses chain_shape"
+ },
+ {
+  "vector": 35,
+  "name": "no receipt (seller never checked): the chain alone proves pay_to out of scope: agent operator, resource unjudg",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "pay_to_not_allowed"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 36,
+  "name": "no receipt and nothing out of scope on chain: invalid, principal, resource unjudged",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": true,
+  "court_kind": "model",
+  "why_out": null
+ },
+ {
+  "vector": 37,
+  "name": "no receipt and no block time: the window is unjudged too",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "no block time on chain: the court refuses (chain_shape)"
+ },
+ {
+  "vector": 38,
+  "name": "no receipt, amount over the cap: agent operator",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "amount_over_cap"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ },
+ {
+  "vector": 39,
+  "name": "no mandate supplied by the disputing party",
+  "iussum": [
+   "invalid",
+   null,
+   "mandate_missing"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 40,
+  "name": "one agent debit plus another TransferChecked from a different account in the same transaction is not the x402 ",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "debit_not_x402"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "debit_not_x402: court refuses chain_shape"
+ },
+ {
+  "vector": 41,
+  "name": "a plain Transfer by the agent out of the granted account cannot have gone through x402: debit_not_x402, agent ",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "debit_not_x402"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "debit_not_x402: plain Transfer, court refuses chain_shape"
+ },
+ {
+  "vector": 42,
+  "name": "a BurnChecked by the agent: debit_not_x402",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "debit_not_x402"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "debit_not_x402: burn, court refuses chain_shape"
+ },
+ {
+  "vector": 43,
+  "name": "a Burn by the agent: debit_not_x402",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "debit_not_x402"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "debit_not_x402: burn, court refuses chain_shape"
+ },
+ {
+  "vector": 44,
+  "name": "a TransferChecked made by CPI (inner instruction): debit_not_x402",
+  "iussum": [
+   "valid",
+   "agent_operator",
+   "debit_not_x402"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "debit_not_x402: CPI transfer, court refuses chain_shape"
+ },
+ {
+  "vector": 45,
+  "name": "the balance of the granted account fell by more than the parsed instructions explain: history_incomplete, liab",
+  "iussum": [
+   "invalid",
+   null,
+   "history_incomplete"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "history/period: not checked by the court"
+ },
+ {
+  "vector": 46,
+  "name": "the debits found do not add up to the allowance that is gone: history_incomplete, liable null",
+  "iussum": [
+   "invalid",
+   null,
+   "history_incomplete"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "history/period: not checked by the court"
+ },
+ {
+  "vector": 47,
+  "name": "no allowance read: history_incomplete, never in_scope",
+  "iussum": [
+   "invalid",
+   null,
+   "history_incomplete"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "history/period: not checked by the court"
+ },
+ {
+  "vector": 48,
+  "name": "the allowance cross-check is skipped for a superseded grant (not current)",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "supersession: the court does not check it"
+ },
+ {
+  "vector": 49,
+  "name": "a payment before the grant: tx_mismatch, liable null (resubmit with the mandate that was current)",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 50,
+  "name": "same slot as the grant and no block order known: history_incomplete, liable null",
+  "iussum": [
+   "invalid",
+   null,
+   "history_incomplete"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "history/period: not checked by the court"
+ },
+ {
+  "vector": 51,
+  "name": "same slot as the grant, block order says the payment came after the grant: judged",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": true,
+  "court_kind": "model",
+  "why_out": null
+ },
+ {
+  "vector": 52,
+  "name": "same slot as the grant, block order says the payment came BEFORE the grant: tx_mismatch",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": false,
+  "court_kind": null,
+  "why_out": "same-slot block order: the court cannot see it"
+ },
+ {
+  "vector": 53,
+  "name": "recorded devnet payment: receipt amount differs from the real chain (tx_mismatch)",
+  "iussum": [
+   "invalid",
+   null,
+   "tx_mismatch"
+  ],
+  "in_court_scope": true,
+  "court_kind": "refusal",
+  "why_out": null
+ },
+ {
+  "vector": 54,
+  "name": "recorded devnet payment: consistent receipt, mandate allows it: in scope",
+  "iussum": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "in_court_scope": true,
+  "court_kind": "model",
+  "why_out": null
+ },
+ {
+  "vector": 55,
+  "name": "recorded devnet payment: mandate that does not allow its pay_to: seller liable",
+  "iussum": [
+   "valid",
+   "seller",
+   "pay_to_not_allowed"
+  ],
+  "in_court_scope": true,
+  "court_kind": "scope",
+  "why_out": null
+ }
+]

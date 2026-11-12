@@ -38,7 +38,7 @@ def grant_doc(mandate, memo_id=None, **over):
     ixs = [
         {"program": "spl-token", "programId": "Tokenkeg", "parsed": {"type": "approveChecked", "info": {
             "delegate": over.get("delegate", mandate["agent"]), "mint": over.get("mint", mandate["asset"]),
-            "owner": over.get("owner", mandate["principal"]), "source": "SRC",
+            "owner": over.get("owner", mandate["principal"]), "source": over.get("source", "6yhmERramYBiynohezgqDbGMHAf9peDDSDoykiu1wzLe"),
             "tokenAmount": {"amount": over.get("amount", mandate["total_cap"]), "decimals": 6}}}},
         {"program": "spl-memo", "programId": "Memo", "parsed": over.get("memo", memo)},
     ]
