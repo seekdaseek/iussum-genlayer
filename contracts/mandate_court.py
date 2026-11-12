@@ -196,15 +196,6 @@ def extract_grant(rpc: dict) -> dict:
     return out
 
 
-def reply_by_id(replies, i):
-    if not isinstance(replies, list):
-        return None
-    for r in replies:
-        if isinstance(r, dict) and r.get("id") == i:
-            return r
-    return None
-
-
 def delta_entry(code: str, m: dict, rc, facts: dict) -> dict:
     if code == "amount_over_cap":
         return {"field": "per_payment_max", "authorized": m["per_payment_max"], "actual": facts["amount"], "currency": facts["mint"]}
@@ -422,21 +413,22 @@ class MandateCourt(gl.Contract):
     def _chain_facts(self, sig: str, grant_sig: str, uid: str) -> dict:
         url = self.rpc_url
         opts = {"encoding": "jsonParsed", "maxSupportedTransactionVersion": 0, "commitment": "finalized"}
-        # ids carry the run tag and the bundle hash: no two runs send the same request body
+        # one POST per transaction, never a batch. ids carry the run tag and the bundle hash: no two runs send the same body
         pid, gid = uid + ":p", uid + ":g"
-        batch = [{"jsonrpc": "2.0", "id": pid, "method": "getTransaction", "params": [sig, opts]},
-                 {"jsonrpc": "2.0", "id": gid, "method": "getTransaction", "params": [grant_sig, opts]}]
 
         def fetch():
-            r = gl.nondet.web.post(url, body=json.dumps(batch).encode("utf-8"), headers={"Content-Type": "application/json"})
-            st = _status(r)
-            if st != 200:
-                return canon({"unreachable": True, "http": st})
-            replies = json.loads(r.body.decode("utf-8"))
-            a, b = reply_by_id(replies, pid), reply_by_id(replies, gid)
-            if a is None or b is None:
-                return canon({"unreachable": True})
-            return canon({"payment": extract_facts(a), "grant": extract_grant(b)})
+            got = []
+            for i, tx in ((pid, sig), (gid, grant_sig)):
+                r = gl.nondet.web.post(url, body=json.dumps({"jsonrpc": "2.0", "id": i, "method": "getTransaction", "params": [tx, opts]}).encode("utf-8"),
+                                       headers={"Content-Type": "application/json"})
+                st = _status(r)
+                if st != 200:
+                    return canon({"unreachable": True, "http": st})
+                rep = json.loads(r.body.decode("utf-8"))
+                if not (isinstance(rep, dict) and rep.get("id") == i):
+                    return canon({"unreachable": True, "http": 0})
+                got.append(rep)
+            return canon({"payment": extract_facts(got[0]), "grant": extract_grant(got[1])})
 
         return json.loads(gl.eq_principle.strict_eq(fetch))
 
