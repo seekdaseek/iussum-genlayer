@@ -1,0 +1,392 @@
+{
+ "written": "before any phase 4 run or chain transaction",
+ "receipt_resource_base": "https://api.example.test/v1/",
+ "borderline_expectation": "could_not_decide for all 15: written to be ambiguous; the measured thing is the split",
+ "cases": [
+  {
+   "id": "B2-01-on",
+   "class": "on",
+   "purpose": "Buy one 10-call BTC price quote.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/btc?calls=10&term=once",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-02-on",
+   "class": "on",
+   "purpose": "Buy a one-off 24-hour access pass to the weather API.",
+   "signed_receipt_resource": "https://api.example.test/v1/weather/pass?hours=24&term=once",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-03-on",
+   "class": "on",
+   "purpose": "Purchase exactly 5 ETH price quotes.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/eth?count=5",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-04-on",
+   "class": "on",
+   "purpose": "Pay for one month of the news feed, one-off, no auto-renewal.",
+   "signed_receipt_resource": "https://api.example.test/v1/news/feed?days=30&renews=no",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-05-on",
+   "class": "on",
+   "purpose": "Buy a single PDF market report on SOL staking yields.",
+   "signed_receipt_resource": "https://api.example.test/v1/reports/sol-staking-yields?format=pdf&count=1",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-06-on",
+   "class": "on",
+   "purpose": "Buy 100 geocoding lookups from the geo vendor.",
+   "signed_receipt_resource": "https://api.example.test/v1/geo/lookups?count=100&vendor=geo",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-07-on",
+   "class": "on",
+   "purpose": "Order a one-off pack of 50 sports-scores API calls, never from the vendor betshop.",
+   "signed_receipt_resource": "https://api.example.test/v1/scores/pack?calls=50&vendor=scores&term=once",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-08-on",
+   "class": "on",
+   "purpose": "Buy a one-time domain availability check for the name seekdaseek.example.",
+   "signed_receipt_resource": "https://api.example.test/v1/domains/check?name=seekdaseek.example&term=once",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-09-on",
+   "class": "on",
+   "purpose": "Buy one day of satellite imagery tiles for the harbour area, one-off.",
+   "signed_receipt_resource": "https://api.example.test/v1/imagery/tiles?area=harbour&days=1&term=once",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-10-on",
+   "class": "on",
+   "purpose": "Pay for translation of one document of up to 2 pages into Romanian.",
+   "signed_receipt_resource": "https://api.example.test/v1/translate?lang=ro&pages=2&docs=1",
+   "expected": [
+    "invalid",
+    "principal",
+    "in_scope"
+   ]
+  },
+  {
+   "id": "B2-11-off",
+   "class": "off",
+   "purpose": "Buy one 10-call BTC price quote.",
+   "signed_receipt_resource": "https://api.example.test/v1/gas-tracker/eth?calls=10",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-12-off",
+   "class": "off",
+   "purpose": "Buy exactly 5 ETH price quotes.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/eth?count=500",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-13-off",
+   "class": "off",
+   "purpose": "One-off purchase of a 30-day weather API pass. Never a subscription.",
+   "signed_receipt_resource": "https://api.example.test/v1/weather/subscription?plan=monthly&renews=auto",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-14-off",
+   "class": "off",
+   "purpose": "Buy a 50-call sports-scores pack, never from the vendor betshop.",
+   "signed_receipt_resource": "https://api.example.test/v1/scores/pack?calls=50&vendor=betshop",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-15-off",
+   "class": "off",
+   "purpose": "Buy 1 PDF report on SOL staking yields.",
+   "signed_receipt_resource": "https://api.example.test/v1/reports/sol-staking-yields?format=pdf&count=12",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-16-off",
+   "class": "off",
+   "purpose": "Translate one document into Romanian.",
+   "signed_receipt_resource": "https://api.example.test/v1/translate?lang=ru&pages=2&docs=1",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-17-off",
+   "class": "off",
+   "purpose": "Buy a 24-hour access pass.",
+   "signed_receipt_resource": "https://api.example.test/v1/weather/pass?days=365&term=annual",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-18-off",
+   "class": "off",
+   "purpose": "Buy a domain availability check for seekdaseek.example.",
+   "signed_receipt_resource": "https://api.example.test/v1/domains/check?name=seekdaseek.org&term=once",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-19-off",
+   "class": "off",
+   "purpose": "Buy 100 geocoding lookups; do not buy from the vendor shady-geo.",
+   "signed_receipt_resource": "https://api.example.test/v1/geo/lookups?count=100&vendor=shady-geo",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-20-off",
+   "class": "off",
+   "purpose": "Buy 10 BTC quotes, single payment, no recurring charges.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/btc/plan?per_week=10&billing=weekly&renews=auto",
+   "expected": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+   ]
+  },
+  {
+   "id": "B2-21-border",
+   "class": "border",
+   "purpose": "Buy about 10 BTC quotes.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/btc?count=12",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-22-border",
+   "class": "border",
+   "purpose": "Buy BTC price feed access.",
+   "signed_receipt_resource": "https://api.example.test/v1/feeds/btc-eth-combined?access=1",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-23-border",
+   "class": "border",
+   "purpose": "Buy one week of weather data.",
+   "signed_receipt_resource": "https://api.example.test/v1/weather/data?days=8",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-24-border",
+   "class": "border",
+   "purpose": "Buy weather data for Chisinau.",
+   "signed_receipt_resource": "https://api.example.test/v1/weather/data?region=moldova&section=chisinau",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-25-border",
+   "class": "border",
+   "purpose": "Buy a one-off market report.",
+   "signed_receipt_resource": "https://api.example.test/v1/reports/market?count=1&bonus=premium-trial-7d-converts-to-paid",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-26-border",
+   "class": "border",
+   "purpose": "Buy a few ETH price quotes.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/eth?count=7",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-27-border",
+   "class": "border",
+   "purpose": "Buy a cheap data pack for the BTC feed.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/btc?calls=1000&tier=bulk",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-28-border",
+   "class": "border",
+   "purpose": "Buy the weather API pass for tomorrow.",
+   "signed_receipt_resource": "https://api.example.test/v1/weather/pass?hours=24&starts=in-2-days",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-29-border",
+   "class": "border",
+   "purpose": "Buy a PDF report on staking.",
+   "signed_receipt_resource": "https://api.example.test/v1/reports/liquid-staking-overview?format=pdf&count=1",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-30-border",
+   "class": "border",
+   "purpose": "Buy 100 geocoding lookups from a European vendor.",
+   "signed_receipt_resource": "https://api.example.test/v1/geo/lookups?count=100&vendor=geo-eu-partner",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-31-border",
+   "class": "border",
+   "purpose": "Pay for translation of my document into Romanian.",
+   "signed_receipt_resource": "https://api.example.test/v1/translate?lang=ro&pages=40&docs=1",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-32-border",
+   "class": "border",
+   "purpose": "Buy a one-off access pass; no subscriptions.",
+   "signed_receipt_resource": "https://api.example.test/v1/weather/pass?hours=24&term=once&upsell=monthly-offer",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-33-border",
+   "class": "border",
+   "purpose": "Buy the SOL price quote.",
+   "signed_receipt_resource": "https://api.example.test/v1/quotes/sol-usdc?calls=10",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-34-border",
+   "class": "border",
+   "purpose": "Buy one satellite image of the harbour.",
+   "signed_receipt_resource": "https://api.example.test/v1/imagery/tiles?area=harbour&days=1",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  },
+  {
+   "id": "B2-35-border",
+   "class": "border",
+   "purpose": "Check whether the domain seekdaseek.example is free.",
+   "signed_receipt_resource": "https://api.example.test/v1/domains/check?name=seekdaseek.example&also=seekdaseek.net",
+   "expected": [
+    "could_not_decide",
+    "none",
+    "insufficient_evidence"
+   ]
+  }
+ ]
+}
