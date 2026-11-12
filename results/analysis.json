@@ -1,5 +1,5 @@
 {
- "n_rows": 198,
+ "n_rows": 200,
  "submit_errors": [
   {
    "case_id": "real-6-scope-wrongpayto",
@@ -2194,13 +2194,16 @@
    "case": "real-1-onpurpose-quote",
    "expected": "invalid/principal/in_scope",
    "runs": [
+    "invalid/principal/in_scope",
     "invalid/principal/in_scope"
    ],
-   "match": "1/1",
+   "match": "2/2",
    "finals": [
-    59.9
+    59.9,
+    58.9
    ],
    "rot": [
+    0,
     0
    ]
   },
@@ -2276,13 +2279,16 @@
    "case": "real-6-scope-wrongpayto",
    "expected": "valid/agent_operator/pay_to_not_allowed",
    "runs": [
+    "valid/agent_operator/pay_to_not_allowed",
     "valid/agent_operator/pay_to_not_allowed"
    ],
-   "match": "1/1",
+   "match": "2/2",
    "finals": [
-    44.5
+    44.5,
+    37.7
    ],
    "rot": [
+    0,
     0
    ]
   }
@@ -2668,13 +2674,13 @@
    7,
    7
   ],
-  "prd-grok": [
+  "prd-mistral": [
    7,
    7
   ],
-  "prd-mistral": [
-   6,
-   6
+  "prd-grok": [
+   7,
+   7
   ],
   "prd-qwen": [
    3,
@@ -2718,8 +2724,8 @@
   ]
  },
  "model_path_overall": [
-  77,
-  79
+  78,
+  80
  ],
  "C_flips_per_leader": {
   "prd-gpt-5-4": [
@@ -2763,16 +2769,16 @@
   "prd-gpt-5-4": 80,
   "openai/gpt-5.4": 57,
   "prd-gemini": 46,
-  "prd-sonnet": 42,
+  "prd-sonnet": 43,
   "google/gemini-3-flash-preview": 30,
+  "prd-deepseek": 23,
+  "prd-qwen": 22,
   "prd-gpt-oss": 22,
-  "prd-deepseek": 22,
-  "prd-qwen": 21,
   "prd-gemma": 20,
   "prd-minimax": 20,
+  "prd-kimi": 19,
   "anthropic/claude-sonnet-4.6": 19,
-  "prd-kimi": 18,
-  "prd-grok": 16,
+  "prd-grok": 17,
   "prd-glm": 15,
   "prd-mistral": 13
  }

@@ -73,5 +73,35 @@
       "ACCEPTED": 7563,
       "FINALIZED": 39454
     }
+  },
+  "tune1-a": {
+    "name": "tune1-a",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x10b905337d0a4444149D6880439a05f39D003b75",
+    "deploy_tx": "0xc8d9453c2f0570a2f4eb8d94535f0ef6a6ad287b20fa01adc409f84a5cb21192",
+    "deployed_at": "2026-11-12T18:32:02.400Z",
+    "seen": {
+      "PENDING": 1337,
+      "PROPOSING": 4550,
+      "ACCEPTED": 7777,
+      "FINALIZED": 39707
+    }
+  },
+  "tune1-b": {
+    "name": "tune1-b",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0xe148Ba17Ce11C2DC79CC48ED5EcA6511E119503f",
+    "deploy_tx": "0xf1934e668e0229b48a96c497acad6148d85d3f662dfaa2cffc3ab850d52d7dee",
+    "deployed_at": "2026-11-12T18:32:41.932Z",
+    "seen": {
+      "PENDING": 1165,
+      "PROPOSING": 4354,
+      "ACCEPTED": 7555,
+      "FINALIZED": 39496
+    }
   }
 }
