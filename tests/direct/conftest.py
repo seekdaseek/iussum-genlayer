@@ -3,7 +3,16 @@ import pytest
 
 FX = pathlib.Path(__file__).resolve().parents[1] / "fixtures"
 RPC = "https://api.devnet.solana.com"
-SCHEMA = "iussum-genlayer/0.1"
+BUNDLE_V = "iussum-genlayer/0.2"
+MANDATE_V = "iussum/0.3"
+SDK = "v0.2.16"
+PURPOSE = "Buy one 10-call data quote for the BTC price feed from api.example.test."
+PRINCIPAL = "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU"
+AGENT = "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+MINT = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU"
+SELLER_A = "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7"
+SELLER_B = "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
+GRANT_SIG = "G" * 88
 
 
 def canon(o):
@@ -18,16 +27,40 @@ def _case():
     return json.load(open(FX / "iussum-resolve-case54.json"))["input"]
 
 
-def make_bundle(mandate_over=None, receipt=True, receipt_over=None, payment_over=None,
-                instruction="Buy one 10-call data quote for the BTC price feed from api.example.test.",
-                delivered="quote delivered: BTC price feed, 10 calls", presented=True):
-    """The real iussum devnet payment 5KsYz26T... with a mandate that allows it. Returns (bundle_json, sha)."""
+def pay_doc():
+    return json.load(open(FX / "payment-5KsYz26T.json"))
+
+
+def grant_doc(mandate, memo_id=None, **over):
+    """A jsonParsed getTransaction answer for a v0.3 grant: ApproveChecked + Memo, principal the only signer."""
+    mid = memo_id or sha(canon(mandate))
+    memo = f"iussum v0.3 | agent {mandate['agent']} | asset {mandate['asset']} | total {mandate['total_cap']} | id {mid}"
+    ixs = [
+        {"program": "spl-token", "programId": "Tokenkeg", "parsed": {"type": "approveChecked", "info": {
+            "delegate": over.get("delegate", mandate["agent"]), "mint": over.get("mint", mandate["asset"]),
+            "owner": over.get("owner", mandate["principal"]), "source": "SRC",
+            "tokenAmount": {"amount": over.get("amount", mandate["total_cap"]), "decimals": 6}}}},
+        {"program": "spl-memo", "programId": "Memo", "parsed": over.get("memo", memo)},
+    ]
+    if over.get("two_memos"):
+        ixs.append(copy.deepcopy(ixs[1]))
+    signers = over.get("signers", [mandate["principal"]])
+    keys = [{"pubkey": k, "signer": True, "writable": True} for k in signers] + [{"pubkey": "SRC", "signer": False, "writable": True}]
+    return {"jsonrpc": "2.0", "id": 2, "result": {"slot": over.get("slot", 512000000), "blockTime": 1792415400, "meta": {"err": over.get("err"), "innerInstructions": []},
+            "transaction": {"message": {"accountKeys": keys, "instructions": ixs}}}}
+
+
+def make_bundle(mandate_over=None, receipt=True, receipt_over=None, payment_over=None, purpose=PURPOSE,
+                delivered="quote delivered: BTC price feed, 10 calls", presented=True, grant_over=None,
+                grant_tx=GRANT_SIG, pay=None, grant=None, chain_record=False, drop=()):
+    """The real iussum devnet payment 5KsYz26T... with a v0.3 mandate that allows it. Returns (bundle_json, sha)."""
     c = _case()
     m = copy.deepcopy(c["mandate"])
+    m["v"] = MANDATE_V
+    m["purpose"] = purpose
     m.update(mandate_over or {})
     mid = sha(canon(m))
-    p = {"tx_sig": c["tx_sig"], "network": m["network"], "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
-         "amount": "10000", "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7", "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"}  # the real delegate that signed
+    p = {"tx_sig": c["tx_sig"], "network": m["network"], "asset": MINT, "amount": "10000", "pay_to": SELLER_A, "payer": AGENT}
     p.update(payment_over or {})
     d = {}
     if receipt:
@@ -37,39 +70,67 @@ def make_bundle(mandate_over=None, receipt=True, receipt_over=None, payment_over
         d["receipt"] = r
     if delivered is not None:
         d["delivered"] = delivered
-    b = {"v": SCHEMA, "instruction": instruction, "mandate": m, "payment": p, "delivery": d}
+    b = {"v": BUNDLE_V, "mandate": m, "grant_tx": grant_tx, "payment": p, "delivery": d}
+    pd = pay if pay is not None else pay_doc()
+    gd = grant if grant is not None else grant_doc(m, **(grant_over or {}))
+    if chain_record:
+        b["chain_record"] = {"payment": pd, "grant": gd}
+    for k in drop:
+        b.pop(k, None)
     s = canon(b)
+    STATE["mid"], STATE["m"] = mid, m
+    if STATE["serve"]:
+        STATE["serve"](pd, gd)
     return s, sha(s)
 
 
-def chain_json():
-    return json.load(open(FX / "payment-5KsYz26T.json"))
+STATE = {"serve": None, "mid": None, "m": None, "pay": None, "status": 200, "vm": None}
 
 
 @pytest.fixture
 def court(direct_vm, direct_deploy, direct_alice):
     direct_vm.sender = direct_alice
-    return direct_deploy("contracts/mandate_court.py", RPC, 65536, sdk_version="v0.2.16")
+    return direct_deploy("contracts/mandate_court.py", RPC, 65536, "rpc", sdk_version=SDK)
+
+
+@pytest.fixture
+def replay(direct_vm, direct_deploy, direct_alice):
+    direct_vm.sender = direct_alice
+    return direct_deploy("contracts/mandate_court.py", RPC, 65536, "bundle", sdk_version=SDK)
 
 
 @pytest.fixture
 def chain(direct_vm):
-    """Serve the recorded devnet getTransaction answer."""
-    def serve(doc=None, status=200):
+    """Serves one batch answer [payment, grant]. chain(pay_doc, status=...) overrides the payment answer;
+    chain(grant=doc) the grant answer; the default grant always matches the latest make_bundle mandate."""
+    ov = {"pay": None, "grant": None, "status": 200}
+
+    def serve(pd, gd):
         direct_vm.clear_mocks()
-        body = json.dumps(chain_json() if doc is None else doc).encode()
-        direct_vm.mock_web(r"api\.devnet\.solana\.com", {"response": {"status": status, "headers": {}, "body": body}, "method": "POST"})
-    serve()
-    return serve
+        body = json.dumps([ov["pay"] if ov["pay"] is not None else pd, ov["grant"] if ov["grant"] is not None else gd]).encode()
+        direct_vm.mock_web(r"api\.devnet\.solana\.com", {"response": {"status": ov["status"], "headers": {}, "body": body}, "method": "POST"})
+
+    STATE["serve"] = serve
+    STATE["mid"] = None
+
+    def override(pay=None, status=200, grant=None):
+        ov["pay"], ov["status"], ov["grant"] = pay, status, grant
+        if STATE["m"] is not None:
+            serve(pay_doc(), grant_doc(STATE["m"]))
+
+    yield override
+    STATE["serve"] = None
 
 
 @pytest.fixture
 def prompts(direct_vm, monkeypatch):
     seen = []
     orig = direct_vm._match_llm_mock
+
     def spy(prompt):
         seen.append(prompt)
         return orig(prompt)
+
     monkeypatch.setattr(direct_vm, "_match_llm_mock", spy)
     return seen
 

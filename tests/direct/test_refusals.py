@@ -1,7 +1,7 @@
 """Every refusal path. A refusal is verdict invalid, liable none, reason <code>, path refusal, and the model is never asked."""
 import json
 import pytest
-from conftest import make_bundle, canon, sha, chain_json
+from conftest import make_bundle, canon, sha, pay_doc, SDK
 
 RUN = "t1"
 
@@ -28,7 +28,7 @@ def test_too_large(court, chain):
 def test_size_cap_is_exact(direct_vm, direct_deploy, chain, direct_alice):
     bj, h = make_bundle()
     n = len(bj.encode())
-    ok = direct_deploy("contracts/mandate_court.py", "https://api.devnet.solana.com", n - 1, sdk_version="v0.2.16")
+    ok = direct_deploy("contracts/mandate_court.py", "https://api.devnet.solana.com", n - 1, "rpc", sdk_version=SDK)
     refused(json.loads(ok.judge(bj, h, "", RUN)), "bundle_too_large")
 
 
@@ -43,8 +43,8 @@ def test_bad_json(court, chain):
 
 
 @pytest.mark.parametrize("mut", [
-    lambda b: b.pop("instruction"),
-    lambda b: b.update(instruction=""),
+    lambda b: b.pop("grant_tx"),
+    lambda b: b.update(grant_tx=""),
     lambda b: b.update(v="other/1"),
     lambda b: b.pop("payment"),
     lambda b: b["payment"].update(amount="01"),
@@ -66,6 +66,10 @@ def test_bad_schema(court, chain, mut):
     lambda m: m.update(not_before="1792415301"),
     lambda m: m["allow"].update(pay_to=[]),
     lambda m: m.pop("agent"),
+    lambda m: m.pop("purpose"),
+    lambda m: m.update(purpose=""),
+    lambda m: m.update(purpose=5),
+    lambda m: m.update(v="iussum/0.2"),
 ])
 def test_mandate_invalid(court, chain, mut):
     bj, _ = make_bundle()
@@ -112,14 +116,14 @@ def test_chain_tx_not_found(court, chain):
 
 
 def test_chain_tx_failed(court, chain):
-    d = chain_json(); d["result"]["meta"]["err"] = {"InstructionError": [2, {"Custom": 1}]}
+    d = pay_doc(); d["result"]["meta"]["err"] = {"InstructionError": [2, {"Custom": 1}]}
     chain(d)
     bj, h = make_bundle()
     refused(judge(court, bj, h), "chain_tx_failed")
 
 
 def test_chain_shape_two_transfers(court, chain):
-    d = chain_json(); ixs = d["result"]["transaction"]["message"]["instructions"]
+    d = pay_doc(); ixs = d["result"]["transaction"]["message"]["instructions"]
     ixs.append(next(i for i in ixs if i.get("parsed", {}).get("type") == "transferChecked"))
     chain(d)
     bj, h = make_bundle()
@@ -127,7 +131,7 @@ def test_chain_shape_two_transfers(court, chain):
 
 
 def test_chain_shape_cpi_transfer(court, chain):
-    d = chain_json(); ixs = d["result"]["transaction"]["message"]["instructions"]
+    d = pay_doc(); ixs = d["result"]["transaction"]["message"]["instructions"]
     tc = next(i for i in ixs if i.get("parsed", {}).get("type") == "transferChecked")
     d["result"]["meta"]["innerInstructions"] = [{"index": 0, "instructions": [tc]}]
     chain(d)
@@ -136,7 +140,7 @@ def test_chain_shape_cpi_transfer(court, chain):
 
 
 def test_chain_shape_plain_transfer_or_no_blocktime(court, chain):
-    d = chain_json(); d["result"]["blockTime"] = None
+    d = pay_doc(); d["result"]["blockTime"] = None
     chain(d)
     bj, h = make_bundle()
     refused(judge(court, bj, h), "chain_shape")
