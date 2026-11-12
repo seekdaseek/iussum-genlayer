@@ -22,14 +22,15 @@ import json
 
 from genlayer import *
 
-SCHEMA = "iussum-genlayer/0.1"
+SCHEMA = "iussum-genlayer/0.2"
+MANDATE_V = "iussum/0.3"  # iussum v0.2 plus one field, purpose; the id stays the JCS sha256, so purpose is covered by it
 
 # --- closed sets -------------------------------------------------------------------------------
 REFUSALS = (
     "bundle_too_large", "bad_run_tag", "bad_json", "bad_schema", "not_canonical", "hash_mismatch",
     "mandate_invalid", "bad_resolver_json", "payment_receipt_mismatch",
     "chain_unreachable", "chain_tx_not_found", "chain_tx_failed", "chain_shape",
-    "chain_mismatch", "principal_mismatch", "resource_not_judgeable",
+    "chain_mismatch", "principal_mismatch", "resource_not_judgeable", "grant_mismatch", "chain_record_not_accepted",
 )
 SCOPE_CODES = (  # iussum's order for "first reason"
     "amount_over_cap", "pay_to_not_allowed", "resource_not_allowed", "asset_mismatch",
@@ -43,7 +44,7 @@ MODEL_TRIPLES = (
     ("could_not_decide", "none", "insufficient_evidence"),
 )
 
-MANDATE_STR = ("v", "principal", "agent", "network", "asset", "total_cap", "per_payment_max", "period_budget", "nonce")
+MANDATE_STR = ("v", "purpose", "principal", "agent", "network", "asset", "total_cap", "per_payment_max", "period_budget", "nonce")
 MANDATE_INT = ("period_seconds", "not_before", "expires_at")
 RECEIPT_STR = ("v", "mandate_id", "resource", "pay_to", "asset", "network", "amount", "payer", "tx_sig", "seller")
 
@@ -75,12 +76,18 @@ def check_bundle(bundle) -> str | None:
     for k in ("mandate", "payment", "delivery"):
         if not isinstance(bundle.get(k), dict):
             return "bad_schema"
-    if not isinstance(bundle.get("instruction"), str) or not bundle["instruction"]:
+    if not isinstance(bundle.get("grant_tx"), str) or not bundle["grant_tx"]:
         return "bad_schema"
+    if "chain_record" in bundle:
+        cr = bundle["chain_record"]
+        if not (isinstance(cr, dict) and isinstance(cr.get("payment"), dict) and isinstance(cr.get("grant"), dict)):
+            return "bad_schema"
     m = bundle["mandate"]
     for k in MANDATE_STR:
         if not isinstance(m.get(k), str) or not m[k]:
             return "mandate_invalid"
+    if m["v"] != MANDATE_V:
+        return "mandate_invalid"
     for k in MANDATE_INT:
         if type(m.get(k)) is not int:
             return "mandate_invalid"
@@ -157,7 +164,63 @@ def extract_facts(rpc: dict) -> dict:
     if src not in owners or dst not in owners or type(bt) is not int or not _is_amount(amount):
         return {"ok": False, "code": "chain_shape"}
     return {"ok": True, "amount": amount, "mint": mint, "authority": auth, "source_owner": owners[src],
-            "dest_owner": owners[dst], "block_time": bt}
+            "dest_owner": owners[dst], "block_time": bt, "slot": res.get("slot")}
+
+
+def extract_grant(rpc: dict) -> dict:
+    """Normalise the grant transaction: one ApproveChecked, one Memo `iussum v0.3 | ... | id <64 hex>`, signers listed."""
+    res = rpc.get("result") if isinstance(rpc, dict) else None
+    if res is None:
+        return {"ok": False, "code": "grant_mismatch"}
+    if (res.get("meta") or {}).get("err") is not None:
+        return {"ok": False, "code": "grant_mismatch"}
+    msg = (res.get("transaction") or {}).get("message") or {}
+    ixs = [i for i in (msg.get("instructions") or []) if isinstance(i, dict)]
+    appr = [i for i in ixs if isinstance(i.get("parsed"), dict) and i["parsed"].get("type") == "approveChecked"]
+    memos = [i for i in ixs if i.get("program") == "spl-memo" and isinstance(i.get("parsed"), str)]
+    if len(appr) != 1 or len(memos) != 1 or type(res.get("slot")) is not int:
+        return {"ok": False, "code": "grant_mismatch"}
+    memo = memos[0]["parsed"]
+    if not memo.startswith("iussum v0.3 | ") or " | id " not in memo:
+        return {"ok": False, "code": "grant_mismatch"}
+    mid = memo.rsplit(" | id ", 1)[1]
+    if len(mid) != 64 or any(c not in "0123456789abcdef" for c in mid):
+        return {"ok": False, "code": "grant_mismatch"}
+    info = appr[0]["parsed"].get("info") or {}
+    try:
+        amount = info["tokenAmount"]["amount"]
+        out = {"ok": True, "memo_id": mid, "owner": info["owner"], "delegate": info["delegate"], "mint": info["mint"], "amount": amount, "slot": res["slot"]}
+    except (KeyError, TypeError):
+        return {"ok": False, "code": "grant_mismatch"}
+    out["signers"] = sorted(k.get("pubkey") for k in (msg.get("accountKeys") or []) if isinstance(k, dict) and k.get("signer"))
+    return out
+
+
+def reply_by_id(replies, i: int):
+    if not isinstance(replies, list):
+        return None
+    for r in replies:
+        if isinstance(r, dict) and r.get("id") == i:
+            return r
+    return None
+
+
+def delta_entry(code: str, m: dict, rc, facts: dict) -> dict:
+    if code == "amount_over_cap":
+        return {"field": "per_payment_max", "authorized": m["per_payment_max"], "actual": facts["amount"], "currency": facts["mint"]}
+    if code == "pay_to_not_allowed":
+        return {"field": "allow.pay_to", "authorized": m["allow"]["pay_to"], "actual": facts["dest_owner"]}
+    if code == "resource_not_allowed":
+        return {"field": "allow.resource_prefix", "authorized": m["allow"]["resource_prefix"], "actual": rc["resource"]}
+    if code == "mandate_expired":
+        return {"field": "expires_at", "authorized": m["expires_at"], "actual": facts["block_time"]}
+    if code == "mandate_not_yet_valid":
+        return {"field": "not_before", "authorized": m["not_before"], "actual": facts["block_time"]}
+    if code == "asset_mismatch":
+        return {"field": "asset", "authorized": m["asset"], "actual": facts["mint"]}
+    if code == "agent_mismatch":
+        return {"field": "agent", "authorized": m["agent"], "actual": facts["authority"]}
+    return {"field": "network", "authorized": m["network"], "actual": rc["network"] if rc else m["network"]}
 
 
 def resource_allowed(prefixes: list, resource: str) -> bool | None:
@@ -204,7 +267,7 @@ def build_prompt(bundle: dict, facts: dict, sha: str) -> str:
     m, d = bundle["mandate"], bundle["delivery"]
     rc = d.get("receipt")
     evidence = {
-        "principal_instruction": bundle["instruction"],
+        "principal_purpose": m["purpose"],
         "signed_limits": {"per_payment_max": m["per_payment_max"], "allowed_pay_to": m["allow"]["pay_to"],
                           "allowed_resource_prefixes": m["allow"]["resource_prefix"], "asset": m["asset"]},
         "payment_verified_on_chain": {"amount": facts["amount"], "paid_to": facts["dest_owner"], "asset": facts["mint"]},
@@ -249,17 +312,21 @@ def _status(res) -> int:
 class MandateCourt(gl.Contract):
     rpc_url: str
     max_bytes: u256
+    chain_source: str
     results: TreeMap[str, str]
     judged: u256
 
-    def __init__(self, rpc_url: str, max_bytes: u256):
+    def __init__(self, rpc_url: str, max_bytes: u256, chain_source: str):
+        if chain_source not in ("rpc", "bundle"):
+            raise gl.vm.UserError("[EXPECTED] chain_source must be rpc or bundle")
         self.rpc_url = rpc_url
         self.max_bytes = max_bytes
+        self.chain_source = chain_source
         self.judged = u256(0)
 
     @gl.public.view
     def config(self) -> dict:
-        return {"schema": SCHEMA, "rpc_url": self.rpc_url, "max_bytes": int(self.max_bytes), "judged": int(self.judged)}
+        return {"schema": SCHEMA, "rpc_url": self.rpc_url, "max_bytes": int(self.max_bytes), "chain_source": self.chain_source, "judged": int(self.judged)}
 
     @gl.public.view
     def get_result(self, key: str) -> str:
@@ -268,6 +335,7 @@ class MandateCourt(gl.Contract):
     @gl.public.write
     def judge(self, bundle_json: str, bundle_sha256: str, resolver_json: str, run_tag: str) -> str:
         res = self._decide(bundle_json, bundle_sha256, resolver_json, run_tag)
+        res["chain_source"] = self.chain_source
         key = bundle_sha256 + ":" + run_tag
         out = canon(res)
         self.results[key] = out
@@ -306,14 +374,30 @@ class MandateCourt(gl.Contract):
             return refusal("payment_receipt_mismatch")
         mandate_id = sha256_hex(canon(m))
 
-        # 2. the payment, from the chain
-        facts = self._chain_facts(p["tx_sig"])
+        # 2. the payment and the grant, from the chain (or, on the replay instance only, from the bundle's recorded answers)
+        has_record = "chain_record" in bundle
+        if self.chain_source == "rpc":
+            if has_record:
+                return refusal("chain_record_not_accepted")
+            both = self._chain_facts(p["tx_sig"], bundle["grant_tx"])
+        else:
+            if not has_record:
+                return refusal("bad_schema")
+            cr = bundle["chain_record"]
+            both = {"payment": extract_facts(cr["payment"]), "grant": extract_grant(cr["grant"])}
+        if both.get("unreachable"):
+            return refusal("chain_unreachable")
+        facts, gf = both["payment"], both["grant"]
         if not facts["ok"]:
             return refusal(facts["code"])
         if facts["amount"] != p["amount"] or facts["mint"] != p["asset"] or facts["dest_owner"] != p["pay_to"] or facts["authority"] != p["payer"]:
             return refusal("chain_mismatch")
         if facts["source_owner"] != m["principal"]:
             return refusal("principal_mismatch")
+        if (not gf["ok"] or gf["memo_id"] != mandate_id or gf["owner"] != m["principal"] or gf["delegate"] != m["agent"]
+                or gf["mint"] != m["asset"] or gf["amount"] != m["total_cap"] or gf["signers"] != [m["principal"]]
+                or type(facts.get("slot")) is not int or gf["slot"] > facts["slot"]):
+            return refusal("grant_mismatch")
 
         # 3. scope checks that need no judgement
         viol = scope_violations(m, rc, p, facts)
@@ -322,7 +406,8 @@ class MandateCourt(gl.Contract):
         base = {"mandate_id": mandate_id, "case_sha": sha, "run_tag": run_tag, "chain": {"amount": facts["amount"], "block_time": facts["block_time"]}}
         if viol:
             presented = rc is not None and rc["mandate_id"] == mandate_id
-            res = {"verdict": "valid", "liable": "seller" if presented else "agent_operator", "reason": viol[0], "reasoning": "", "path": "deterministic"}
+            res = {"verdict": "valid", "liable": "seller" if presented else "agent_operator", "reason": viol[0], "reasoning": "", "path": "deterministic",
+                   "delta": [delta_entry(c, m, rc, facts) for c in viol]}
         else:
             # 4. the one question for the model
             res = self._ask_model(bundle, facts, sha)
@@ -334,17 +419,21 @@ class MandateCourt(gl.Contract):
                                       and (resolver.get("liable") or "none") == res["liable"])
         return res
 
-    def _chain_facts(self, sig: str) -> dict:
+    def _chain_facts(self, sig: str, grant_sig: str) -> dict:
         url = self.rpc_url
-        payload = {"jsonrpc": "2.0", "id": 1, "method": "getTransaction",
-                   "params": [sig, {"encoding": "jsonParsed", "maxSupportedTransactionVersion": 0, "commitment": "finalized"}]}
+        opts = {"encoding": "jsonParsed", "maxSupportedTransactionVersion": 0, "commitment": "finalized"}
+        batch = [{"jsonrpc": "2.0", "id": 1, "method": "getTransaction", "params": [sig, opts]},
+                 {"jsonrpc": "2.0", "id": 2, "method": "getTransaction", "params": [grant_sig, opts]}]
 
         def fetch():
-            r = gl.nondet.web.post(url, body=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"})
-            st = _status(r)
-            if st != 200:
-                return canon({"ok": False, "code": "chain_unreachable"})
-            return canon(extract_facts(json.loads(r.body.decode("utf-8"))))
+            r = gl.nondet.web.post(url, body=json.dumps(batch).encode("utf-8"), headers={"Content-Type": "application/json"})
+            if _status(r) != 200:
+                return canon({"unreachable": True})
+            replies = json.loads(r.body.decode("utf-8"))
+            a, b = reply_by_id(replies, 1), reply_by_id(replies, 2)
+            if a is None or b is None:
+                return canon({"unreachable": True})
+            return canon({"payment": extract_facts(a), "grant": extract_grant(b)})
 
         return json.loads(gl.eq_principle.strict_eq(fetch))
 

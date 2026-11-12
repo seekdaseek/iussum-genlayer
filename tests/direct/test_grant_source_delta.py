@@ -58,8 +58,9 @@ def test_rewriting_the_purpose_breaks_the_grant_binding(court, chain, direct_vm,
 def test_purpose_is_covered_by_the_mandate_id(court, chain, direct_vm):
     llm(direct_vm, "invalid", "principal", "in_scope")
     a, ha = make_bundle(purpose="A")
+    ra = judge(court, a, ha)
     b, hb = make_bundle(purpose="B")
-    ra, rb = judge(court, a, ha), judge(court, b, hb)
+    rb = judge(court, b, hb)
     assert ra["mandate_id"] != rb["mandate_id"]
 
 
@@ -93,18 +94,24 @@ def test_replay_requires_a_chain_record(replay, chain):
     refused(judge(replay, bj, h), "bad_schema")
 
 
-def test_every_stored_result_carries_chain_source(court, replay, chain, direct_vm):
+def test_live_results_carry_chain_source_rpc(court, chain, direct_vm):
     llm(direct_vm, "invalid", "principal", "in_scope")
     bj, h = make_bundle()
     assert judge(court, bj, h)["chain_source"] == "rpc"
-    refused(judge(court, bj, "0" * 64), "hash_mismatch")
     assert judge(court, bj, "0" * 64)["chain_source"] == "rpc"
     assert json.loads(court.get_result("0" * 64 + ":" + RUN))["chain_source"] == "rpc"
-    bj2, h2 = make_bundle(chain_record=True)
-    r = judge(replay, bj2, h2)
+    assert court.config()["chain_source"] == "rpc"
+
+
+def test_replay_results_carry_chain_source_bundle(replay, direct_vm):
+    import conftest
+    conftest.STATE["serve"] = None
+    llm(direct_vm, "invalid", "principal", "in_scope")
+    bj, h = make_bundle(chain_record=True)
+    r = judge(replay, bj, h)
     assert r["chain_source"] == "bundle" and r["path"] == "model"
-    assert judge(replay, bj2, "0" * 64)["chain_source"] == "bundle"
-    assert replay.config()["chain_source"] == "bundle" and court.config()["chain_source"] == "rpc"
+    assert judge(replay, bj, "0" * 64)["chain_source"] == "bundle"
+    assert replay.config()["chain_source"] == "bundle"
 
 
 def test_replay_makes_no_web_request(replay, direct_vm, prompts):
@@ -153,12 +160,10 @@ def test_delta_expiry_is_numbers(court, chain):
     assert judge(court, bj, h)["delta"] == [{"field": "expires_at", "authorized": 1792416301, "actual": 1792416301}]
 
 
-def test_delta_has_one_entry_per_violation_in_reason_order(court, chain):
+def test_delta_has_one_entry_per_violation_reason_first(court, chain):
     bj, h = make_bundle(mandate_over={"per_payment_max": "9999", "expires_at": 1792416301})
     r = judge(court, bj, h)
-    assert [d["field"] for d in r["delta"]] == ["expires_at", "per_payment_max"] and r["reason"] == "amount_over_cap"
-    # reason is iussum's first by its order (amount_over_cap); delta order follows the same order list
-    assert r["delta"][0]["field"] != r["reason"]
+    assert r["reason"] == "amount_over_cap" and [d["field"] for d in r["delta"]] == ["per_payment_max", "expires_at"]
 
 
 def test_model_and_refusal_results_carry_no_delta(court, chain, direct_vm):

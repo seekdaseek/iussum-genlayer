@@ -106,7 +106,8 @@ def chain(direct_vm):
     ov = {"pay": None, "grant": None, "status": 200}
 
     def serve(pd, gd):
-        direct_vm.clear_mocks()
+        direct_vm._web_mocks.clear()
+        direct_vm._web_mocks_hit.clear()
         body = json.dumps([ov["pay"] if ov["pay"] is not None else pd, ov["grant"] if ov["grant"] is not None else gd]).encode()
         direct_vm.mock_web(r"api\.devnet\.solana\.com", {"response": {"status": ov["status"], "headers": {}, "body": body}, "method": "POST"})
 
