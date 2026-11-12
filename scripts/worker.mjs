@@ -16,7 +16,7 @@ for (const j of jobs) {
   const bundle = src.bundle ? src.bundle : j.file === "rr" ? { v: "iussum-genlayer/0.2", mandate: src.mandate, grant_tx: src.grant_tx, payment: src.payment, delivery: { receipt: src.receipt } } : j.real ? { v: "iussum-genlayer/0.2", mandate: src.mandate, grant_tx: src.grant_tx, payment: src.payment, delivery: { delivered: src.delivered } } : src.bundle;
   let row;
   for (let attempt = 1; attempt <= 3; attempt++) {
-    row = await judge({ inst: j.inst, caseId: j.case, bundle, resolver: j.resolver ?? "", tag, expected: j.expected, setName: j.set, note: attempt > 1 ? `attempt ${attempt} after a Studio rate limit` : "", pollMs: 7000 });
+    row = await judge({ inst: j.inst, caseId: j.case, bundle, resolver: j.resolver ?? "", tag, expected: j.expected, setName: j.set, note: j.note ?? (attempt > 1 ? `attempt ${attempt} after a Studio rate limit` : ""), pollMs: 7000 });
     if (!(row.submit_error && /429|rate|limit/i.test(row.submit_error))) break;
     await sleep(75000);
   }
