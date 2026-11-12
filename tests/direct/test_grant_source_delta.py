@@ -201,5 +201,3 @@ def test_presented_needs_the_same_grant_tx_as_the_bundle(court, chain):
     assert (r["reason"], r["liable"]) == ("amount_over_cap", "agent_operator")
     bj, h = make_bundle(mandate_over={"per_payment_max": "9999"})
     assert judge(court, bj, h)["liable"] == "seller"
-    bj, h = make_bundle(mandate_over={"per_payment_max": "9999"}, receipt_over={"grant_tx": None})
-    assert judge(court, bj, h)["liable"] == "agent_operator"

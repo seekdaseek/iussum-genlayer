@@ -17,6 +17,7 @@
 #
 # Every API name used here is listed in NOTES.md with its source.
 
+import base64
 import hashlib
 import json
 
@@ -30,7 +31,7 @@ REFUSALS = (
     "bundle_too_large", "bad_run_tag", "bad_json", "bad_schema", "not_canonical", "hash_mismatch",
     "mandate_invalid", "bad_resolver_json", "payment_receipt_mismatch",
     "chain_unreachable", "chain_tx_not_found", "chain_tx_failed", "chain_shape",
-    "chain_mismatch", "principal_mismatch", "resource_not_judgeable", "grant_mismatch", "chain_record_not_accepted", "source_mismatch",
+    "chain_mismatch", "principal_mismatch", "resource_not_judgeable", "grant_mismatch", "chain_record_not_accepted", "source_mismatch", "receipt_signature_invalid",
 )
 SCOPE_CODES = (  # iussum's order for "first reason"
     "amount_over_cap", "pay_to_not_allowed", "resource_not_allowed", "asset_mismatch",
@@ -46,7 +47,124 @@ MODEL_TRIPLES = (
 
 MANDATE_STR = ("v", "purpose", "principal", "agent", "network", "asset", "total_cap", "per_payment_max", "period_budget", "nonce")
 MANDATE_INT = ("period_seconds", "not_before", "expires_at")
-RECEIPT_STR = ("v", "mandate_id", "resource", "pay_to", "asset", "network", "amount", "payer", "tx_sig", "seller")
+RECEIPT_FIELDS = ("v", "mandate_id", "grant_tx", "offer_hash", "resource", "pay_to", "asset", "network", "amount", "payer", "tx_sig", "settled_at", "seller")
+RECEIPT_V = "iussum/0.2"
+
+# ---- ed25519 (RFC 8032, pure Python) and base58: the receipt signature is checked in plain code, before any model runs -------------------
+_P = 2**255 - 19
+_Q = 2**252 + 27742317777372353535851937790883648493
+_D = -121665 * pow(121666, _P - 2, _P) % _P
+_I = pow(2, (_P - 1) // 4, _P)
+_B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+
+def _recover_x(y, sign):
+    if y >= _P:
+        return None
+    x2 = (y * y - 1) * pow(_D * y * y + 1, _P - 2, _P) % _P
+    if x2 == 0:
+        return None if sign else 0
+    x = pow(x2, (_P + 3) // 8, _P)
+    if (x * x - x2) % _P:
+        x = x * _I % _P
+    if (x * x - x2) % _P:
+        return None
+    if (x & 1) != sign:
+        x = _P - x
+    return x
+
+
+def _padd(a, b):
+    A = (a[1] - a[0]) * (b[1] - b[0]) % _P
+    B = (a[1] + a[0]) * (b[1] + b[0]) % _P
+    C = 2 * a[3] * b[3] * _D % _P
+    D = 2 * a[2] * b[2] % _P
+    E, F, G, H = B - A, D - C, D + C, B + A
+    return (E * F % _P, G * H % _P, F * G % _P, E * H % _P)
+
+
+def _pmul(s, pt):
+    q = (0, 1, 1, 0)
+    while s > 0:
+        if s & 1:
+            q = _padd(q, pt)
+        pt = _padd(pt, pt)
+        s >>= 1
+    return q
+
+
+def _peq(a, b):
+    return (a[0] * b[2] - b[0] * a[2]) % _P == 0 and (a[1] * b[2] - b[1] * a[2]) % _P == 0
+
+
+def _decompress(b):
+    y = int.from_bytes(b, "little")
+    sign = y >> 255
+    y &= (1 << 255) - 1
+    x = _recover_x(y, sign)
+    if x is None:
+        return None
+    return (x, y, 1, x * y % _P)
+
+
+_GY = 4 * pow(5, _P - 2, _P) % _P
+_GX = _recover_x(_GY, 0)
+_G = (_GX, _GY, 1, _GX * _GY % _P)
+
+
+def ed25519_verify(pk: bytes, msg: bytes, sig: bytes) -> bool:
+    if len(pk) != 32 or len(sig) != 64:
+        return False
+    a, r = _decompress(pk), _decompress(sig[:32])
+    if a is None or r is None:
+        return False
+    s = int.from_bytes(sig[32:], "little")
+    if s >= _Q:
+        return False
+    h = int.from_bytes(hashlib.sha512(sig[:32] + pk + msg).digest(), "little") % _Q
+    return _peq(_pmul(s, _G), _padd(r, _pmul(h, a)))
+
+
+def b58decode(s: str):
+    n = 0
+    for c in s:
+        i = _B58.find(c)
+        if i < 0:
+            return None
+        n = n * 58 + i
+    body = n.to_bytes((n.bit_length() + 7) // 8, "big")
+    return b"\0" * (len(s) - len(s.lstrip("1"))) + body
+
+
+def verify_receipt(r, pub_b58) -> bool:
+    """iussum's receipt: ed25519 over "iussum/0.2 receipt\n" + JCS(body), seller key pinned by the court's owner, never taken from the receipt."""
+    try:
+        if not isinstance(r, dict) or set(r.keys()) != set(RECEIPT_FIELDS) | {"signature"} or r["v"] != RECEIPT_V:
+            return False
+        for k in ("offer_hash", "resource", "pay_to", "asset", "network", "payer", "tx_sig", "seller", "signature"):
+            if not isinstance(r[k], str):
+                return False
+        if type(r["settled_at"]) is not int or not _is_amount(r["amount"]) or (r["mandate_id"] is None) != (r["grant_tx"] is None):
+            return False
+        if r["mandate_id"] is not None and not (isinstance(r["mandate_id"], str) and isinstance(r["grant_tx"], str)):
+            return False
+        if r["seller"] != pub_b58:
+            return False
+        pk = b58decode(pub_b58)
+        if pk is None or len(pk) != 32:
+            return False
+        sig = base64.b64decode(r["signature"].encode("ascii"), validate=True)
+        body = {k: v for k, v in r.items() if k != "signature"}
+        return ed25519_verify(pk, ("iussum/" + RECEIPT_V.split("/")[1] + " receipt\n" + canon(body)).encode("utf-8"), sig)
+    except Exception:
+        return False
+
+
+def mandate_v02_id(m: dict) -> str:
+    """The id iussum knows: the v0.3 mandate without `purpose`, back as iussum/0.2. Receipts bind this id."""
+    m2 = {k: v for k, v in m.items() if k != "purpose"}
+    m2["v"] = "iussum/0.2"
+    return sha256_hex(canon(m2))
 
 
 def canon(o) -> str:
@@ -112,11 +230,6 @@ def check_bundle(bundle) -> str | None:
     rc = d.get("receipt")
     if rc is not None:
         if not isinstance(rc, dict):
-            return "bad_schema"
-        for k in RECEIPT_STR:
-            if not isinstance(rc.get(k), str):
-                return "bad_schema"
-        if not _is_amount(rc.get("amount")):
             return "bad_schema"
     if "delivered" in d and not isinstance(d["delivered"], str):
         return "bad_schema"
@@ -262,8 +375,9 @@ def build_prompt(bundle: dict, facts: dict, sha: str) -> str:
         "signed_limits": {"per_payment_max": m["per_payment_max"], "allowed_pay_to": m["allow"]["pay_to"],
                           "allowed_resource_prefixes": m["allow"]["resource_prefix"], "asset": m["asset"]},
         "payment_verified_on_chain": {"amount": facts["amount"], "paid_to": facts["dest_owner"], "asset": facts["mint"]},
-        "delivery": {"resource": rc["resource"] if rc else None, "seller": rc["seller"] if rc else None,
-                     "delivered_text": d.get("delivered", "")},
+        # only what the party it speaks for signed: the purpose (bound by the grant memo), the chain facts, and the seller's signed receipt.
+        # delivery.delivered, complaints and any other unsigned field are never passed to the model.
+        "seller_signed_receipt": {"resource": rc["resource"]} if rc else "no signed seller receipt",
     }
     tag = "EVIDENCE-" + sha[:16]  # derived from the bundle hash: text inside the bundle cannot contain it
     return (
@@ -305,20 +419,22 @@ class MandateCourt(gl.Contract):
     rpc_url: str
     max_bytes: u256
     chain_source: str
+    seller_keys: str
     results: TreeMap[str, str]
     judged: u256
 
-    def __init__(self, rpc_url: str, max_bytes: u256, chain_source: str):
+    def __init__(self, rpc_url: str, max_bytes: u256, chain_source: str, seller_keys: str):
         if chain_source not in ("rpc", "bundle"):
             raise gl.vm.UserError("[EXPECTED] chain_source must be rpc or bundle")
         self.rpc_url = rpc_url
         self.max_bytes = max_bytes
         self.chain_source = chain_source
+        self.seller_keys = seller_keys
         self.judged = u256(0)
 
     @gl.public.view
     def config(self) -> dict:
-        return {"schema": SCHEMA, "rpc_url": self.rpc_url, "max_bytes": int(self.max_bytes), "chain_source": self.chain_source, "judged": int(self.judged)}
+        return {"schema": SCHEMA, "rpc_url": self.rpc_url, "max_bytes": int(self.max_bytes), "chain_source": self.chain_source, "seller_keys": self.seller_keys, "judged": int(self.judged)}
 
     @gl.public.view
     def get_result(self, key: str) -> str:
@@ -362,6 +478,10 @@ class MandateCourt(gl.Contract):
                 return refusal("bad_resolver_json")
         m, p, d = bundle["mandate"], bundle["payment"], bundle["delivery"]
         rc = d.get("receipt")
+        if rc is not None:
+            pinned = [k for k in self.seller_keys.split(",") if k]
+            if not any(verify_receipt(rc, k) for k in pinned):
+                return refusal("receipt_signature_invalid")
         if rc is not None and not receipt_matches_payment(rc, p):
             return refusal("payment_receipt_mismatch")
         mandate_id = sha256_hex(canon(m))
@@ -399,7 +519,7 @@ class MandateCourt(gl.Contract):
             return refusal("resource_not_judgeable")
         base = {"mandate_id": mandate_id, "case_sha": sha, "run_tag": run_tag, "chain": {"amount": facts["amount"], "block_time": facts["block_time"]}}
         if viol:
-            presented = rc is not None and rc["mandate_id"] == mandate_id and rc.get("grant_tx") == bundle["grant_tx"]
+            presented = rc is not None and rc["mandate_id"] == mandate_v02_id(m) and rc["grant_tx"] == bundle["grant_tx"]
             res = {"verdict": "valid", "liable": "seller" if presented else "agent_operator", "reason": viol[0], "reasoning": "", "path": "deterministic",
                    "delta": [delta_entry(c, m, rc, facts) for c in viol]}
         else:
@@ -407,6 +527,8 @@ class MandateCourt(gl.Contract):
             res = self._ask_model(bundle, facts, sha)
             res["path"] = "model"
         res.update(base)
+        if "delivered" in d:
+            res["unsigned_ignored"] = ["delivery.delivered"]
         if resolver is not None:
             res["resolver"] = {k: resolver.get(k) for k in ("verdict", "reason", "liable")}
             res["resolver_agrees"] = (resolver.get("verdict") == res["verdict"] and resolver.get("reason") == res["reason"]

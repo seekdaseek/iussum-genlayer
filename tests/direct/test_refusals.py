@@ -50,7 +50,6 @@ def test_bad_json(court, chain):
     lambda b: b["payment"].update(amount="01"),
     lambda b: b["payment"].update(amount=5),
     lambda b: b["delivery"].update(delivered=7),
-    lambda b: b["delivery"]["receipt"].pop("seller"),
 ])
 def test_bad_schema(court, chain, mut):
     bj, _ = make_bundle()

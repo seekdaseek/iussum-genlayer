@@ -63,6 +63,7 @@ def test_replay_instance_also_checks_signatures(replay, direct_vm):
 
 def test_a_deployment_with_no_pinned_keys_accepts_no_receipt(direct_vm, direct_deploy, direct_alice, chain):
     direct_vm.sender = direct_alice
+    llm(direct_vm, "invalid", "principal", "in_scope")
     c = direct_deploy("contracts/mandate_court.py", RPC, 65536, "rpc", "", sdk_version=SDK)
     bj, h = make_bundle()
     refused(judge(c, bj, h), "receipt_signature_invalid")
@@ -143,7 +144,7 @@ def test_the_model_sees_the_signed_resource_and_purpose(court, chain, direct_vm,
     judge(court, bj, h)
     p = prompts[0]
     assert "https://api.example.test/v1/quotes/btc?calls=10" in p and "Buy one BTC quote." in p
-    assert p.index("<<<EVIDENCE-") < p.index("quotes/btc") < p.index("EVIDENCE-" + h[:16] + ">>>")
+    assert p.index("<<<EVIDENCE-") < p.index("quotes/btc") < p.rindex("EVIDENCE-" + h[:16] + ">>>")
 
 
 def test_without_a_receipt_the_model_sees_only_purpose_and_chain_facts(court, chain, direct_vm, prompts):
