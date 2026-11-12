@@ -167,5 +167,53 @@
       "ACCEPTED": 7942,
       "FINALIZED": 36532
     }
+  },
+  "live4-a": {
+    "name": "live4-a",
+    "chain_source": "rpc",
+    "max_bytes": 65536,
+    "seller_keys": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4,6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0xc33059A88dFD4602d0D0cc2403Cf5C3a94Dc0B5e",
+    "deploy_tx": "0xf025a5ec5b29dfb34b905638526d0db6e13d93a6131aed1cb5158fb81c2123b6",
+    "deployed_at": "2026-11-12T22:22:42.271Z",
+    "seen": {
+      "PENDING": 1460,
+      "COMMITTING": 4635,
+      "ACCEPTED": 7851,
+      "FINALIZED": 36552
+    }
+  },
+  "live4-b": {
+    "name": "live4-b",
+    "chain_source": "rpc",
+    "max_bytes": 65536,
+    "seller_keys": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4,6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x767B086c4d562b33f9ab6AF3F98d76F9A780ac98",
+    "deploy_tx": "0xd30b4c4c21be6852f909eb12c348467ecefe272199830d14c7ffa67b6670de2b",
+    "deployed_at": "2026-11-12T22:23:19.061Z",
+    "seen": {
+      "PENDING": 1375,
+      "ACCEPTED": 4561,
+      "FINALIZED": 36770
+    }
+  },
+  "live4-c": {
+    "name": "live4-c",
+    "chain_source": "rpc",
+    "max_bytes": 65536,
+    "seller_keys": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4,6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x08f1174A848a05EebfdB726557379290dd541213",
+    "deploy_tx": "0x886428a1caf33b303f94308479127251abf1b69a87742d3be09e79fc0d9f4b3a",
+    "deployed_at": "2026-11-12T22:23:58.444Z",
+    "seen": {
+      "PENDING": 1234,
+      "PROPOSING": 4409,
+      "REVEALING": 7587,
+      "ACCEPTED": 10762,
+      "FINALIZED": 39375
+    }
   }
 }
