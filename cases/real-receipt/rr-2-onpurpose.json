@@ -1,0 +1,97 @@
+{
+ "id": "rr-2-onpurpose",
+ "note": "inside every limit and what was asked for",
+ "mandate": {
+  "v": "iussum/0.3",
+  "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+  "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "total_cap": "100000",
+  "per_payment_max": "50000",
+  "period_budget": "100000",
+  "period_seconds": 86400,
+  "allow": {
+   "pay_to": [
+    "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7"
+   ],
+   "resource_prefix": [
+    "http://127.0.0.1:50013/v1/"
+   ]
+  },
+  "not_before": 1794515921,
+  "expires_at": 1795124321,
+  "nonce": "22da1d8a41012bd15596b81d8e72f36d",
+  "purpose": "Buy one price quote from the demo seller (the /v1/quote item). One-off purchase."
+ },
+ "mandate_v02": {
+  "v": "iussum/0.2",
+  "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+  "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "total_cap": "100000",
+  "per_payment_max": "50000",
+  "period_budget": "100000",
+  "period_seconds": 86400,
+  "allow": {
+   "pay_to": [
+    "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7"
+   ],
+   "resource_prefix": [
+    "http://127.0.0.1:50013/v1/"
+   ]
+  },
+  "not_before": 1794515921,
+  "expires_at": 1795124321,
+  "nonce": "22da1d8a41012bd15596b81d8e72f36d"
+ },
+ "mandate_v02_id": "afe448d1a6d421a39cf422422ad38326f202a773c9d6880fe68532f0c0d4502c",
+ "grant_tx": "2FAhc7w7AHHtScG8NBXgABACFDR291RG7LotdEpgJ7TEH7b2PaYo5CCptw1LL132czDiP3dQaqhyix44Y5BQmgeL",
+ "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 50000 | per 86400s 100000 | sellers 1 | resources 1 | from 2026-11-12T20:38:41.000Z until 2026-11-19T21:38:41.000Z | id dd6391dbaf1543a18db152b0902759183748c75c9b926e8477ee0dbf8772a921",
+ "payment": {
+  "tx_sig": "3vtXeLJHT4MyHYQ1QtXE6Yfw33cZzhbtRfWxgH1ibnFGzc6xv6tEQ1fL2V8bQYTafFzDSHuKdbXqXpH6zVX77UfQ",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "amount": "10000",
+  "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+  "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+ },
+ "receipt": {
+  "amount": "10000",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "grant_tx": "2FAhc7w7AHHtScG8NBXgABACFDR291RG7LotdEpgJ7TEH7b2PaYo5CCptw1LL132czDiP3dQaqhyix44Y5BQmgeL",
+  "mandate_id": "afe448d1a6d421a39cf422422ad38326f202a773c9d6880fe68532f0c0d4502c",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "offer_hash": "bfdaed0441cb73de3e4626ad6efd8195d4b6e0e6b464633ceab1b7d91617463f",
+  "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+  "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+  "resource": "http://127.0.0.1:50013/v1/quote",
+  "seller": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+  "settled_at": 1794519537,
+  "signature": "FGJKJEewORKp2xfv702vFcVX5zp84ErxFPLS/QsbV5KW/zq77Yw9phV6hwTmtCn+KDxXcV2/islsJoV544+mBg==",
+  "tx_sig": "3vtXeLJHT4MyHYQ1QtXE6Yfw33cZzhbtRfWxgH1ibnFGzc6xv6tEQ1fL2V8bQYTafFzDSHuKdbXqXpH6zVX77UfQ",
+  "v": "iussum/0.2"
+ },
+ "seller_pub": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+ "receipt_verifies_with_iussum": true,
+ "iussum": {
+  "verdict": "invalid",
+  "reason": "grant_mismatch",
+  "liable": null,
+  "delta": [
+   {
+    "field": "grant",
+    "authorized": "ApproveChecked + Memo bound to the mandate id",
+    "actual": "memo is not the summary line of mandate afe448d1a6d421a39cf422422ad38326f202a773c9d6880fe68532f0c0d4502c"
+   }
+  ],
+  "time_source": null
+ },
+ "expected_court": [
+  "invalid",
+  "principal",
+  "in_scope"
+ ],
+ "made_at": "2026-11-12T21:38:58.005Z"
+}

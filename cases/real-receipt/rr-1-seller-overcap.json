@@ -1,0 +1,97 @@
+{
+ "id": "rr-1-seller-overcap",
+ "note": "the seller (observe mode) settled a 0.01 USDC payment above the 0.005 per-payment cap, receipt records the mandate as presented: liability seller",
+ "mandate": {
+  "v": "iussum/0.3",
+  "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+  "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "total_cap": "100000",
+  "per_payment_max": "5000",
+  "period_budget": "100000",
+  "period_seconds": 86400,
+  "allow": {
+   "pay_to": [
+    "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7"
+   ],
+   "resource_prefix": [
+    "http://127.0.0.1:50013/v1/"
+   ]
+  },
+  "not_before": 1794515907,
+  "expires_at": 1795124307,
+  "nonce": "5bbf963787ef0ba79858addd30c5c6c7",
+  "purpose": "Buy one price quote from the demo seller (the /v1/quote item). One-off purchase."
+ },
+ "mandate_v02": {
+  "v": "iussum/0.2",
+  "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+  "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "total_cap": "100000",
+  "per_payment_max": "5000",
+  "period_budget": "100000",
+  "period_seconds": 86400,
+  "allow": {
+   "pay_to": [
+    "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7"
+   ],
+   "resource_prefix": [
+    "http://127.0.0.1:50013/v1/"
+   ]
+  },
+  "not_before": 1794515907,
+  "expires_at": 1795124307,
+  "nonce": "5bbf963787ef0ba79858addd30c5c6c7"
+ },
+ "mandate_v02_id": "513b5a2c071860e8fa36756d7d1bf1ed774d32bc8f3d28eb95237517413e5cfc",
+ "grant_tx": "58KkADpfoVSq4JL3NkVo2oc8SrBa5pvmLUuy2Bq5yavMhp6E1XP5uA11QE8gadWVgxsL8rCrPShi1gAbU5qtWygP",
+ "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 5000 | per 86400s 100000 | sellers 1 | resources 1 | from 2026-11-12T20:38:27.000Z until 2026-11-19T21:38:27.000Z | id 56521a6a6d3d73fc6aabdd36c29e3bd73de3a0bf5f6c0b8fe6f5b3df7c7f732e",
+ "payment": {
+  "tx_sig": "5nkKeStKJPSG7a3chJ7xXhPQUGDW3neD8aw1x8b3BZk6C3ZRdRzeaEWSevpCY18YjhLAtWojTqBaWKHMjUfmYcJh",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "amount": "10000",
+  "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+  "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+ },
+ "receipt": {
+  "amount": "10000",
+  "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "grant_tx": "58KkADpfoVSq4JL3NkVo2oc8SrBa5pvmLUuy2Bq5yavMhp6E1XP5uA11QE8gadWVgxsL8rCrPShi1gAbU5qtWygP",
+  "mandate_id": "513b5a2c071860e8fa36756d7d1bf1ed774d32bc8f3d28eb95237517413e5cfc",
+  "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+  "offer_hash": "bfdaed0441cb73de3e4626ad6efd8195d4b6e0e6b464633ceab1b7d91617463f",
+  "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+  "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+  "resource": "http://127.0.0.1:50013/v1/quote",
+  "seller": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+  "settled_at": 1794519521,
+  "signature": "V7QYAUzBiroVl9rAlskiqPTlvmQQ4t37e/ArCy+JK+Wwut9wXqTTbcuKLWf7Fb9rCXY7Bkohq6Zgv384sFxLBQ==",
+  "tx_sig": "5nkKeStKJPSG7a3chJ7xXhPQUGDW3neD8aw1x8b3BZk6C3ZRdRzeaEWSevpCY18YjhLAtWojTqBaWKHMjUfmYcJh",
+  "v": "iussum/0.2"
+ },
+ "seller_pub": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+ "receipt_verifies_with_iussum": true,
+ "iussum": {
+  "verdict": "invalid",
+  "reason": "grant_mismatch",
+  "liable": null,
+  "delta": [
+   {
+    "field": "grant",
+    "authorized": "ApproveChecked + Memo bound to the mandate id",
+    "actual": "memo is not the summary line of mandate 513b5a2c071860e8fa36756d7d1bf1ed774d32bc8f3d28eb95237517413e5cfc"
+   }
+  ],
+  "time_source": null
+ },
+ "expected_court": [
+  "valid",
+  "seller",
+  "amount_over_cap"
+ ],
+ "made_at": "2026-11-12T21:38:41.177Z"
+}
