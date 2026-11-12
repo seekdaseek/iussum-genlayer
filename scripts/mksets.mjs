@@ -12,12 +12,13 @@ const PRINCIPAL = "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU", AGENT = "4ZUJe
 const MINT = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU", A = "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7";
 const SCHEMA = "iussum-genlayer/0.2";
 
-const grantDoc = (m, slot) => {
+const REAL_SRC = "6yhmERramYBiynohezgqDbGMHAf9peDDSDoykiu1wzLe";
+const grantDoc = (m, slot, source = REAL_SRC) => {
   const mid = sha256(canon(m));
   const memo = `iussum v0.3 | agent ${m.agent} | asset ${m.asset} | total ${m.total_cap} | id ${mid}`;
   return { jsonrpc: "2.0", id: "g", result: { slot, blockTime: 1792415400, meta: { err: null, innerInstructions: [] }, transaction: { message: {
-    accountKeys: [{ pubkey: m.principal, signer: true, writable: true }, { pubkey: "SRC", signer: false, writable: true }],
-    instructions: [{ program: "spl-token", programId: "Tokenkeg", parsed: { type: "approveChecked", info: { delegate: m.agent, mint: m.asset, owner: m.principal, source: "SRC", tokenAmount: { amount: m.total_cap, decimals: 6 } } } }, { program: "spl-memo", programId: "Memo", parsed: memo }] } } } };
+    accountKeys: [{ pubkey: m.principal, signer: true, writable: true }, { pubkey: source, signer: false, writable: true }],
+    instructions: [{ program: "spl-token", programId: "Tokenkeg", parsed: { type: "approveChecked", info: { delegate: m.agent, mint: m.asset, owner: m.principal, source, tokenAmount: { amount: m.total_cap, decimals: 6 } } } }, { program: "spl-memo", programId: "Memo", parsed: memo }] } } } };
 };
 
 // ---------------------------------------------------------------------------------------------------------------- Set A
@@ -26,7 +27,7 @@ const NEUTRAL_DELIVERED = "Resource delivered as requested.";
 // in court scope, with the court's refusal code that corresponds to iussum's reason (written before the runs)
 const A_SCOPE = { 1: 1, 2: 1, 3: 1, 4: 1, 6: 1, 7: 1, 8: 1, 11: 1, 18: 1, 35: 1, 38: 1, 55: 1 };
 const A_MODEL = new Set([0, 36, 51, 54]);
-const A_REFUSE = { 25: "mandate_invalid", 26: "chain_tx_not_found", 27: "chain_tx_failed", 28: "payment_receipt_mismatch", 29: "chain_mismatch", 30: "chain_mismatch", 31: "chain_mismatch", 32: "chain_mismatch", 33: "principal_mismatch", 39: "bad_schema", 49: "grant_mismatch", 53: "chain_mismatch" };
+const A_REFUSE = { 25: "mandate_invalid", 26: "chain_tx_not_found", 27: "chain_tx_failed", 28: "payment_receipt_mismatch", 29: "chain_mismatch", 30: "chain_mismatch", 31: "chain_mismatch", 32: "chain_mismatch", 33: "source_mismatch", 39: "bad_schema", 49: "grant_mismatch", 53: "chain_mismatch" };
 const A_OUT = {
   5: "receipt names another network than the resolver's: the court refuses on receipt-vs-payment consistency, not network_mismatch",
   9: "no block time on chain: iussum falls back to settled_at, the court refuses (chain_shape)",
@@ -68,7 +69,8 @@ function convertA(i) {
     ? { tx_sig: inp.tx_sig, network: receipt.network, asset: receipt.asset, amount: receipt.amount, pay_to: receipt.pay_to, payer: receipt.payer }
     : { tx_sig: inp.tx_sig, network: inp.network, ...base };
   const gslot = inp.grant_tx_parsed?.slot ?? 1000;
-  const bundle = { v: SCHEMA, mandate: m, grant_tx: "G".repeat(88), payment, delivery: { ...(receipt ? { receipt } : {}), delivered: NEUTRAL_DELIVERED }, chain_record: { payment: rep, grant: m ? grantDoc(m, gslot) : { jsonrpc: "2.0", id: "g", result: null } } };
+  const gsrc = inp.grant_tx_parsed?.transaction?.message?.instructions?.find((x) => x.parsed?.type === "approveChecked")?.parsed?.info?.source ?? REAL_SRC;
+  const bundle = { v: SCHEMA, mandate: m, grant_tx: "G".repeat(88), payment, delivery: { ...(receipt ? { receipt } : {}), delivered: NEUTRAL_DELIVERED }, chain_record: { payment: rep, grant: m ? grantDoc(m, gslot, gsrc) : { jsonrpc: "2.0", id: "g", result: null } } };
   if (A_MODEL.has(i)) return { id: `A-${i}`, set: "A", vector: i, name: v.name, iussum: v.expect, expected: ["invalid", "principal", "in_scope"], kind: "model", bundle };
   if (i in A_SCOPE) return { id: `A-${i}`, set: "A", vector: i, name: v.name, iussum: v.expect, expected: ["valid", v.expect.liable, v.expect.reason], kind: "scope", bundle };
   if (i in A_REFUSE) return { id: `A-${i}`, set: "A", vector: i, name: v.name, iussum: v.expect, expected: ["invalid", "none", A_REFUSE[i]], kind: "refusal", bundle };

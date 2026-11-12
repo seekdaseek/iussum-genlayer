@@ -339,7 +339,7 @@
     "expected": [
      "invalid",
      "none",
-     "principal_mismatch"
+     "source_mismatch"
     ],
     "note": "payment is not out of the granted account (source differs)",
     "iussum": {

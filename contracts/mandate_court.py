@@ -30,7 +30,7 @@ REFUSALS = (
     "bundle_too_large", "bad_run_tag", "bad_json", "bad_schema", "not_canonical", "hash_mismatch",
     "mandate_invalid", "bad_resolver_json", "payment_receipt_mismatch",
     "chain_unreachable", "chain_tx_not_found", "chain_tx_failed", "chain_shape",
-    "chain_mismatch", "principal_mismatch", "resource_not_judgeable", "grant_mismatch", "chain_record_not_accepted",
+    "chain_mismatch", "principal_mismatch", "resource_not_judgeable", "grant_mismatch", "chain_record_not_accepted", "source_mismatch",
 )
 SCOPE_CODES = (  # iussum's order for "first reason"
     "amount_over_cap", "pay_to_not_allowed", "resource_not_allowed", "asset_mismatch",
@@ -164,7 +164,7 @@ def extract_facts(rpc: dict) -> dict:
     if src not in owners or dst not in owners or type(bt) is not int or not _is_amount(amount):
         return {"ok": False, "code": "chain_shape"}
     return {"ok": True, "amount": amount, "mint": mint, "authority": auth, "source_owner": owners[src],
-            "dest_owner": owners[dst], "block_time": bt, "slot": res.get("slot")}
+            "dest_owner": owners[dst], "block_time": bt, "slot": res.get("slot"), "source": src}
 
 
 def extract_grant(rpc: dict) -> dict:
@@ -189,7 +189,7 @@ def extract_grant(rpc: dict) -> dict:
     info = appr[0]["parsed"].get("info") or {}
     try:
         amount = info["tokenAmount"]["amount"]
-        out = {"ok": True, "memo_id": mid, "owner": info["owner"], "delegate": info["delegate"], "mint": info["mint"], "amount": amount, "slot": res["slot"]}
+        out = {"ok": True, "memo_id": mid, "owner": info["owner"], "delegate": info["delegate"], "mint": info["mint"], "amount": amount, "slot": res["slot"], "source": info["source"]}
     except (KeyError, TypeError):
         return {"ok": False, "code": "grant_mismatch"}
     out["signers"] = sorted(k.get("pubkey") for k in (msg.get("accountKeys") or []) if isinstance(k, dict) and k.get("signer"))
@@ -385,6 +385,8 @@ class MandateCourt(gl.Contract):
             return refusal("chain_mismatch")
         if facts["source_owner"] != m["principal"]:
             return refusal("principal_mismatch")
+        if gf["ok"] and gf["source"] != facts["source"]:
+            return refusal("source_mismatch")
         if (not gf["ok"] or gf["memo_id"] != mandate_id or gf["owner"] != m["principal"] or gf["delegate"] != m["agent"]
                 or gf["mint"] != m["asset"] or gf["amount"] != m["total_cap"] or gf["signers"] != [m["principal"]]
                 or type(facts.get("slot")) is not int or gf["slot"] > facts["slot"]):
@@ -396,7 +398,7 @@ class MandateCourt(gl.Contract):
             return refusal("resource_not_judgeable")
         base = {"mandate_id": mandate_id, "case_sha": sha, "run_tag": run_tag, "chain": {"amount": facts["amount"], "block_time": facts["block_time"]}}
         if viol:
-            presented = rc is not None and rc["mandate_id"] == mandate_id
+            presented = rc is not None and rc["mandate_id"] == mandate_id and rc.get("grant_tx") == bundle["grant_tx"]
             res = {"verdict": "valid", "liable": "seller" if presented else "agent_operator", "reason": viol[0], "reasoning": "", "path": "deterministic",
                    "delta": [delta_entry(c, m, rc, facts) for c in viol]}
         else:
