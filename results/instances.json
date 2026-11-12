@@ -1,0 +1,17 @@
+{
+  "live": {
+    "name": "live",
+    "chain_source": "rpc",
+    "max_bytes": 65536,
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x4B639D6268b02D34db22aEfE10179d6d2dbEecf9",
+    "deploy_tx": "0xbf68fb3a8257b7095fe3176ffa367a6794faeba4d8f9b283bbcdcaac9ad7417b",
+    "deployed_at": "2026-11-12T16:59:10.046Z",
+    "seen": {
+      "PENDING": 1505,
+      "COMMITTING": 4718,
+      "ACCEPTED": 7920,
+      "FINALIZED": 36768
+    }
+  }
+}

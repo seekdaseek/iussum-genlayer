@@ -1,0 +1,46 @@
+{
+  "id": "real-6-scope-wrongpayto",
+  "mandate": {
+    "v": "iussum/0.3",
+    "purpose": "Buy one 10-call data quote for the BTC price feed from api.example.test.",
+    "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+    "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "total_cap": "100000",
+    "per_payment_max": "50000",
+    "period_budget": "100000",
+    "period_seconds": 86400,
+    "allow": {
+      "pay_to": [
+        "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+        "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
+      ],
+      "resource_prefix": [
+        "https://api.example.test/v1/"
+      ]
+    },
+    "not_before": 1794499080,
+    "expires_at": 1795107480,
+    "nonce": "f94074e30e053f13eafa7b432022cd65"
+  },
+  "mandate_id": "7348691f68731a6b1b1e1bc3dfba4d3855e895c6e40b72840007de529e5ce6b0",
+  "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 50000 | per 86400s 100000 | sellers 2 | resources 1 | from 2026-11-12T15:58:00.000Z until 2026-11-19T16:58:00.000Z | id 7348691f68731a6b1b1e1bc3dfba4d3855e895c6e40b72840007de529e5ce6b0",
+  "grant_tx": "5RVnBfPuVm8rwQ1dCzyLp44rczsTNXL1FTe9RKyZjJpYySk2R87dJ3KLghxqsjd4kBevPUuap1ukUpanQwmyK86L",
+  "payment_tx": "5sNtBQV9yp9h3BHE8heXubYbHSS1t2VJa8yoNX4tRgARkQXnCHQFMAymYVAQLJyzG8kn2yLpow1s49AJ8aK6a5zW",
+  "payment": {
+    "tx_sig": "5sNtBQV9yp9h3BHE8heXubYbHSS1t2VJa8yoNX4tRgARkQXnCHQFMAymYVAQLJyzG8kn2yLpow1s49AJ8aK6a5zW",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "amount": "10000",
+    "pay_to": "BpunsCzN5vTo9ZpaunCEwCzzWAHEMYTcd9LY5VZqhWji",
+    "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+  },
+  "delivered": "Delivered: one 10-call BTC price feed quote.",
+  "expect": [
+    "valid",
+    "agent_operator",
+    "pay_to_not_allowed"
+  ],
+  "made_at": "2026-11-12T16:58:07.575Z"
+}

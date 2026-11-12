@@ -166,3 +166,12 @@ def test_principal_mismatch(court, chain):
 def test_resource_not_judgeable(court, chain, res):
     bj, h = make_bundle(receipt_over={"resource": res})
     refused(judge(court, bj, h), "resource_not_judgeable")
+
+
+@pytest.mark.parametrize("status", [429, 500, 503])
+def test_chain_unreachable_records_the_http_status(court, chain, status):
+    chain(status=status)
+    bj, h = make_bundle()
+    r = judge(court, bj, h)
+    refused(r, "chain_unreachable")
+    assert r["http"] == status

@@ -1,0 +1,46 @@
+{
+  "id": "real-4-offpurpose-quantity",
+  "mandate": {
+    "v": "iussum/0.3",
+    "purpose": "Buy exactly 3 ETH price quotes from the quote shop.",
+    "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+    "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "total_cap": "100000",
+    "per_payment_max": "50000",
+    "period_budget": "100000",
+    "period_seconds": 86400,
+    "allow": {
+      "pay_to": [
+        "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+        "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
+      ],
+      "resource_prefix": [
+        "https://api.example.test/v1/"
+      ]
+    },
+    "not_before": 1794499060,
+    "expires_at": 1795107460,
+    "nonce": "9e21a9d1960984de963a07f8593d4465"
+  },
+  "mandate_id": "a8864891dd379f21c3f443893aad43aa2afc21caaf992508fa0e9f145c345b8e",
+  "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 50000 | per 86400s 100000 | sellers 2 | resources 1 | from 2026-11-12T15:57:40.000Z until 2026-11-19T16:57:40.000Z | id a8864891dd379f21c3f443893aad43aa2afc21caaf992508fa0e9f145c345b8e",
+  "grant_tx": "PQy2sNV2voqnfm9L1mm8aZbxMXN2sKKUaw35QwaSquQeAisQ7dVSHXXQC2BJJLbbw7j7pVY5cgLc4FDX3A3bLDT",
+  "payment_tx": "3XXX7A5NcDqxBEgMAf6NvdHG8VNf9WqxHvsrjynizeSfMf822MvMJLLmV9Pc8XvDM3StHo7Qy3FWdbDvyLLgDGgj",
+  "payment": {
+    "tx_sig": "3XXX7A5NcDqxBEgMAf6NvdHG8VNf9WqxHvsrjynizeSfMf822MvMJLLmV9Pc8XvDM3StHo7Qy3FWdbDvyLLgDGgj",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "amount": "20000",
+    "pay_to": "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9",
+    "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+  },
+  "delivered": "Delivered: bulk pack of 10,000 SOL price quotes.",
+  "expect": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+  ],
+  "made_at": "2026-11-12T16:57:47.574Z"
+}

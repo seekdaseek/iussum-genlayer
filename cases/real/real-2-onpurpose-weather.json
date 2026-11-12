@@ -1,0 +1,46 @@
+{
+  "id": "real-2-onpurpose-weather",
+  "mandate": {
+    "v": "iussum/0.3",
+    "purpose": "Pay once for 30 days of access to the weather API at weather.example.test. No auto-renewal.",
+    "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+    "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "total_cap": "100000",
+    "per_payment_max": "50000",
+    "period_budget": "100000",
+    "period_seconds": 86400,
+    "allow": {
+      "pay_to": [
+        "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+        "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
+      ],
+      "resource_prefix": [
+        "https://api.example.test/v1/"
+      ]
+    },
+    "not_before": 1794499040,
+    "expires_at": 1795107440,
+    "nonce": "ad984b8895cf72bd97a04478ed4a61d8"
+  },
+  "mandate_id": "f4b5326b607e0b82378f07c31a6c8fc3a541dcd71b5ea6ef4d23089febb3f47c",
+  "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 50000 | per 86400s 100000 | sellers 2 | resources 1 | from 2026-11-12T15:57:20.000Z until 2026-11-19T16:57:20.000Z | id f4b5326b607e0b82378f07c31a6c8fc3a541dcd71b5ea6ef4d23089febb3f47c",
+  "grant_tx": "24Di2qVLdqWbt3b79fT68Lap8FhJCPpu2fp65QfUkkbwp1SzRynxTuNsRBT14Px2unhhd868c956DhoJsMjsVQA8",
+  "payment_tx": "2y4p1JNj5dMM8ThyysQ1j9ypedsGN3v4wV71TiyMojjxqRttUnWWdsEAQxt1GuWKN1imzeph8gGecxobG5K7XG1S",
+  "payment": {
+    "tx_sig": "2y4p1JNj5dMM8ThyysQ1j9ypedsGN3v4wV71TiyMojjxqRttUnWWdsEAQxt1GuWKN1imzeph8gGecxobG5K7XG1S",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "amount": "20000",
+    "pay_to": "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9",
+    "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+  },
+  "delivered": "Delivered: one access key for the weather API valid 30 days, paid once, no auto-renewal.",
+  "expect": [
+    "invalid",
+    "principal",
+    "in_scope"
+  ],
+  "made_at": "2026-11-12T16:57:27.576Z"
+}

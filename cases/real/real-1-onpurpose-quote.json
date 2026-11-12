@@ -1,0 +1,46 @@
+{
+  "id": "real-1-onpurpose-quote",
+  "mandate": {
+    "v": "iussum/0.3",
+    "purpose": "Buy one 10-call data quote for the BTC price feed from api.example.test. One-off purchase only.",
+    "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+    "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "total_cap": "100000",
+    "per_payment_max": "50000",
+    "period_budget": "100000",
+    "period_seconds": 86400,
+    "allow": {
+      "pay_to": [
+        "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+        "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
+      ],
+      "resource_prefix": [
+        "https://api.example.test/v1/"
+      ]
+    },
+    "not_before": 1794499030,
+    "expires_at": 1795107430,
+    "nonce": "330daa478de7a04cf61e1e4c89dba3ac"
+  },
+  "mandate_id": "1acffad83607f60e252979f390c46117174ef66373d24598c2f13ee75538975c",
+  "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 50000 | per 86400s 100000 | sellers 2 | resources 1 | from 2026-11-12T15:57:10.000Z until 2026-11-19T16:57:10.000Z | id 1acffad83607f60e252979f390c46117174ef66373d24598c2f13ee75538975c",
+  "grant_tx": "3Am72RvyXtyx99ffP3Z7rUYJuBWDV3ijYGFBxGrp9Mjxzq3bh71v3zDGtacnuJG4RcTCuPBtPBTQqpxaW5SNw5Ra",
+  "payment_tx": "45myzeiUC4PH25r1FBLd4Bp1BeL8yQNmSE8tHMEbnEQMLVWfz3aSNBDTGG9Y2Bp5QPDzzuoQUfFaePPePgzB18Jx",
+  "payment": {
+    "tx_sig": "45myzeiUC4PH25r1FBLd4Bp1BeL8yQNmSE8tHMEbnEQMLVWfz3aSNBDTGG9Y2Bp5QPDzzuoQUfFaePPePgzB18Jx",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "amount": "10000",
+    "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+    "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+  },
+  "delivered": "Delivered: one 10-call BTC price feed quote, one-off, no renewal.",
+  "expect": [
+    "invalid",
+    "principal",
+    "in_scope"
+  ],
+  "made_at": "2026-11-12T16:57:17.575Z"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "real-5-scope-overcap",
+  "mandate": {
+    "v": "iussum/0.3",
+    "purpose": "Buy one 10-call data quote for the BTC price feed from api.example.test.",
+    "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+    "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "total_cap": "100000",
+    "per_payment_max": "5000",
+    "period_budget": "100000",
+    "period_seconds": 86400,
+    "allow": {
+      "pay_to": [
+        "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+        "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
+      ],
+      "resource_prefix": [
+        "https://api.example.test/v1/"
+      ]
+    },
+    "not_before": 1794499070,
+    "expires_at": 1795107470,
+    "nonce": "90610b9124dcdc8371e94efd4c9bda8e"
+  },
+  "mandate_id": "7672c9eb1ce2241cc8a805b4a9e12ee8859b09f9c40a75823d194bd082a46bdd",
+  "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 5000 | per 86400s 100000 | sellers 2 | resources 1 | from 2026-11-12T15:57:50.000Z until 2026-11-19T16:57:50.000Z | id 7672c9eb1ce2241cc8a805b4a9e12ee8859b09f9c40a75823d194bd082a46bdd",
+  "grant_tx": "v8judaqMvmeTfmSnczHJfhwUgb8TVK3toGuaXJGgwtw58M2kWd9j3FAauywyQPk9Kp6F5McEzHJ8kXDsCxDqjpX",
+  "payment_tx": "5nBXBReWRAa3vqeASs34iqEmgCW6Ed7v2XpsoHS6CfTsC21NwrkN7ACMQmxv71b3DAqFUpKd11pDadf7KAD7ZX4A",
+  "payment": {
+    "tx_sig": "5nBXBReWRAa3vqeASs34iqEmgCW6Ed7v2XpsoHS6CfTsC21NwrkN7ACMQmxv71b3DAqFUpKd11pDadf7KAD7ZX4A",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "amount": "10000",
+    "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+    "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+  },
+  "delivered": "Delivered: one 10-call BTC price feed quote.",
+  "expect": [
+    "valid",
+    "agent_operator",
+    "amount_over_cap"
+  ],
+  "made_at": "2026-11-12T16:57:57.574Z"
+}

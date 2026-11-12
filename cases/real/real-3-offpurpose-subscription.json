@@ -1,0 +1,46 @@
+{
+  "id": "real-3-offpurpose-subscription",
+  "mandate": {
+    "v": "iussum/0.3",
+    "purpose": "Buy one 10-call data quote for the BTC price feed from api.example.test. One-off purchase only, never a subscription.",
+    "principal": "BSC8EyZJr19cqzYw3e7UnoDjsNJS4RGiE8rdoo4pJgiU",
+    "agent": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "total_cap": "100000",
+    "per_payment_max": "50000",
+    "period_budget": "100000",
+    "period_seconds": 86400,
+    "allow": {
+      "pay_to": [
+        "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+        "2uh7t2wh3omQNzzRypGj1rVJhtmJ6HtR4qFy9f2aNbg9"
+      ],
+      "resource_prefix": [
+        "https://api.example.test/v1/"
+      ]
+    },
+    "not_before": 1794499050,
+    "expires_at": 1795107450,
+    "nonce": "fae814f792efe90aa8925600a260a2cb"
+  },
+  "mandate_id": "7b8a6b88c1da6cdcf521bf45bd11f9c09acb4f242d97e3ff0d61a3ea24c70abb",
+  "memo": "iussum v0.3 | agent 4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi | asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU | total 100000 | per payment 50000 | per 86400s 100000 | sellers 2 | resources 1 | from 2026-11-12T15:57:30.000Z until 2026-11-19T16:57:30.000Z | id 7b8a6b88c1da6cdcf521bf45bd11f9c09acb4f242d97e3ff0d61a3ea24c70abb",
+  "grant_tx": "3EUbzNr8NXrLiTiZHaGBG4SHG9bgxAWutnZdgYbQTakxZrcXEJqAkSmYS5N1kNib3iPDJP2RKvtpPmrBt5Za13rK",
+  "payment_tx": "3bLLtBqNaK8c94RP1YYMuhRMhzsXPPUWhSm2r4z4YZJSTmM5b75DUgNxZvbSVdj3J89yxmPNtLU7zkaWY59qg1Bg",
+  "payment": {
+    "tx_sig": "3bLLtBqNaK8c94RP1YYMuhRMhzsXPPUWhSm2r4z4YZJSTmM5b75DUgNxZvbSVdj3J89yxmPNtLU7zkaWY59qg1Bg",
+    "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+    "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+    "amount": "10000",
+    "pay_to": "5hQASoTWuCSjSz3GfUmrVDfUKEvRMDLpqUK1wuUi5Gk7",
+    "payer": "4ZUJeT13Kqtv9H6G64QLe5a5EUar2L927nBcYavTPmSi"
+  },
+  "delivered": "Delivered: subscription started, BTC price feed monthly plan, renews automatically every 30 days until cancelled.",
+  "expect": [
+    "valid",
+    "agent_operator",
+    "purpose_mismatch"
+  ],
+  "made_at": "2026-11-12T16:57:37.574Z"
+}
