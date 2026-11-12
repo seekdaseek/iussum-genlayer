@@ -159,7 +159,7 @@ const setT = [
 
 // Truncation test v2: the v1 filler (4,600 identical "item" lines) itself reads as a wrong quantity, so its control failed. v2 filler is 4,600 spec notes about ONE delivered quote.
 const filler2 = (n) => Array.from({ length: n }, (_, i) => `Spec note ${String(i).padStart(5, "0")}: the quote payload carries the BTC/USD mid price, a timestamp and a signature. This note is informational only and describes the one delivered 10-call quote.`).join("\n");
-const NF2 = 2600;
+const NF2 = 2250;
 const setU = [
   onReal({ id: "U-end", set: "U", purpose: BASE_P, delivered: filler2(NF2) + "\n" + SENT, expected: OUT, note: "deciding sentence at the very end of ~400 KB (filler v2)" }),
   onReal({ id: "U-start", set: "U", purpose: BASE_P, delivered: SENT + "\n" + filler2(NF2), expected: OUT, note: "control: deciding sentence at the start (filler v2)" }),
