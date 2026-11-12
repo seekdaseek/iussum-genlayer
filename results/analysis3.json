@@ -1,0 +1,1718 @@
+{
+ "C0": {
+  "n_runs": 60,
+  "n_cases": 20,
+  "flips": 57,
+  "undetermined": 0,
+  "table": [
+   {
+    "case": "C-01",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-glm-5.3",
+      1,
+      {
+       "agree": 3,
+       "disagree": 1,
+       "idle": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-grok-4.3",
+      0,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-glm-5.3",
+      1,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-02",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gemma-4-31b-it",
+      2,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gemini-3.5-flash-lite",
+      0,
+      {
+       "disagree": 1,
+       "agree": 3,
+       "idle": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-qwen3.8-27b",
+      0,
+      {
+       "agree": 3,
+       "disagree": 1,
+       "idle": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-03",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-qwen3.8-27b",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-04",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "anthropic/claude-sonnet-4.6",
+      0,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "anthropic/claude-sonnet-4.6",
+      0,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-05",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-oss-120b",
+      1,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-qwen3.8-27b",
+      2,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-06",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gemma-4-31b-it",
+      0,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-mistral-large-2512",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-07",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-qwen3.8-27b",
+      1,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-deepseek-v4.1-flash-1017",
+      0,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      3,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-08",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-kimi-k2.7-code",
+      2,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-glm-5.3",
+      0,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-minimax-m3",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-09",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-grok-4.3",
+      0,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gemma-4-31b-it",
+      0,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-minimax-m3",
+      0,
+      {
+       "disagree": 1,
+       "agree": 3,
+       "idle": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-10",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-minimax-m3",
+      2,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-11",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "invalid/none/receipt_signature_invalid",
+      "prd-mistral-large-2512",
+      0,
+      {
+       "idle": 1,
+       "agree": 4
+      }
+     ],
+     [
+      "FLIP",
+      "invalid/none/receipt_signature_invalid",
+      "prd-gemini-3.5-flash-lite",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "invalid/none/receipt_signature_invalid",
+      "anthropic/claude-sonnet-4.6",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-12",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "invalid/none/receipt_signature_invalid",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "invalid/none/receipt_signature_invalid",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "invalid/none/receipt_signature_invalid",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-13",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gemma-4-31b-it",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-deepseek-v4.1-flash-1017",
+      0,
+      {
+       "agree": 3,
+       "disagree": 1,
+       "idle": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-grok-4.3",
+      0,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-14",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-claude-sonnet-4-6",
+      1,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      2,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-15",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "anthropic/claude-sonnet-4.6",
+      0,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-qwen3.8-27b",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-oss-120b",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-16",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "disagree": 1,
+       "agree": 3,
+       "idle": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      2,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-glm-5.3",
+      2,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-17",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "disagree": 1,
+       "idle": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-oss-120b",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gemini-3.5-flash-lite",
+      0,
+      {
+       "disagree": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-18",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gemma-4-31b-it",
+      1,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      2,
+      {
+       "disagree": 1,
+       "agree": 3,
+       "idle": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-glm-5.3",
+      0,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-19",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      1,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-deepseek-v4.1-flash-1017",
+      1,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "C-20",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      1,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-grok-4.3",
+      2,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ]
+    ],
+    "note": ""
+   }
+  ],
+  "bad_per_leader": {
+   "prd-gpt-6.1-sol": [
+    12,
+    13
+   ],
+   "openai/gpt-6.1-sol": [
+    7,
+    7
+   ],
+   "prd-gemma-4-31b-it": [
+    5,
+    5
+   ],
+   "prd-glm-5.3": [
+    5,
+    5
+   ],
+   "prd-qwen3.8-27b": [
+    5,
+    5
+   ],
+   "prd-grok-4.3": [
+    4,
+    4
+   ],
+   "anthropic/claude-sonnet-4.6": [
+    4,
+    4
+   ],
+   "prd-minimax-m3": [
+    3,
+    3
+   ],
+   "prd-deepseek-v4.1-flash-1017": [
+    3,
+    3
+   ],
+   "prd-gemini-3.5-flash-lite": [
+    2,
+    3
+   ],
+   "prd-gpt-oss-120b": [
+    3,
+    3
+   ],
+   "prd-mistral-large-2512": [
+    2,
+    2
+   ],
+   "prd-claude-sonnet-4-6": [
+    1,
+    2
+   ],
+   "prd-kimi-k2.7-code": [
+    1,
+    1
+   ]
+  }
+ },
+ "D": {
+  "n_runs": 63,
+  "n_cases": 21,
+  "flips": 3,
+  "undetermined": 0,
+  "table": [
+   {
+    "case": "D-B01",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gpt-oss",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "agree": 3,
+       "disagree": 1,
+       "idle": 1
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gpt-oss-120b",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B02",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-kimi",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gpt-oss-120b",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-grok-4.3",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B03",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-glm",
+      0,
+      {
+       "idle": 1,
+       "agree": 3,
+       "disagree": 1
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-minimax-m3",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B04",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "anthropic/claude-sonnet-4.6",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gpt-oss-120b",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B05",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "openai/gpt-5.4",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-claude-sonnet-4-6",
+      1,
+      {
+       "agree": 3,
+       "disagree": 1,
+       "idle": 1
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "disagree": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B06",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "anthropic/claude-sonnet-4.6",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-grok-4.3",
+      1,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B07",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-deepseek",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-kimi-k2.7-code",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B08",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "openai/gpt-5.4",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gemma-4-31b-it",
+      0,
+      {
+       "agree": 3,
+       "idle": 1,
+       "disagree": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B09",
+    "expected": "invalid/none/receipt_signature_invalid",
+    "runs": [
+     [
+      "ok",
+      "invalid/none/receipt_signature_invalid",
+      "prd-gpt-5-4",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "invalid/none/receipt_signature_invalid",
+      "prd-deepseek-v4.1-flash-1017",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/none/receipt_signature_invalid",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 4,
+       "idle": 1
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-B10",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-grok",
+      0,
+      {
+       "disagree": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "FLIP",
+      "could_not_decide/none/insufficient_evidence",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S01",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-mistral",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S02",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-sonnet",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S03",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-kimi",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "anthropic/claude-sonnet-4.6",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S04",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "google/gemini-3-flash-preview",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-glm-5.3",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "google/gemini-3.5-flash-lite",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S05",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-sonnet",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S06",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-deepseek",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gpt-oss-120b",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "openai/gpt-6.1-sol",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S07",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-sonnet",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gpt-oss-120b",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-qwen3.8-27b",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S08",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-sonnet",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-deepseek-v4.1-flash-1017",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-mistral-large-2512",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S09",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "openai/gpt-5.4",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-mistral-large-2512",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "google/gemini-3.5-flash-lite",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S10",
+    "expected": "valid/agent_operator/purpose_mismatch",
+    "runs": [
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-sonnet",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "prd-gemma-4-31b-it",
+      0,
+      {
+       "idle": 2,
+       "agree": 3
+      }
+     ],
+     [
+      "ok",
+      "valid/agent_operator/purpose_mismatch",
+      "google/gemini-3.5-flash-lite",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "case": "D-S11",
+    "expected": "invalid/principal/in_scope",
+    "runs": [
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "openai/gpt-5.4",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-gemma-4-31b-it",
+      0,
+      {
+       "agree": 3,
+       "idle": 2
+      }
+     ],
+     [
+      "ok",
+      "invalid/principal/in_scope",
+      "prd-claude-sonnet-4-6",
+      0,
+      {
+       "agree": 3,
+       "disagree": 2
+      }
+     ]
+    ],
+    "note": ""
+   }
+  ],
+  "bad_per_leader": {
+   "prd-claude-sonnet-4-6": [
+    1,
+    9
+   ],
+   "prd-gpt-6.1-sol": [
+    1,
+    6
+   ],
+   "prd-sonnet": [
+    0,
+    5
+   ],
+   "prd-gpt-oss-120b": [
+    0,
+    5
+   ],
+   "openai/gpt-6.1-sol": [
+    0,
+    5
+   ],
+   "openai/gpt-5.4": [
+    0,
+    4
+   ],
+   "anthropic/claude-sonnet-4.6": [
+    0,
+    3
+   ],
+   "prd-gemma-4-31b-it": [
+    0,
+    3
+   ],
+   "google/gemini-3.5-flash-lite": [
+    0,
+    3
+   ],
+   "prd-kimi": [
+    0,
+    2
+   ],
+   "prd-deepseek": [
+    0,
+    2
+   ],
+   "prd-mistral-large-2512": [
+    0,
+    2
+   ],
+   "prd-deepseek-v4.1-flash-1017": [
+    0,
+    2
+   ],
+   "prd-grok-4.3": [
+    0,
+    2
+   ],
+   "prd-mistral": [
+    0,
+    1
+   ],
+   "google/gemini-3-flash-preview": [
+    0,
+    1
+   ],
+   "prd-gpt-oss": [
+    0,
+    1
+   ],
+   "prd-glm": [
+    0,
+    1
+   ],
+   "prd-gpt-5-4": [
+    0,
+    1
+   ],
+   "prd-grok": [
+    1,
+    1
+   ],
+   "prd-glm-5.3": [
+    0,
+    1
+   ],
+   "prd-kimi-k2.7-code": [
+    0,
+    1
+   ],
+   "prd-qwen3.8-27b": [
+    0,
+    1
+   ],
+   "prd-minimax-m3": [
+    0,
+    1
+   ]
+  }
+ }
+}
