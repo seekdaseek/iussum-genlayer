@@ -103,5 +103,53 @@
       "ACCEPTED": 7555,
       "FINALIZED": 39496
     }
+  },
+  "p3-a": {
+    "name": "p3-a",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "seller_keys": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x2e72c69d68D1f1feC4042Cd8c25E6A2175502F2f",
+    "deploy_tx": "0x71793549a5d052be17d17c2b0e7f618480ceb59aa16c40f835f14d61ccaa15fc",
+    "deployed_at": "2026-11-12T21:34:51.378Z",
+    "seen": {
+      "PENDING": 2337,
+      "COMMITTING": 5535,
+      "ACCEPTED": 8706,
+      "FINALIZED": 40744
+    }
+  },
+  "p3-b": {
+    "name": "p3-b",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "seller_keys": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x1b4Fb09a77813B88471071186f109e5fcDcE7102",
+    "deploy_tx": "0xbc3f70ae1d443e3cc27433f079e36c35884154c114906941aabacfee557f250d",
+    "deployed_at": "2026-11-12T21:35:27.630Z",
+    "seen": {
+      "PENDING": 1178,
+      "COMMITTING": 4343,
+      "ACCEPTED": 7546,
+      "FINALIZED": 36232
+    }
+  },
+  "p3-c": {
+    "name": "p3-c",
+    "chain_source": "bundle",
+    "max_bytes": 65536,
+    "seller_keys": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x9F52af3C1a66D4A3F67fb3fEaE75Fc86A7B85675",
+    "deploy_tx": "0xac6c6f815c5834de4fb75306a8de30f49d54896c7168b91b4661cbc5efec853d",
+    "deployed_at": "2026-11-12T21:36:03.990Z",
+    "seen": {
+      "PENDING": 1195,
+      "COMMITTING": 4372,
+      "ACCEPTED": 7538,
+      "FINALIZED": 36352
+    }
   }
 }
