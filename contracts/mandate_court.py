@@ -196,7 +196,7 @@ def extract_grant(rpc: dict) -> dict:
     return out
 
 
-def reply_by_id(replies, i: int):
+def reply_by_id(replies, i):
     if not isinstance(replies, list):
         return None
     for r in replies:
@@ -379,7 +379,7 @@ class MandateCourt(gl.Contract):
         if self.chain_source == "rpc":
             if has_record:
                 return refusal("chain_record_not_accepted")
-            both = self._chain_facts(p["tx_sig"], bundle["grant_tx"])
+            both = self._chain_facts(p["tx_sig"], bundle["grant_tx"], run_tag + ":" + sha[:8])
         else:
             if not has_record:
                 return refusal("bad_schema")
@@ -419,11 +419,13 @@ class MandateCourt(gl.Contract):
                                       and (resolver.get("liable") or "none") == res["liable"])
         return res
 
-    def _chain_facts(self, sig: str, grant_sig: str) -> dict:
+    def _chain_facts(self, sig: str, grant_sig: str, uid: str) -> dict:
         url = self.rpc_url
         opts = {"encoding": "jsonParsed", "maxSupportedTransactionVersion": 0, "commitment": "finalized"}
-        batch = [{"jsonrpc": "2.0", "id": 1, "method": "getTransaction", "params": [sig, opts]},
-                 {"jsonrpc": "2.0", "id": 2, "method": "getTransaction", "params": [grant_sig, opts]}]
+        # ids carry the run tag and the bundle hash: no two runs send the same request body
+        pid, gid = uid + ":p", uid + ":g"
+        batch = [{"jsonrpc": "2.0", "id": pid, "method": "getTransaction", "params": [sig, opts]},
+                 {"jsonrpc": "2.0", "id": gid, "method": "getTransaction", "params": [grant_sig, opts]}]
 
         def fetch():
             r = gl.nondet.web.post(url, body=json.dumps(batch).encode("utf-8"), headers={"Content-Type": "application/json"})
@@ -431,7 +433,7 @@ class MandateCourt(gl.Contract):
             if st != 200:
                 return canon({"unreachable": True, "http": st})
             replies = json.loads(r.body.decode("utf-8"))
-            a, b = reply_by_id(replies, 1), reply_by_id(replies, 2)
+            a, b = reply_by_id(replies, pid), reply_by_id(replies, gid)
             if a is None or b is None:
                 return canon({"unreachable": True})
             return canon({"payment": extract_facts(a), "grant": extract_grant(b)})
