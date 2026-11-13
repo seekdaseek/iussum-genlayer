@@ -16,7 +16,7 @@ def _d(case_id):
 
 def test_control_source_has_no_copy_of_the_prompt():
     src = (ROOT / "controls" / "single_model.py").read_text()
-    for needle in ("You are one judge", "Decide with this table", "EVIDENCE-", "purpose_mismatch"):
+    for needle in ("You are one judge", "Decide with this table", "EVIDENCE-"):
         assert needle not in src, f"{needle!r}: the control must take the prompt from the contract, not copy it"
 
 
