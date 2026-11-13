@@ -136,7 +136,7 @@
      [
       "FLIP",
       "could_not_decide/none/insufficient_evidence",
-      "anthropic/claude-sonnet-4.6",
+      "claude-sonnet-4.6",
       0,
       {
        "agree": 3,
@@ -146,7 +146,7 @@
      [
       "FLIP",
       "could_not_decide/none/insufficient_evidence",
-      "anthropic/claude-sonnet-4.6",
+      "claude-sonnet-4.6",
       0,
       {
        "agree": 3,
@@ -414,7 +414,7 @@
      [
       "FLIP",
       "invalid/none/receipt_signature_invalid",
-      "anthropic/claude-sonnet-4.6",
+      "claude-sonnet-4.6",
       0,
       {
        "agree": 3,
@@ -545,7 +545,7 @@
      [
       "FLIP",
       "could_not_decide/none/insufficient_evidence",
-      "anthropic/claude-sonnet-4.6",
+      "claude-sonnet-4.6",
       0,
       {
        "idle": 1,
@@ -794,7 +794,7 @@
     4,
     4
    ],
-   "anthropic/claude-sonnet-4.6": [
+   "claude-sonnet-4.6": [
     4,
     4
    ],
@@ -954,7 +954,7 @@
      [
       "ok",
       "invalid/principal/in_scope",
-      "anthropic/claude-sonnet-4.6",
+      "claude-sonnet-4.6",
       0,
       {
        "idle": 2,
@@ -1029,7 +1029,7 @@
      [
       "ok",
       "invalid/principal/in_scope",
-      "anthropic/claude-sonnet-4.6",
+      "claude-sonnet-4.6",
       0,
       {
        "agree": 3,
@@ -1299,7 +1299,7 @@
      [
       "ok",
       "valid/agent_operator/purpose_mismatch",
-      "anthropic/claude-sonnet-4.6",
+      "claude-sonnet-4.6",
       0,
       {
        "agree": 3,
@@ -1641,7 +1641,7 @@
     0,
     4
    ],
-   "anthropic/claude-sonnet-4.6": [
+   "claude-sonnet-4.6": [
     0,
     3
    ],

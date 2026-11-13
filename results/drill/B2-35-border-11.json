@@ -1,0 +1,64 @@
+{
+ "case_id": "B2-35-border",
+ "written_at": "2026-11-13T06:12:31.462Z",
+ "payment_tx": "hGPsgnRKYKG73rTRGEtTbRpkK1MsbaC7pFDGaga4AdVjSn9XfNVBnLsfy4d7TvqEodCBCABgnbPgRyeK9EbzLrQ",
+ "grant_tx": "5XXD4vTaja7oK2p2JJSHwNRyefYA6b6HTkpcehkRwFdDWDN1KZSAUxNUdEJ5mcRhkoTSDLcUn6RbfM36ZBK7tjmA",
+ "receipt_seller": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+ "genlayer": {
+  "instance": "live4-b",
+  "address": "0x767B086c4d562b33f9ab6AF3F98d76F9A780ac98",
+  "chain_source": "rpc",
+  "attempts": [
+   {
+    "tx": "0x0577ff539861eb7b49a0a669667904f4195ae8b399b783789801d6f49741487b",
+    "status": "FINALIZED",
+    "result": [
+     "valid",
+     "agent_operator",
+     "purpose_mismatch"
+    ],
+    "error": null,
+    "accepted_ms": 19851,
+    "final_ms": 51024,
+    "leader": "policy:prd-gpt-6.1-sol",
+    "agreeing": [
+     "policy:prd-gpt-oss-120b",
+     "anthropic/claude-sonnet-4.6"
+    ],
+    "rotations": 0,
+    "stored": {
+     "case_sha": "3db500a5ea9f19e9a312ecf207b0e429e4a966f492dab22a178522e41fe3395b",
+     "chain": {
+      "amount": "10000",
+      "block_time": 1794522416
+     },
+     "chain_source": "rpc",
+     "liable": "agent_operator",
+     "mandate_id": "0b3f23e1f78e444b00268d8241f2ac6239ef42a70c9c40b6af6423f92dea3731",
+     "path": "model",
+     "reason": "purpose_mismatch",
+     "reasoning": "The receipt identifies a check for both seekdaseek.example and seekdaseek.net, while the principal requested only seekdaseek.example. The additional domain check exceeds the requested scope despite satisfying the signed spending limits.",
+     "run_tag": "cn1-ekwwuz",
+     "verdict": "valid"
+    }
+   }
+  ]
+ },
+ "outcome": {
+  "source": "genlayer",
+  "verdict": "valid",
+  "liable": "agent_operator",
+  "reason": "purpose_mismatch",
+  "attempts": 1,
+  "txs": [
+   "0x0577ff539861eb7b49a0a669667904f4195ae8b399b783789801d6f49741487b"
+  ]
+ },
+ "expected_court": null,
+ "link": {
+  "iussum_verdict_id": null,
+  "genlayer_txs": [
+   "0x0577ff539861eb7b49a0a669667904f4195ae8b399b783789801d6f49741487b"
+  ]
+ }
+}

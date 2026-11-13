@@ -409,7 +409,7 @@
                 "models": [
                   "google/gemini-3-flash-preview",
                   "openai/gpt-5.4",
-                  "anthropic/claude-sonnet-4.6"
+                  "claude-sonnet-4.6"
                 ]
               },
               "plugin": "openai-compatible",
@@ -469,7 +469,7 @@
               "config": {
                 "models": [
                   "openai/gpt-5.4",
-                  "anthropic/claude-sonnet-4.6",
+                  "claude-sonnet-4.6",
                   "google/gemini-3-flash-preview"
                 ]
               },
@@ -852,7 +852,7 @@
               "config": {
                 "models": [
                   "openai/gpt-5.4",
-                  "anthropic/claude-sonnet-4.6",
+                  "claude-sonnet-4.6",
                   "google/gemini-3-flash-preview"
                 ]
               },
@@ -1092,7 +1092,7 @@
               "config": {
                 "models": [
                   "openai/gpt-5.4",
-                  "anthropic/claude-sonnet-4.6",
+                  "claude-sonnet-4.6",
                   "google/gemini-3-flash-preview"
                 ]
               },
@@ -1328,7 +1328,7 @@
               "config": {
                 "models": [
                   "openai/gpt-5.4",
-                  "anthropic/claude-sonnet-4.6",
+                  "claude-sonnet-4.6",
                   "google/gemini-3-flash-preview"
                 ]
               },
@@ -1653,7 +1653,7 @@
                   "config": {
                     "models": [
                       "openai/gpt-5.4",
-                      "anthropic/claude-sonnet-4.6",
+                      "claude-sonnet-4.6",
                       "google/gemini-3-flash-preview"
                     ]
                   },
@@ -1875,7 +1875,7 @@
                   "config": {
                     "models": [
                       "openai/gpt-5.4",
-                      "anthropic/claude-sonnet-4.6",
+                      "claude-sonnet-4.6",
                       "google/gemini-3-flash-preview"
                     ]
                   },
@@ -2297,7 +2297,7 @@
                     "models": [
                       "google/gemini-3-flash-preview",
                       "openai/gpt-5.4",
-                      "anthropic/claude-sonnet-4.6"
+                      "claude-sonnet-4.6"
                     ]
                   },
                   "plugin": "openai-compatible",
@@ -2357,7 +2357,7 @@
                   "config": {
                     "models": [
                       "openai/gpt-5.4",
-                      "anthropic/claude-sonnet-4.6",
+                      "claude-sonnet-4.6",
                       "google/gemini-3-flash-preview"
                     ]
                   },
@@ -2740,7 +2740,7 @@
                   "config": {
                     "models": [
                       "openai/gpt-5.4",
-                      "anthropic/claude-sonnet-4.6",
+                      "claude-sonnet-4.6",
                       "google/gemini-3-flash-preview"
                     ]
                   },

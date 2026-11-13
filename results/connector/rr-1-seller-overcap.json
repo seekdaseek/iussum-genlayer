@@ -36,7 +36,7 @@
     "leader": "policy:prd-gpt-5-4",
     "agreeing": [
      "policy:prd-mistral",
-     "anthropic/claude-sonnet-4.6"
+     "claude-sonnet-4.6"
     ],
     "rotations": 0,
     "stored": {

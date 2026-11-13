@@ -1,0 +1,64 @@
+{
+ "case_id": "B2-35-border",
+ "written_at": "2026-11-13T06:22:04.468Z",
+ "payment_tx": "hGPsgnRKYKG73rTRGEtTbRpkK1MsbaC7pFDGaga4AdVjSn9XfNVBnLsfy4d7TvqEodCBCABgnbPgRyeK9EbzLrQ",
+ "grant_tx": "5XXD4vTaja7oK2p2JJSHwNRyefYA6b6HTkpcehkRwFdDWDN1KZSAUxNUdEJ5mcRhkoTSDLcUn6RbfM36ZBK7tjmA",
+ "receipt_seller": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+ "genlayer": {
+  "instance": "live4-b",
+  "address": "0x767B086c4d562b33f9ab6AF3F98d76F9A780ac98",
+  "chain_source": "rpc",
+  "attempts": [
+   {
+    "tx": "0x6f54131b7abc945b24638e87b369c48a597044971a6b4fd123d8bae9f9f011d4",
+    "status": "FINALIZED",
+    "result": [
+     "valid",
+     "agent_operator",
+     "purpose_mismatch"
+    ],
+    "error": null,
+    "accepted_ms": 57516,
+    "final_ms": 88782,
+    "leader": "policy:prd-deepseek-v4.1-flash-1017",
+    "agreeing": [
+     "policy:prd-qwen3.8-27b",
+     "policy:prd-gpt-6.1-sol"
+    ],
+    "rotations": 1,
+    "stored": {
+     "case_sha": "3db500a5ea9f19e9a312ecf207b0e429e4a966f492dab22a178522e41fe3395b",
+     "chain": {
+      "amount": "10000",
+      "block_time": 1794522416
+     },
+     "chain_source": "rpc",
+     "liable": "agent_operator",
+     "mandate_id": "0b3f23e1f78e444b00268d8241f2ac6239ef42a70c9c40b6af6423f92dea3731",
+     "path": "model",
+     "reason": "purpose_mismatch",
+     "reasoning": "The principal asked only whether seekdaseek.example is free, but the purchased resource checks both seekdaseek.example and seekdaseek.net. Buying an additional domain check is a different quantity/scope than requested.",
+     "run_tag": "cn1-el8dte",
+     "verdict": "valid"
+    }
+   }
+  ]
+ },
+ "outcome": {
+  "source": "genlayer",
+  "verdict": "valid",
+  "liable": "agent_operator",
+  "reason": "purpose_mismatch",
+  "attempts": 1,
+  "txs": [
+   "0x6f54131b7abc945b24638e87b369c48a597044971a6b4fd123d8bae9f9f011d4"
+  ]
+ },
+ "expected_court": null,
+ "link": {
+  "iussum_verdict_id": null,
+  "genlayer_txs": [
+   "0x6f54131b7abc945b24638e87b369c48a597044971a6b4fd123d8bae9f9f011d4"
+  ]
+ }
+}

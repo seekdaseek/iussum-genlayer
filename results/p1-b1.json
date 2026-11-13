@@ -22,7 +22,7 @@
   "rotations": 0,
   "numRounds": "1",
   "leader": {
-    "model": "anthropic/claude-sonnet-4.6",
+    "model": "claude-sonnet-4.6",
     "exec": "SUCCESS",
     "status": "return",
     "payload": {

@@ -2604,7 +2604,7 @@
    "leaders": [
     "prd-glm",
     "prd-minimax",
-    "anthropic/claude-sonnet-4.6"
+    "claude-sonnet-4.6"
    ],
    "err": []
   },
@@ -2718,7 +2718,7 @@
    3,
    3
   ],
-  "anthropic/claude-sonnet-4.6": [
+  "claude-sonnet-4.6": [
    2,
    2
   ]
@@ -2777,7 +2777,7 @@
   "prd-gemma": 20,
   "prd-minimax": 20,
   "prd-kimi": 19,
-  "anthropic/claude-sonnet-4.6": 19,
+  "claude-sonnet-4.6": 19,
   "prd-grok": 17,
   "prd-glm": 15,
   "prd-mistral": 13

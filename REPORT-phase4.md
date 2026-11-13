@@ -41,7 +41,7 @@ Per leader model, clear cases only (every run was correct, so there is no per-mo
 | prd-deepseek-v4.1-flash-1017 | 2/2 |
 | prd-mistral-large-2512 | 2/2 |
 | prd-gemma-4-31b-it | 2/2 |
-| anthropic/claude-sonnet-4.6 | 1/1 |
+| claude-sonnet-4.6 | 1/1 |
 
 Borderline cases (could_not_decide expected; IN = in_scope, MISM = purpose_mismatch, CND = could_not_decide):
 
@@ -73,10 +73,10 @@ Once each on `live4-a`. Court results, all `chain_source=rpc`:
 | real-1-onpurpose-quote (r2) | `0xb91328a2f9687f75c419d53aa06da5f3f09909e927c47aebcb488382a6d47683` | could_not_decide/none/insufficient_evidence | invalid/principal/in_scope | 29.9 | 66.0 | 0 | prd-minimax-m3 / prd-gpt-oss-120b, prd-qwen3.8-27b |
 | real-2-onpurpose-weather (r1) | `0x6fd424fcaf8e1b727a1489b054908d69e3aa94e07e85fc9f563561c826f8b1de` | could_not_decide/none/insufficient_evidence | invalid/principal/in_scope | 29.8 | 58.7 | 0 | openai/gpt-6.1-sol / prd-qwen3.8-27b, prd-glm-5.3 |
 | real-3-offpurpose-subscription (r1) | `0x18e1552cde808cef9c30a00fdf5d40568c84e84c1882bbc2e6f16e2cf9832d69` | could_not_decide/none/insufficient_evidence | valid/agent_operator/purpose_mismatch | 22.6 | 51.5 | 0 | prd-deepseek-v4.1-flash-1017 / prd-claude-sonnet-4-6, prd-minimax-m3 |
-| real-4-offpurpose-quantity (r1) | `0x84a04097bf0bacd734ae4d2a6e33a781a6588ef059624dca5f9eddc0c1ba7963` | could_not_decide/none/insufficient_evidence | valid/agent_operator/purpose_mismatch | 23.1 | 52.0 | 0 | anthropic/claude-sonnet-4.6 / prd-gpt-6.1-sol, prd-glm-5.3 |
+| real-4-offpurpose-quantity (r1) | `0x84a04097bf0bacd734ae4d2a6e33a781a6588ef059624dca5f9eddc0c1ba7963` | could_not_decide/none/insufficient_evidence | valid/agent_operator/purpose_mismatch | 23.1 | 52.0 | 0 | claude-sonnet-4.6 / prd-gpt-6.1-sol, prd-glm-5.3 |
 | real-5-scope-overcap (r1) | `0xab79a86a30680823cbc9ecb2edabe8f411cc8f3d6172375d0622ff55b29755d9` | valid/agent_operator/amount_over_cap | valid/agent_operator/amount_over_cap | 15.4 | 44.3 | 0 | openai/gpt-6.1-sol / prd-deepseek-v4.1-flash-1017, prd-gpt-6.1-sol |
 | real-6-scope-wrongpayto (r1) | `0xc980923c3dfaa98deac1a2d0455dc56446d75fb4b24f9437b1573873dda4f8c6` | valid/agent_operator/pay_to_not_allowed | valid/agent_operator/pay_to_not_allowed | 15.4 | 44.3 | 0 | prd-gemma-4-31b-it / prd-glm-5.3, prd-claude-sonnet-4-6 |
-| rr-1-seller-overcap (r1) | `0xebc103816020d99b2e4426afa44fe1fe9afdd048150b199bc88f143cc361e5e3` | valid/seller/amount_over_cap | valid/seller/amount_over_cap | 8.3 | 37.2 | 0 | prd-qwen3.8-27b / anthropic/claude-sonnet-4.6, prd-glm-5.3 |
+| rr-1-seller-overcap (r1) | `0xebc103816020d99b2e4426afa44fe1fe9afdd048150b199bc88f143cc361e5e3` | valid/seller/amount_over_cap | valid/seller/amount_over_cap | 8.3 | 37.2 | 0 | prd-qwen3.8-27b / claude-sonnet-4.6, prd-glm-5.3 |
 | rr-2-onpurpose (r1) | `0xd76aeac9bef9f70fc6b8b37b5117c96a1ac4c06d0a6b905a7cadd0423a8af3bd` | invalid/principal/in_scope | invalid/principal/in_scope | 15.5 | 44.4 | 0 | google/gemini-3.5-flash-lite / prd-deepseek-v4.1-flash-1017, openai/gpt-6.1-sol |
 
 - **real-5, real-6, rr-1, rr-2: correct.** rr-1 again gives `valid/seller/amount_over_cap` from a signed seller receipt.

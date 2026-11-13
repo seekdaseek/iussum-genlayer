@@ -1,0 +1,64 @@
+{
+ "case_id": "B2-22-border",
+ "written_at": "2026-11-13T06:18:48.163Z",
+ "payment_tx": "3KKDjFrX5hjZx76d5LCh3HcNGxqewEQggwCWyqA5Qcd38RmdygufaZHpPYaNZLqctTTiT2rQCLoEbC8RcFoi93UL",
+ "grant_tx": "2iXqzRjAFqM4bm5hgZnjYZ3HTXiuGbHHPjSNsBLcFVXN4747q5LhZjGJkkTxBgz7C7Q2LFRGGYBRvHYWyz51FMZ",
+ "receipt_seller": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+ "genlayer": {
+  "instance": "live4-b",
+  "address": "0x767B086c4d562b33f9ab6AF3F98d76F9A780ac98",
+  "chain_source": "rpc",
+  "attempts": [
+   {
+    "tx": "0x0c6e02901c3f00751793c489d937f97f29cdf0571dc28f3fb001dd7fe2fbf7a2",
+    "status": "FINALIZED",
+    "result": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "error": null,
+    "accepted_ms": 19952,
+    "final_ms": 51112,
+    "leader": "policy:prd-gpt-6.1-sol",
+    "agreeing": [
+     "policy:prd-gemini-3.5-flash-lite",
+     "openai/gpt-6.1-sol"
+    ],
+    "rotations": 0,
+    "stored": {
+     "case_sha": "58e41f1f33f1fa3b8928de419f175c3c9be933540944f5fd7b921860d29632b8",
+     "chain": {
+      "amount": "10000",
+      "block_time": 1794522286
+     },
+     "chain_source": "rpc",
+     "liable": "principal",
+     "mandate_id": "f8a80449024dd376532f3ba0c662b859c85e431c6bf3ee9b90a09fbfb7d0b335",
+     "path": "model",
+     "reason": "in_scope",
+     "reasoning": "The receipt identifies access to a combined BTC/ETH feed, which includes the requested BTC price feed access. The principal did not require BTC-only access or exclude a combined feed.",
+     "run_tag": "cn1-el4zf1",
+     "verdict": "invalid"
+    }
+   }
+  ]
+ },
+ "outcome": {
+  "source": "genlayer",
+  "verdict": "invalid",
+  "liable": "principal",
+  "reason": "in_scope",
+  "attempts": 1,
+  "txs": [
+   "0x0c6e02901c3f00751793c489d937f97f29cdf0571dc28f3fb001dd7fe2fbf7a2"
+  ]
+ },
+ "expected_court": null,
+ "link": {
+  "iussum_verdict_id": null,
+  "genlayer_txs": [
+   "0x0c6e02901c3f00751793c489d937f97f29cdf0571dc28f3fb001dd7fe2fbf7a2"
+  ]
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "case_id": "B2-32-border",
+ "written_at": "2026-11-13T06:19:47.110Z",
+ "payment_tx": "4razboDTuupPh5urxRSavgjEByHN3yyrRK98rkrN7gKoBziG9xcNPX9uqnx91MZfhjPVLHXcFGoc6VJR3XLM74A8",
+ "grant_tx": "36daXBUre914feZNvEJ7p8tjFwbnyVBh7L4USdJB6mTqQe2WnQbkT5YjXVSAf1UGwPeQh5qUc9oG4S6Sjnmh8s8D",
+ "receipt_seller": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+ "genlayer": {
+  "instance": "live4-b",
+  "address": "0x767B086c4d562b33f9ab6AF3F98d76F9A780ac98",
+  "chain_source": "rpc",
+  "attempts": [
+   {
+    "tx": "0xe5ecda267e0596d74aa286f38577b2240098cf22492b403370ecc91b7c9e8070",
+    "status": "FINALIZED",
+    "result": [
+     "invalid",
+     "principal",
+     "in_scope"
+    ],
+    "error": null,
+    "accepted_ms": 26210,
+    "final_ms": 57354,
+    "leader": "policy:prd-claude-sonnet-4-6",
+    "agreeing": [
+     "policy:prd-gpt-6.1-sol",
+     "policy:prd-gpt-6.1-sol"
+    ],
+    "rotations": 0,
+    "stored": {
+     "case_sha": "45a2c42157621653f78695e60e49d7c8c47d1c65aff91ee533e06f71cc056e3a",
+     "chain": {
+      "amount": "10000",
+      "block_time": 1794522386
+     },
+     "chain_source": "rpc",
+     "liable": "principal",
+     "mandate_id": "41497e66c93253d32de9d10226c92284cfaa741456783d468104c927b75446b1",
+     "path": "model",
+     "reason": "in_scope",
+     "reasoning": "The seller-signed receipt identifies a 24-hour pass with term=once, matching the requested one-off access. The monthly-offer upsell parameter does not indicate that a subscription was purchased.",
+     "run_tag": "cn1-el644e",
+     "verdict": "invalid"
+    }
+   }
+  ]
+ },
+ "outcome": {
+  "source": "genlayer",
+  "verdict": "invalid",
+  "liable": "principal",
+  "reason": "in_scope",
+  "attempts": 1,
+  "txs": [
+   "0xe5ecda267e0596d74aa286f38577b2240098cf22492b403370ecc91b7c9e8070"
+  ]
+ },
+ "expected_court": null,
+ "link": {
+  "iussum_verdict_id": null,
+  "genlayer_txs": [
+   "0xe5ecda267e0596d74aa286f38577b2240098cf22492b403370ecc91b7c9e8070"
+  ]
+ }
+}

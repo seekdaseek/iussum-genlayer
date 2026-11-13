@@ -117,7 +117,7 @@ Bradbury deploy, Bradbury fees, Bradbury appeal bond, Ghost contract read, a `di
 1. **Bradbury faucet** (only if you want Bradbury numbers before phase 1). Open https://testnet-faucet.genlayer.foundation , paste `0xc1163cBFd98E4aA97a348b0ACe42E46E07E506Ec`, pass the Turnstile check, claim 100 GEN. Check the page says Bradbury before claiming. Then tell the build chat "funded".
 2. **Decision**: build phase 1 on studionet (free, works today, state may reset) and repeat the measured runs on Bradbury later, or wait for Bradbury first.
 
-3. **Private GitHub repo not created.** `gh repo create seekdaseek/iussum-genlayer --private --source . --remote origin --push` was refused by the Claude Code permission classifier, and I did not work around it. The repo is local only (2 commits + this one). Run that command yourself from `/Volumes/D/iussum-genlayer`, or allow it and say so.
+3. **Private GitHub repo not created.** `gh repo create seekdaseek/iussum-genlayer --private --source . --remote origin --push` was refused by the permission classifier of the environment I ran in, and I did not work around it. The repo is local only (2 commits + this one). Run that command yourself from `/Volumes/D/iussum-genlayer`, or allow it and say so.
 
 ## Repo
 

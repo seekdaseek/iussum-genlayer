@@ -51,7 +51,7 @@ Payment: devnet signature `5KsYz26TFRGqzk7KdjUg8z2tGL6neRed37Cj211kYFgTX8ATNDKwX
 
 | Run | Tx id | Path | Stored result | Accepted | Rounds / rotations | Leader model | Agreeing validators |
 |---|---|---|---|---|---|---|---|
-| m1 | `0x4ef1ee3fed28c91f9db800e607082beb1505dd7c8ee5c8cc3a32eab316acc621` | model | invalid / principal / in_scope, resolver_agrees true | 18.9 s | 1 / 0 | anthropic/claude-sonnet-4.6 | gemini-3-flash-preview, prd-gemini |
+| m1 | `0x4ef1ee3fed28c91f9db800e607082beb1505dd7c8ee5c8cc3a32eab316acc621` | model | invalid / principal / in_scope, resolver_agrees true | 18.9 s | 1 / 0 | claude-sonnet-4.6 | gemini-3-flash-preview, prd-gemini |
 | m2 | `0xa81cced018215c584c4fd622314d37f543aaa252d8166db6d806b527943935e7` | model | same | 19.4 s | 1 / 0 | prd-gemma | prd-gemini, prd-deepseek |
 | m3 | `0x36203d2c303559840c17b3fe91be0d97341fab1bac5614bb8f4c00fc74a1e57e` | model | same | 22.5 s | 1 / 0 | prd-gpt-oss | prd-kimi, prd-gpt-5-4 |
 | s1 | `0x6af47b5868807435ee3a0d55c023292b4aa790ed2ae41900d8f2129496946c49` | deterministic (cap 9,999 vs 10,000) | valid / seller / amount_over_cap | 16.1 s | 1 / 0 | prd-qwen | prd-gemini, gpt-5.4 |

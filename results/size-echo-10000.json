@@ -47,7 +47,7 @@
     },
     {
       "address": "0x722474B013fA39E5aA8785f927dCeB0e3F89815B",
-      "model": "anthropic/claude-sonnet-4.6",
+      "model": "claude-sonnet-4.6",
       "provider": "openrouter",
       "vote": "agree",
       "execution_result": "SUCCESS",

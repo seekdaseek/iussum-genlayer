@@ -177,7 +177,7 @@ Leader models are rotated by the network; the label `prd-*` is a policy alias of
 
 | Leader model | Model-path runs correct | Set C first-run flips/runs |
 |---|---|---|
-| anthropic/claude-sonnet-4.6 | 2/2 | 0/0 |
+| claude-sonnet-4.6 | 2/2 | 0/0 |
 | google/gemini-3-flash-preview | 3/3 | 1/3 |
 | openai/gpt-5.4 | 7/7 | 0/4 |
 | prd-deepseek | 4/4 | 0/1 |

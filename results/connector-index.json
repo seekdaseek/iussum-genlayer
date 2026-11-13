@@ -22,5 +22,89 @@
    "in_scope"
   ],
   "source": "genlayer"
+ },
+ "B2-22-border": {
+  "case_id": "B2-22-border",
+  "genlayer_txs": [
+   "0x0c6e02901c3f00751793c489d937f97f29cdf0571dc28f3fb001dd7fe2fbf7a2"
+  ],
+  "outcome": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "source": "genlayer"
+ },
+ "B2-32-border": {
+  "case_id": "B2-32-border",
+  "genlayer_txs": [
+   "0xe5ecda267e0596d74aa286f38577b2240098cf22492b403370ecc91b7c9e8070"
+  ],
+  "outcome": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "source": "genlayer"
+ },
+ "B2-33-border": {
+  "case_id": "B2-33-border",
+  "genlayer_txs": [
+   "0x19482bc4a8b761778f9a655dea3da2c8660cdb16cbc806bd128793aef6085683"
+  ],
+  "outcome": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "source": "genlayer"
+ },
+ "B2-35-border": {
+  "case_id": "B2-35-border",
+  "genlayer_txs": [
+   "0x6f54131b7abc945b24638e87b369c48a597044971a6b4fd123d8bae9f9f011d4"
+  ],
+  "outcome": [
+   "valid",
+   "agent_operator",
+   "purpose_mismatch"
+  ],
+  "source": "genlayer"
+ },
+ "B2-26-border": {
+  "case_id": "B2-26-border",
+  "genlayer_txs": [
+   "0x0804d56cfbea15cb5e7ca085dcb9f42eaa445bdf3c881270ff36248193189f30"
+  ],
+  "outcome": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "source": "genlayer"
+ },
+ "B2-21-border": {
+  "case_id": "B2-21-border",
+  "genlayer_txs": [
+   "0xe6f2572b1b85b542ffe571649df803076cad45acbc2c353f6ad5fff302fcdaab"
+  ],
+  "outcome": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "source": "genlayer"
+ },
+ "B2-34-border": {
+  "case_id": "B2-34-border",
+  "genlayer_txs": [
+   "0x6fc0ff0d97c483ef3531976ab2a0cd99763e3c6235db999548805ea9c7bccfda"
+  ],
+  "outcome": [
+   "invalid",
+   "principal",
+   "in_scope"
+  ],
+  "source": "genlayer"
  }
 }

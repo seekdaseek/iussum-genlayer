@@ -1,0 +1,59 @@
+{
+ "case_id": "B2-26-border",
+ "written_at": "2026-11-13T06:13:55.566Z",
+ "payment_tx": "26azEYtmvHefUin5o4RUEis2ZR7MHLHRaukQ5Tu4bHLWJ5chYmEErnPCtf5P7xxXUAZFQEmjw4JizGZ5jLx45B3x",
+ "grant_tx": "2iABBsEXqrCU5N8uW3YGpfG4JLjMGG99DiGtzoU5aFF216UzXqppVwpjzQDrYAyVFcx7NhVZBjDB4NHt2FWNP2zQ",
+ "receipt_seller": "E8aaCwcyTZj9zMYNZmKUUNtGgMP571TnZmjY7MZtfom4",
+ "genlayer": {
+  "instance": "live4-b",
+  "address": "0x767B086c4d562b33f9ab6AF3F98d76F9A780ac98",
+  "chain_source": "rpc",
+  "attempts": [
+   {
+    "tx": "0xf08d6bfac500341732b6179a9f18ca94808dd761731e37e6c804bc6d30b7e924",
+    "status": "FINALIZED",
+    "result": [
+     "invalid",
+     "none",
+     "chain_unreachable"
+    ],
+    "error": null,
+    "accepted_ms": 51045,
+    "final_ms": 82327,
+    "leader": "policy:prd-kimi-k2.7-code",
+    "agreeing": [
+     "policy:prd-gpt-6.1-sol",
+     "policy:prd-gemini-3.5-flash-lite",
+     "policy:prd-gemma-4-31b-it"
+    ],
+    "rotations": 2,
+    "stored": {
+     "chain_source": "rpc",
+     "http": 429,
+     "liable": "none",
+     "path": "refusal",
+     "reason": "chain_unreachable",
+     "reasoning": "",
+     "verdict": "invalid"
+    }
+   }
+  ]
+ },
+ "outcome": {
+  "source": "genlayer",
+  "verdict": "invalid",
+  "liable": "none",
+  "reason": "chain_unreachable",
+  "attempts": 1,
+  "txs": [
+   "0xf08d6bfac500341732b6179a9f18ca94808dd761731e37e6c804bc6d30b7e924"
+  ]
+ },
+ "expected_court": null,
+ "link": {
+  "iussum_verdict_id": null,
+  "genlayer_txs": [
+   "0xf08d6bfac500341732b6179a9f18ca94808dd761731e37e6c804bc6d30b7e924"
+  ]
+ }
+}

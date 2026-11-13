@@ -821,7 +821,7 @@
    5,
    0
   ],
-  "anthropic/claude-sonnet-4.6": [
+  "claude-sonnet-4.6": [
    1,
    3,
    0
@@ -1019,7 +1019,7 @@
    "acc": 23060,
    "fin": 51986,
    "rot": 0,
-   "leader": "anthropic/claude-sonnet-4.6",
+   "leader": "claude-sonnet-4.6",
    "agree": [
     "prd-gpt-6.1-sol",
     "prd-glm-5.3"
@@ -1066,7 +1066,7 @@
    "rot": 0,
    "leader": "prd-qwen3.8-27b",
    "agree": [
-    "anthropic/claude-sonnet-4.6",
+    "claude-sonnet-4.6",
     "prd-glm-5.3"
    ],
    "path": "deterministic"
