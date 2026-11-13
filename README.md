@@ -33,6 +33,34 @@ Contract at `contracts/mandate_court.py`, instances `live4-a/b/c` (`chain_source
 
 Reading the table: real-1 to real-4 have **no seller receipt**, so the shipping contract has only the purpose and the chain facts. It cannot tell on-purpose from off-purpose there and answers `could_not_decide` (real-1's first attempt ended `chain_unreachable`, see below; the row shows the second attempt). Before the fix these four were judged correctly from unsigned delivery text, which is exactly the text the fix removed. rr-1 and rr-2 carry receipts signed by iussum's own seller gate. All 35 Set B v2 cases (real devnet grant and payment, receipt signed with a **test** seller key) are linked in [docs/live-cases-b2.md](docs/live-cases-b2.md).
 
+ ## Try it
+
+One command judges a recorded live case (a real devnet payment, a real seller receipt signed by iussum's seller gate) on studionet, end to end. You need Node 20+ and the repo only; the studionet key is created in `.secrets/` on first run (studionet is gasless).
+
+```bash
+npm install
+node scripts/demo.mjs            # or: npm run demo
+```
+
+If the court is not deployed on studionet (first run, or the state was reset) the script deploys it first and says so (about 40 s extra). Expected output (tx hashes differ per run; the triple, the delta and the match line are what to check):
+
+```
+case rr-1-seller-overcap: the seller (observe mode) settled a 0.01 USDC payment above the 0.005 per-payment cap, receipt records the mandate as presented: liability seller
+Solana devnet payment 5nkKeStKJPSG7a3chJ7xXhPQUGDW3neD8aw1x8b3BZk6C3ZRdRzeaEWSevpCY18YjhLAtWojTqBaWKHMjUfmYcJh
+Solana devnet grant   58KkADpfoVSq4JL3NkVo2oc8SrBa5pvmLUuy2Bq5yavMhp6E1XP5uA11QE8gadWVgxsL8rCrPShi1gAbU5qtWygP
+court instance 0x94C6...0175 (chain_source=rpc, pinned seller key 6prcN4...)
+submitting the case; the validators read the payment and the grant from Solana devnet ...
+
+court result : valid / seller / amount_over_cap   (path: deterministic, chain_source: rpc)
+delta        : [{"actual":"10000","authorized":"5000","currency":"4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU","field":"per_payment_max"}]
+recorded expectation: valid / seller / amount_over_cap  ->  matches the recorded expectation
+time         : accepted 13.8 s, finalized 44.3 s
+GenLayer tx  : 0x91bc35...1e54
+explorer     : https://explorer-studio.genlayer.com/tx/0x91bc3530736567b64c53c9895e4477fa80901c1ac5d6e31fe759f02ed6631e54
+```
+
+Run `node scripts/demo.mjs rr-2-onpurpose` for the on-purpose case: that one goes through the model and ends `invalid / principal / in_scope`. The demo writes only to `results/demo-*.json`.
+
 ## 4. Measured numbers (set sizes in brackets)
 
 Phases 2 to 4 are in `REPORT-phase2.md`, `REPORT-phase3.md`, `REPORT-phase4.md`; raw rows in `results/rows.jsonl`. Replay instances (`chain_source=bundle`) read the chain facts from the bundle and are not verified cases.
@@ -62,7 +90,8 @@ python3.12 -m venv .venv
 .venv/bin/pip install genlayer-test genvm-linter pytest cryptography
 .venv/bin/pytest tests/direct          # 152 contract tests, no chain, models mocked
 .venv/bin/genvm-lint check contracts/mandate_court.py
-npm install && node --test tests/connector/connector.test.mjs   # connector rule
+.venv/bin/pytest tests/control        # single-model control harness (prompt identity)
+npm install && node --test tests/connector/connector.test.mjs tests/demo/demo.test.mjs
 ```
 
 The first pytest run downloads the GenVM v0.2.16 runtime (network needed). Scripts that touch devnet or studionet are in `scripts/` and read keys from `.secrets/` (not in git).

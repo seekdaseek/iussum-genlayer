@@ -1,0 +1,18 @@
+{
+  "demo": {
+    "name": "demo",
+    "chain_source": "rpc",
+    "max_bytes": 65536,
+    "seller_keys": "6prcN4KWkvGAf6eciwDRfpPJbdfgQnAdc28LzETrJYFn",
+    "rpc_url": "https://api.devnet.solana.com",
+    "address": "0x94C67Fb34815F027E11Fa3f9669F5aBBbF280175",
+    "deploy_tx": "0x8dfe2061f7f526d15ebc493a818618a0ada1af79f1c262c111d0d6ccd095dc2b",
+    "deployed_at": "2026-11-13T05:51:33.774Z",
+    "seen": {
+      "PENDING": 2318,
+      "REVEALING": 5598,
+      "ACCEPTED": 8800,
+      "FINALIZED": 37469
+    }
+  }
+}

@@ -4,8 +4,8 @@ import path from "node:path";
 import { ROOT, client, sleep, jsonSafe } from "./lib.mjs";
 import { canon, sha256 } from "./bundle.mjs";
 
-export const ROWS = path.join(ROOT, "results", "rows.jsonl");
-export const INSTANCES = path.join(ROOT, "results", "instances.json");
+export const ROWS = process.env.ROWS_FILE ?? path.join(ROOT, "results", "rows.jsonl");
+export const INSTANCES = process.env.INSTANCES_FILE ?? path.join(ROOT, "results", "instances.json");
 const loadInst = () => (fs.existsSync(INSTANCES) ? JSON.parse(fs.readFileSync(INSTANCES, "utf8")) : {});
 export const instance = (name) => { const i = loadInst()[name]; if (!i) throw new Error("no instance " + name); return i; };
 const saveInst = (name, v) => { const all = loadInst(); all[name] = v; fs.writeFileSync(INSTANCES, JSON.stringify(all, null, 2) + "\n"); };
