@@ -9,7 +9,8 @@ import { nextStep, outcome } from "./connector-lib.mjs";
 
 const [casePath, instName] = process.argv.slice(2);
 const k = JSON.parse(fs.readFileSync(casePath, "utf8"));
-const bundle = { v: "iussum-genlayer/0.2", mandate: k.mandate, grant_tx: k.grant_tx, payment: k.payment, delivery: k.receipt ? { receipt: k.receipt } : {} };
+import { bundleFromCase } from "./demo-lib.mjs";
+const bundle = bundleFromCase(k);
 const attempts = [];
 while (nextStep(attempts) !== "stop") {
   const n = attempts.length + 1;
@@ -18,7 +19,7 @@ while (nextStep(attempts) !== "stop") {
   if (attempts[attempts.length - 1].error) break;
 }
 const o = outcome(attempts);
-const out = { case_id: k.id, written_at: new Date().toISOString(), iussum: k.iussum, payment_tx: k.payment.tx_sig, grant_tx: k.grant_tx, receipt_seller: k.receipt?.seller ?? null,
+const out = { case_id: k.id, written_at: new Date().toISOString(), iussum: k.iussum, payment_tx: k.payment?.tx_sig ?? k.payment_tx, grant_tx: k.grant_tx, receipt_seller: (k.receipt ?? k.bundle?.delivery?.receipt)?.seller ?? null,
   genlayer: { instance: instName, address: JSON.parse(fs.readFileSync(path.join(ROOT, "results/instances.json")))[instName].address, chain_source: "rpc", attempts }, outcome: o, expected_court: k.expected_court ?? null,
   link: { iussum_verdict_id: k.iussum?.verdict_id ?? null, genlayer_txs: o.txs } };
 fs.mkdirSync(path.join(ROOT, "results/connector"), { recursive: true });

@@ -1,6 +1,6 @@
 export const DEMO_CASE = "rr-1-seller-overcap";
 export const explorerLink = (tx) => `https://explorer-studio.genlayer.com/tx/${tx}`;
-export const bundleFromCase = (k) => ({ v: "iussum-genlayer/0.2", mandate: k.mandate, grant_tx: k.grant_tx, payment: k.payment, delivery: k.receipt ? { receipt: k.receipt } : {} });
+export const bundleFromCase = (k) => k.bundle ?? ({ v: "iussum-genlayer/0.2", mandate: k.mandate, grant_tx: k.grant_tx, payment: k.payment, delivery: k.receipt ? { receipt: k.receipt } : {} });
 export function formatResult({ tx, stored, expected, accepted_ms, final_ms, redeployed }) {
   const got = stored ? [stored.verdict, stored.liable, stored.reason] : null;
   const same = got && expected && JSON.stringify(got) === JSON.stringify(expected);
