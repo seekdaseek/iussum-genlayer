@@ -1,0 +1,9 @@
+# gitleaks generic-api-key hits on fields named seller_keys: each value is a public ed25519 seller key (verified against sets/test-seller.pub and the published receipt seller field)
+16528604c5ac10e82c9f1937a4e2bc7c9a4a4088:results/demo-instances.json:generic-api-key:6
+aa162b10b61ac085019024bccc0d2e7adb6d83bf:results/instances.json:generic-api-key:111
+aa162b10b61ac085019024bccc0d2e7adb6d83bf:results/instances.json:generic-api-key:127
+aa162b10b61ac085019024bccc0d2e7adb6d83bf:results/instances.json:generic-api-key:143
+b1d9cd4a6c1f190a92ee16a9cba53149558c9578:results/instances-control.json:generic-api-key:22
+b1d9cd4a6c1f190a92ee16a9cba53149558c9578:results/instances-control.json:generic-api-key:37
+b1d9cd4a6c1f190a92ee16a9cba53149558c9578:results/instances-control.json:generic-api-key:6
+b771a3149fbec3d2e18223f681028ac46711bd1e:results/instances.json:generic-api-key:159
