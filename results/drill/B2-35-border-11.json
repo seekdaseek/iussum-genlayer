@@ -23,7 +23,7 @@
     "leader": "policy:prd-gpt-6.1-sol",
     "agreeing": [
      "policy:prd-gpt-oss-120b",
-     "anthropic/claude-sonnet-4.6"
+     "claude-sonnet-4.6"
     ],
     "rotations": 0,
     "stored": {
