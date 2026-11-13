@@ -1,6 +1,13 @@
-# MandateCourt (private, work in progress)
+# MandateCourt
 
-An Intelligent Contract for GenLayer that acts as a second-instance judge for [iussum](https://github.com/seekdaseek/iussum) cases (an AI agent paid a seller on Solana within a mandate the person signed, and someone disputes it). Everything here runs on GenLayer's hosted Studio network (studionet) and Solana **devnet**. No mainnet, no real funds.
+An Intelligent Contract for GenLayer that decides one thing iussum's deterministic rules cannot: **an AI agent paid a seller within the limits the person signed; was it still what the person asked for?** It reads the payment from Solana devnet, uses only text a party signed, asks several independent models one question, and returns one of four fixed answers. Everything runs on GenLayer's hosted Studio network and Solana devnet; no mainnet, no real funds.
+
+**Headline:** after the fix described below, **0 of 63 injection runs flipped toward the attack** with the jury, against 2 of 63 for the same contract run with a single leader model and no validator agreement (small sets; the single model also guessed a verdict in 19 of 54 runs with nothing to judge, the jury in 4). Clear drift cases: 60 of 60 on the shipping contract. 8 live devnet cases judged on chain, linked below.
+
+- **Try it:** `npm install && node scripts/demo.mjs` (section "Try it" below)
+- **Evidence for each claim:** [docs/EVIDENCE.md](docs/EVIDENCE.md), including the single-model comparison at the top
+- **Tooling feedback for GenLayer builders:** [docs/genlayer-feedback.md](docs/genlayer-feedback.md)
+- **Licence:** MIT ([LICENSE](LICENSE)), author seekdaseek
 
 ## 1. What it decides, and what it refuses to decide
 
@@ -79,7 +86,10 @@ Phases 2 to 4 are in `REPORT-phase2.md`, `REPORT-phase3.md`, `REPORT-phase4.md`;
 | Drift on the shipping contract, clear [20 cases, first 3 valid runs each, live devnet reads] | 60 of 60 | phase 4 |
 | Drift on the shipping contract, borderline [15 cases, 44 valid runs] | 1 `could_not_decide`; 29 `in_scope`; 14 `purpose_mismatch` | phase 4 |
 | Devnet RPC `chain_unreachable` (HTTP 429 to the validators) | 25 of 101 first-pass runs with three live workers at once; 1 of 29 re-runs with one worker at a time | phase 4 |
+| **Single-model control (leader-only copy of the contract, no validator agreement)** [Set D 63 runs; original Set C 60 runs] | 2 of 63 flips toward the attack (jury 0); a verdict guessed in 19 of 54 no-evidence runs (jury 4 of 54). Not statistically strong on 63 runs; see EVIDENCE.md | phase 5b |
 | Latency [all rows] | median about 15 to 23 s to accepted and 45 to 52 s to finalized (plain-code cases faster) | all |
+
+**Control, measurement only:** `controls/mandate_court_single.py` is generated from the contract and differs only in a validator function that accepts any leader answer; it exists to measure the value of validator agreement and is never the product. `controls/single_model.py` (one model called off chain through a key) is the other variant and **was not run**.
 
 **Not tested:** Bradbury testnet; fees and the real appeal bond (studionet is free and has bond 0); the connector's twice-UNDETERMINED path on chain; reading a verdict from an EVM contract through the Ghost contract; a registry for seller keys (today the deployer pins them in the constructor). iussum itself rejects the v0.3 grant memo this court needs (`grant_mismatch`), so iussum assigns no `verdict_id` to these cases; that needs a change in iussum. Receipts signed with the test key are test data, not seller attestations.
 
@@ -90,7 +100,7 @@ python3.12 -m venv .venv
 .venv/bin/pip install genlayer-test genvm-linter pytest cryptography
 .venv/bin/pytest tests/direct          # 152 contract tests, no chain, models mocked
 .venv/bin/genvm-lint check contracts/mandate_court.py
-.venv/bin/pytest tests/control        # single-model control harness (prompt identity)
+.venv/bin/pytest tests/control        # control harness and generated leader-only contract
 npm install && node --test tests/connector/connector.test.mjs tests/demo/demo.test.mjs
 ```
 
