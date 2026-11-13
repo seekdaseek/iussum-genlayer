@@ -22,3 +22,8 @@ test("formatResult prints the stored triple, the expectation and the link, and s
   assert.match(formatResult({ tx: "0xab", stored: { verdict: "invalid", liable: "principal", reason: "in_scope", path: "model", chain_source: "rpc" }, expected: ["valid", "seller", "amount_over_cap"] }), /DIFFERS/);
 });
 test("the default demo case is the seller-liability case", () => assert.equal(DEMO_CASE, "rr-1-seller-overcap"));
+
+test("a case file that already carries a built bundle is used as is (Set B v2 chain cases)", () => {
+  const b = { v: "iussum-genlayer/0.2", mandate: {}, grant_tx: "G", payment: {}, delivery: { receipt: { seller: "T" } } };
+  assert.deepEqual(bundleFromCase({ id: "B2-x", bundle: b }), b);
+});
