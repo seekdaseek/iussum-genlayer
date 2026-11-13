@@ -1,0 +1,740 @@
+{
+ "jury": {
+  "all": {
+   "runs": 123,
+   "correct": 63,
+   "flips": 4,
+   "other_wrong": 53,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 38,
+   "rotation_runs": 21
+  },
+  "D": {
+   "runs": 63,
+   "correct": 60,
+   "flips": 0,
+   "other_wrong": 0,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 7,
+   "rotation_runs": 2
+  },
+  "C0": {
+   "runs": 60,
+   "correct": 3,
+   "flips": 4,
+   "other_wrong": 53,
+   "unparsed": 0,
+   "ambiguous": 0,
+   "disagree_runs": 31,
+   "rotation_runs": 19
+  },
+  "model_path": {
+   "runs": 114,
+   "correct": 60,
+   "flips": 4,
+   "other_wrong": 47,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 38,
+   "rotation_runs": 21
+  },
+  "model_path_D": {
+   "runs": 60,
+   "correct": 57,
+   "flips": 0,
+   "other_wrong": 0,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 7,
+   "rotation_runs": 2
+  },
+  "per_leader": {
+   "prd-gpt-6.1-sol": {
+    "runs": 17,
+    "correct": 6,
+    "flips": 2,
+    "other_wrong": 8,
+    "unparsed": 0,
+    "ambiguous": 1,
+    "disagree_runs": 3,
+    "rotation_runs": 6
+   },
+   "prd-claude-sonnet-4-6": {
+    "runs": 11,
+    "correct": 9,
+    "flips": 0,
+    "other_wrong": 1,
+    "unparsed": 0,
+    "ambiguous": 1,
+    "disagree_runs": 6,
+    "rotation_runs": 2
+   },
+   "openai/gpt-6.1-sol": {
+    "runs": 10,
+    "correct": 4,
+    "flips": 0,
+    "other_wrong": 6,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 2,
+    "rotation_runs": 0
+   },
+   "prd-gemma-4-31b-it": {
+    "runs": 8,
+    "correct": 3,
+    "flips": 0,
+    "other_wrong": 5,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 4,
+    "rotation_runs": 2
+   },
+   "prd-gpt-oss-120b": {
+    "runs": 8,
+    "correct": 5,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 1
+   },
+   "claude-sonnet-4.6": {
+    "runs": 6,
+    "correct": 3,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 3,
+    "rotation_runs": 0
+   },
+   "prd-glm-5.3": {
+    "runs": 6,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 5,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 3,
+    "rotation_runs": 3
+   },
+   "prd-grok-4.3": {
+    "runs": 6,
+    "correct": 2,
+    "flips": 1,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 4,
+    "rotation_runs": 2
+   },
+   "prd-qwen3.8-27b": {
+    "runs": 6,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 5,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 3,
+    "rotation_runs": 2
+   },
+   "prd-sonnet": {
+    "runs": 5,
+    "correct": 5,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "openai/gpt-5.4": {
+    "runs": 4,
+    "correct": 4,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-minimax-m3": {
+    "runs": 4,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 2,
+    "rotation_runs": 1
+   },
+   "prd-deepseek-v4.1-flash-1017": {
+    "runs": 4,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 3,
+    "rotation_runs": 1
+   },
+   "prd-mistral-large-2512": {
+    "runs": 3,
+    "correct": 2,
+    "flips": 0,
+    "other_wrong": 1,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "google/gemini-3.5-flash-lite": {
+    "runs": 3,
+    "correct": 3,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-kimi": {
+    "runs": 2,
+    "correct": 2,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-deepseek": {
+    "runs": 2,
+    "correct": 2,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-kimi-k2.7-code": {
+    "runs": 2,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 1,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 1,
+    "rotation_runs": 1
+   },
+   "prd-gemini-3.5-flash-lite": {
+    "runs": 2,
+    "correct": 1,
+    "flips": 1,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 2,
+    "rotation_runs": 0
+   },
+   "prd-mistral": {
+    "runs": 1,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "google/gemini-3-flash-preview": {
+    "runs": 1,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-gpt-oss": {
+    "runs": 1,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-glm": {
+    "runs": 1,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 1,
+    "rotation_runs": 0
+   },
+   "prd-grok": {
+    "runs": 1,
+    "correct": 0,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 1,
+    "disagree_runs": 1,
+    "rotation_runs": 0
+   }
+  }
+ },
+ "single": {
+  "all": {
+   "runs": 123,
+   "correct": 67,
+   "flips": 13,
+   "other_wrong": 40,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 0,
+   "rotation_runs": 0
+  },
+  "D": {
+   "runs": 63,
+   "correct": 58,
+   "flips": 2,
+   "other_wrong": 0,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 0,
+   "rotation_runs": 0
+  },
+  "C0": {
+   "runs": 60,
+   "correct": 9,
+   "flips": 11,
+   "other_wrong": 40,
+   "unparsed": 0,
+   "ambiguous": 0,
+   "disagree_runs": 0,
+   "rotation_runs": 0
+  },
+  "model_path": {
+   "runs": 114,
+   "correct": 64,
+   "flips": 13,
+   "other_wrong": 34,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 0,
+   "rotation_runs": 0
+  },
+  "model_path_D": {
+   "runs": 60,
+   "correct": 55,
+   "flips": 2,
+   "other_wrong": 0,
+   "unparsed": 0,
+   "ambiguous": 3,
+   "disagree_runs": 0,
+   "rotation_runs": 0
+  },
+  "per_leader": {
+   "prd-gpt-6.1-sol": {
+    "runs": 19,
+    "correct": 11,
+    "flips": 0,
+    "other_wrong": 7,
+    "unparsed": 0,
+    "ambiguous": 1,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-gemini-3.5-flash-lite": {
+    "runs": 13,
+    "correct": 7,
+    "flips": 4,
+    "other_wrong": 1,
+    "unparsed": 0,
+    "ambiguous": 1,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "openai/gpt-6.1-sol": {
+    "runs": 13,
+    "correct": 7,
+    "flips": 0,
+    "other_wrong": 6,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-claude-sonnet-4-6": {
+    "runs": 10,
+    "correct": 7,
+    "flips": 2,
+    "other_wrong": 1,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-gpt-oss-120b": {
+    "runs": 9,
+    "correct": 6,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-mistral-large-2512": {
+    "runs": 7,
+    "correct": 7,
+    "flips": 0,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-kimi-k2.7-code": {
+    "runs": 7,
+    "correct": 4,
+    "flips": 2,
+    "other_wrong": 1,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-qwen3.8-27b": {
+    "runs": 6,
+    "correct": 3,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-minimax-m3": {
+    "runs": 6,
+    "correct": 3,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-deepseek-v4.1-flash-1017": {
+    "runs": 5,
+    "correct": 1,
+    "flips": 1,
+    "other_wrong": 2,
+    "unparsed": 0,
+    "ambiguous": 1,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "google/gemini-3.5-flash-lite": {
+    "runs": 5,
+    "correct": 3,
+    "flips": 2,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "claude-sonnet-4.6": {
+    "runs": 4,
+    "correct": 3,
+    "flips": 1,
+    "other_wrong": 0,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-glm-5.3": {
+    "runs": 4,
+    "correct": 0,
+    "flips": 1,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-grok-4.3": {
+    "runs": 4,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 3,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   },
+   "prd-gemma-4-31b-it": {
+    "runs": 2,
+    "correct": 1,
+    "flips": 0,
+    "other_wrong": 1,
+    "unparsed": 0,
+    "ambiguous": 0,
+    "disagree_runs": 0,
+    "rotation_runs": 0
+   }
+  }
+ },
+ "cases_where_single_differs": [
+  [
+   "C0",
+   "C-01",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "invalid/principal/in_scope",
+    "valid/agent_operator/purpose_mismatch"
+   ]
+  ],
+  [
+   "C0",
+   "C-02",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "valid/agent_operator/purpose_mismatch",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "invalid/principal/in_scope",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-03",
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "invalid/principal/in_scope",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-04",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "invalid/principal/in_scope",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-05",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "valid/agent_operator/purpose_mismatch"
+   ]
+  ],
+  [
+   "C0",
+   "C-07",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "invalid/principal/in_scope",
+    "valid/agent_operator/purpose_mismatch"
+   ]
+  ],
+  [
+   "C0",
+   "C-09",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-13",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "valid/agent_operator/purpose_mismatch",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-14",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope",
+    "valid/agent_operator/purpose_mismatch"
+   ]
+  ],
+  [
+   "C0",
+   "C-15",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "could_not_decide/none/insufficient_evidence",
+    "invalid/principal/in_scope"
+   ]
+  ],
+  [
+   "C0",
+   "C-16",
+   [
+    "invalid/principal/in_scope",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "invalid/principal/in_scope",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-17",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "valid/agent_operator/purpose_mismatch"
+   ],
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-18",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "invalid/principal/in_scope",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "C0",
+   "C-20",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ],
+  [
+   "D",
+   "D-B05",
+   [
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope"
+   ],
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope"
+   ]
+  ],
+  [
+   "D",
+   "D-B08",
+   [
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope"
+   ],
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "invalid/principal/in_scope",
+    "invalid/principal/in_scope"
+   ]
+  ],
+  [
+   "D",
+   "D-B10",
+   [
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ],
+   [
+    "valid/agent_operator/purpose_mismatch",
+    "could_not_decide/none/insufficient_evidence",
+    "could_not_decide/none/insufficient_evidence"
+   ]
+  ]
+ ]
+}
