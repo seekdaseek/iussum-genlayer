@@ -27,3 +27,12 @@ test("a case file that already carries a built bundle is used as is (Set B v2 ch
   const b = { v: "iussum-genlayer/0.2", mandate: {}, grant_tx: "G", payment: {}, delivery: { receipt: { seller: "T" } } };
   assert.deepEqual(bundleFromCase({ id: "B2-x", bundle: b }), b);
 });
+
+test("the runner deploys the contract named by CONTRACT_FILE, the shipping contract by default", async () => {
+  const { contractPath } = await import("../../scripts/runner.mjs");
+  delete process.env.CONTRACT_FILE;
+  assert.match(contractPath(), /contracts\/mandate_court\.py$/);
+  process.env.CONTRACT_FILE = "/x/controls/mandate_court_single.py";
+  assert.equal(contractPath(), "/x/controls/mandate_court_single.py");
+  delete process.env.CONTRACT_FILE;
+});
