@@ -10,9 +10,10 @@ const loadInst = () => (fs.existsSync(INSTANCES) ? JSON.parse(fs.readFileSync(IN
 export const instance = (name) => { const i = loadInst()[name]; if (!i) throw new Error("no instance " + name); return i; };
 const saveInst = (name, v) => { const all = loadInst(); all[name] = v; fs.writeFileSync(INSTANCES, JSON.stringify(all, null, 2) + "\n"); };
 
+export const contractPath = () => process.env.CONTRACT_FILE ?? path.join(ROOT, "contracts/mandate_court.py");
 export async function deploy(name, chainSource, maxBytes, sellerKeys = "", rpcUrl = "https://api.devnet.solana.com") {
   const { c } = client("studionet");
-  const code = fs.readFileSync(path.join(ROOT, "contracts/mandate_court.py"), "utf8");
+  const code = fs.readFileSync(contractPath(), "utf8");
   const t0 = Date.now();
   const hash = await c.deployContract({ code, args: [rpcUrl, BigInt(maxBytes), chainSource, sellerKeys] });
   let tx, seen = {};
