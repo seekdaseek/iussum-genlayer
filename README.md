@@ -7,6 +7,7 @@ An Intelligent Contract for GenLayer that decides one thing iussum's determinist
 - **Try it:** `npm install && node scripts/demo.mjs` (section "Try it" below)
 - **Evidence for each claim:** [docs/EVIDENCE.md](docs/EVIDENCE.md), including the single-model comparison at the top
 - **Tooling feedback for GenLayer builders:** [docs/genlayer-feedback.md](docs/genlayer-feedback.md)
+- **Live page:** [mandatecourt.ochinimus.app](https://mandatecourt.ochinimus.app) judges the recorded live cases in your browser on studionet (throwaway account, no wallet, no backend)
 - **Licence:** MIT ([LICENSE](LICENSE)), author seekdaseek
 
 ## 1. What it decides, and what it refuses to decide
@@ -40,7 +41,19 @@ Contract at `contracts/mandate_court.py`, instances `live4-a/b/c` (`chain_source
 
 Reading the table: real-1 to real-4 have **no seller receipt**, so the shipping contract has only the purpose and the chain facts. It cannot tell on-purpose from off-purpose there and answers `could_not_decide` (real-1's first attempt ended `chain_unreachable`, see below; the row shows the second attempt). Before the fix these four were judged correctly from unsigned delivery text, which is exactly the text the fix removed. rr-1 and rr-2 carry receipts signed by iussum's own seller gate. All 35 Set B v2 cases (real devnet grant and payment, receipt signed with a **test** seller key) are linked in [docs/live-cases-b2.md](docs/live-cases-b2.md).
 
- ## Try it
+ ## Web page
+
+`web/` is a static page (no backend, no secrets): it bundles `genlayer-js` for the browser, creates a throwaway studionet account in `localStorage`, lets you pick one of the 8 recorded live cases, submits `judge` to the live `chain_source=rpc` instance, shows PENDING, PROPOSING, COMMITTING, ACCEPTED and FINALIZED with elapsed seconds and the explorer link, then the verdict, liable party, reason, delta and whether it matches the recorded expectation. If the court instance is gone from studionet the page redeploys it first and says so (checked live). An UNDETERMINED result is resubmitted once, the same caller-side rule as the connector.
+
+```bash
+npm run web:build     # bundle genlayer-js, rebuild web/cases.json, stamp asset versions
+node web/serve.mjs 8099 web   # then open http://127.0.0.1:8099
+node --test tests/web/lib.test.mjs tests/web/server.test.mjs tests/web/serve.test.mjs tests/web/stamp.test.mjs
+```
+
+It is served from a small VPS process behind a Cloudflare tunnel at https://mandatecourt.ochinimus.app. Studionet state is documented as temporary, so the page can take about a minute longer on a first visit after a reset.
+
+## Try it
 
 One command judges a recorded live case (a real devnet payment, a real seller receipt signed by iussum's seller gate) on studionet, end to end. You need Node 20+ and the repo only; the studionet key is created in `.secrets/` on first run (studionet is gasless).
 

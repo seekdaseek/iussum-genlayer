@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "demo": "node scripts/demo.mjs",
-    "test:connector": "node --test tests/connector/connector.test.mjs tests/demo/demo.test.mjs"
+    "test:connector": "node --test tests/connector/connector.test.mjs tests/demo/demo.test.mjs",
+    "web:build": "esbuild web/src/gl-entry.js --bundle --minify --format=iife --platform=browser --target=es2022 --outfile=web/vendor/genlayer.js && node scripts/mkweb.mjs"
   },
   "keywords": [],
   "author": "",
