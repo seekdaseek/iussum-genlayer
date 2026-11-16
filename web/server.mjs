@@ -1,8 +1,7 @@
-// Zero-dependency static server for the MandateCourt page. Run: node server.mjs [port] [root]   (port 3044, root = this folder)
+// Zero-dependency static server for the MandateCourt page (library). Start it with serve.mjs.
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".mjs": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".png": "image/png", ".svg": "image/svg+xml", ".py": "text/plain; charset=utf-8", ".txt": "text/plain; charset=utf-8" };
 export const mimeFor = (f) => MIME[path.extname(f).toLowerCase()] ?? "application/octet-stream";
@@ -33,8 +32,4 @@ export function createServer(root) {
       fs.createReadStream(file).pipe(res);
     });
   });
-}
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const port = Number(process.argv[2] ?? 3044), root = path.resolve(process.argv[3] ?? path.dirname(fileURLToPath(import.meta.url)));
-  createServer(root).listen(port, "127.0.0.1", () => console.log(`mandatecourt static on 127.0.0.1:${port} serving ${root}`));
 }
