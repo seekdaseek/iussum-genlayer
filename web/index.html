@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MandateCourt</title>
+<meta name="description" content="A GenLayer Intelligent Contract that judges whether an AI agent's in-limit payment on Solana was still what the person asked for.">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <img src="logo.png" alt="" width="56" height="56">
+  <div>
+    <h1>MandateCourt</h1>
+    <p class="sub">A GenLayer jury for one question: the agent paid inside every signed limit, was it still what the person asked for?</p>
+  </div>
+</header>
+<main>
+  <section id="how" aria-labelledby="how-h">
+    <h2 id="how-h">How it works</h2>
+    <ol>
+      <li>Plain code first: size, hash, receipt signature and scope limits. A malformed or out-of-limit case never reaches a model.</li>
+      <li>The validators read the payment and the grant from Solana devnet and must agree on them.</li>
+      <li>The model sees only text a party signed: the purpose, the chain facts, the seller's signed receipt. Free text is ignored.</li>
+      <li>Five validators, each with a different model; the leader answers and the others re-judge it.</li>
+      <li>The answer is one of four fixed triples (verdict / liable party / reason). Unsure means <code>could_not_decide</code>.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="pick-h">
+    <h2 id="pick-h">1. Pick a recorded live case</h2>
+    <p class="muted">Eight real Solana devnet payments. Each has its own grant and payment transaction.</p>
+    <div id="picker" role="radiogroup" aria-labelledby="pick-h"></div>
+    <div id="detail" class="card" hidden></div>
+  </section>
+
+  <section aria-labelledby="go-h">
+    <h2 id="go-h">2. Judge it on GenLayer studionet</h2>
+    <p class="muted">Studionet is gasless. The page makes a throwaway account in your browser; no wallet, no backend, no secrets.</p>
+    <button id="judge" type="button" disabled>Judge this case</button>
+    <ol id="timeline" class="timeline" aria-live="polite"></ol>
+    <p id="notice" class="notice" role="status" hidden></p>
+  </section>
+
+  <section id="result" class="card" hidden aria-labelledby="res-h">
+    <h2 id="res-h">3. Court result</h2>
+    <div id="triple" class="triple"></div>
+    <dl id="facts"></dl>
+  </section>
+</main>
+<footer>
+  <p><a href="https://github.com/seekdaseek/iussum-genlayer">Source and measurements</a> · <a href="https://github.com/seekdaseek/iussum-genlayer/blob/main/docs/EVIDENCE.md">Evidence map</a> · MIT · devnet and studionet only, no real funds</p>
+</footer>
+<script src="vendor/genlayer.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
