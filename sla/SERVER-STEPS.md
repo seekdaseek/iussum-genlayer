@@ -7,6 +7,8 @@ What changes on AgentFeed: one new file `lib/sla-signer.cjs`, one new `app.use(.
 With `SLA_SIGN` unset or not `1` the middleware is a pass-through: it does not wrap `res.end`, and the paid flow is byte-identical.
 With it on, a paid, settled, HTTP 200 answer of `/api/sol-price`, `/api/btc-price` or `/api/funding-rate` gets one extra response header, `X-SLA-Receipt`. Body, status and all other headers are unchanged. Any error while signing is swallowed and the original answer is sent.
 
+Tested so far: the signer module (9 tests, including a check of its signature by the court's own python verifier) and the step 3 `sed` edit, run on a scratch copy of server.js in /tmp on the VPS (one match, `node --check` passed, scratch file removed). UNTESTED: steps 1, 2, 4 and 5 on the live box, and the interplay with the live x402 gate. Step 5 is the test that settles it.
+
 ## 0. Gate (do not skip)
 
 ~~~

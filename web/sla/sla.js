@@ -1,4 +1,4 @@
-import { canon, sha256Hex, newTag, statusLine, explorerTx, modelLabel } from "../lib.mjs?v=7094badddf";
+import { canon, sha256Hex, newTag, statusLine, explorerTx, modelLabel } from "../lib.mjs?v=a7a89775f3";
 
 const GL = window.GL;
 const $ = (id) => document.getElementById(id);
@@ -139,7 +139,7 @@ function render(stored, tx, hash, address, ms) {
 }
 
 async function main() {
-  data = await (await fetch("cases.json?v=7094badddf")).json();
+  data = await (await fetch("cases.json?v=a7a89775f3")).json();
   renderPicker();
   $("judge").addEventListener("click", judge);
   const q = new URLSearchParams(location.search).get("case");

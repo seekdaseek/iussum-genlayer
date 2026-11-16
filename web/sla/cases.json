@@ -265,6 +265,34 @@
       "agree": 3,
       "idle": 2
      }
+    },
+    {
+     "tx": "0x06c1e5f0554f7fe5803f4ab5d82f8e0d40865651273c642b474877ddc488b3dc",
+     "result": [
+      "refund",
+      "stale_data",
+      "model"
+     ],
+     "refusal": null,
+     "leader_model": "openai/gpt-6.1-sol",
+     "votes": {
+      "idle": 2,
+      "agree": 3
+     }
+    },
+    {
+     "tx": "0xaa601beb6db0a1b28b105f229ee8a03e4b776d1cf5fdf2f23bc8f87d240f61fe",
+     "result": [
+      "refund",
+      "stale_data",
+      "model"
+     ],
+     "refusal": null,
+     "leader_model": "policy:prd-gemini-3.5-flash-lite",
+     "votes": {
+      "idle": 2,
+      "agree": 3
+     }
     }
    ]
   },
