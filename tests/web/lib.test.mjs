@@ -60,3 +60,10 @@ test("an instance is usable for a case only if it is rpc mode and pins the recei
   assert.equal(pinnedKeyOk({ ...cfg, chain_source: "bundle" }, { receipt: null }), false);
   assert.equal(pinnedKeyOk(null, { receipt: null }), false);
 });
+
+test("modelLabel drops a provider prefix so the page shows the model name only", async () => {
+  const { modelLabel } = await import("../../web/lib.mjs");
+  assert.equal(modelLabel("openai/gpt-6.1-sol"), "gpt-6.1-sol");
+  assert.equal(modelLabel("policy:prd-gemini-3.5-flash-lite"), "policy:prd-gemini-3.5-flash-lite");
+  assert.equal(modelLabel(null), null);
+});
