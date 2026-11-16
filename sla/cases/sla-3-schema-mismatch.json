@@ -1,0 +1,27 @@
+{
+ "id": "sla-3-schema-mismatch",
+ "title": "Funding rate answer without venues",
+ "network": "solana",
+ "tool": "get_funding_rate",
+ "payment_tx": "cUpiDWBE3DGQB9mG5mkHW7EBPkYpZSb3SCuzXcDupBVb3JXNz4f5TPbKWnDaASgNejYGRKu5M5mkvrtJqrw4fMm",
+ "chain_facts": {
+  "amount": "5000",
+  "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "payer": "Gack9UtqfeZxFA1LqeqjLgC3JGuD7rS6CsSHKoXsD4Tu",
+  "pay_to": "4a8o45skRPcyjAdyR8yES215Swvh8uTpZD6KLarhxCJ7",
+  "block_time": 1791969628
+ },
+ "served_at": 1791969632,
+ "expected": [
+  "refund",
+  "schema_mismatch",
+  "deterministic"
+ ],
+ "bundle_json": "{\"complaint\":\"no venues in the answer\",\"delivery\":{\"body\":\"{\\\"tool\\\":\\\"get_funding_rate\\\",\\\"data\\\":{\\\"symbol\\\":\\\"ETHUSDT\\\",\\\"note\\\":\\\"The rate is quoted for its own interval\\\",\\\"source\\\":\\\"hyperliquid\\\"},\\\"paid\\\":true}\",\"receipt\":{\"body_sha256\":\"cd040f962bf99a83cb94e06f75cd17df7f4850d24c22e58a9789af56d02f2f28\",\"http_status\":200,\"resource\":\"https://x402.ochinimus.app/api/funding-rate?symbol=ETHUSDT\",\"seller\":\"ESJuUvueY6retnmo3sq6sJdiswvzWt13VthwhArvpuKS\",\"served_at\":1791969632,\"signature\":\"k5JXX6bCeR26ExrsvqfgdBiwoSLFo+V9A2/+OGC+YS9OObVij+QFw7eCbUtHBFLwBu5ie+LTHLDoiwxfLn4xCQ==\",\"tool\":\"get_funding_rate\",\"tx_sig\":\"cUpiDWBE3DGQB9mG5mkHW7EBPkYpZSb3SCuzXcDupBVb3JXNz4f5TPbKWnDaASgNejYGRKu5M5mkvrtJqrw4fMm\",\"v\":\"iussum-sla/0.1\"}},\"payment\":{\"amount\":\"5000\",\"asset\":\"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v\",\"network\":\"solana\",\"pay_to\":\"4a8o45skRPcyjAdyR8yES215Swvh8uTpZD6KLarhxCJ7\",\"payer\":\"Gack9UtqfeZxFA1LqeqjLgC3JGuD7rS6CsSHKoXsD4Tu\",\"tx_sig\":\"cUpiDWBE3DGQB9mG5mkHW7EBPkYpZSb3SCuzXcDupBVb3JXNz4f5TPbKWnDaASgNejYGRKu5M5mkvrtJqrw4fMm\"},\"tool\":\"get_funding_rate\",\"v\":\"iussum-sla/0.1\"}",
+ "sha": "02cef9e98fa6d31a8c92fb3d4c09505db3f931c421c8112115b25ea2ed5a8cd5",
+ "labels": {
+  "payment": "real settled mainnet USDC transfer to the AgentFeed treasury, read from chain",
+  "receipt": "signed with a stand-in seller key, AgentFeed has no signer deployed",
+  "body": "fixture shaped like the published sample, paired with this payment by the case builder"
+ }
+}

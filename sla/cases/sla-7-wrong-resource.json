@@ -1,0 +1,27 @@
+{
+ "id": "sla-7-wrong-resource",
+ "title": "BTC data returned from the SOL route",
+ "network": "base",
+ "tool": "get_sol_price",
+ "payment_tx": "0x0d6aeb3e873b13f4bd1a35f89b293f6b0cce37e87d8251431e039505323a4f76",
+ "chain_facts": {
+  "amount": "1000",
+  "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+  "payer": "0x82cef1cdc34d65cf690235dc24e823a6585a6f86",
+  "pay_to": "0x22db3a9686ee5261e7bf3ed4f91277232e8076e6",
+  "block_time": 1794796476
+ },
+ "served_at": 1794796479,
+ "expected": [
+  "refund",
+  "wrong_resource",
+  "deterministic"
+ ],
+ "bundle_json": "{\"complaint\":\"asked for SOL, got BTC\",\"delivery\":{\"body\":\"{\\\"tool\\\":\\\"get_sol_price\\\",\\\"data\\\":{\\\"symbol\\\":\\\"BTC\\\",\\\"price\\\":64744.8,\\\"confidence\\\":null,\\\"publish_time\\\":1794796469,\\\"source\\\":\\\"on-chain DEX mid\\\"},\\\"paid\\\":true}\",\"receipt\":{\"body_sha256\":\"988285f40f33951ccca45beec2e982f82e3a1a85cce0a5a6e8ab1509677fb3a1\",\"http_status\":200,\"resource\":\"https://x402.ochinimus.app/api/sol-price\",\"seller\":\"ESJuUvueY6retnmo3sq6sJdiswvzWt13VthwhArvpuKS\",\"served_at\":1794796479,\"signature\":\"sH8DN3uMVYOUHV1FVK6CQtAE4ZiTAs9ZFS4CfztDPLjMjGkWG7cnz2j6Frq7k6sLIvIboVJfQ3NTTXxTnlmfBg==\",\"tool\":\"get_sol_price\",\"tx_sig\":\"0x0d6aeb3e873b13f4bd1a35f89b293f6b0cce37e87d8251431e039505323a4f76\",\"v\":\"iussum-sla/0.1\"}},\"payment\":{\"amount\":\"1000\",\"asset\":\"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913\",\"network\":\"base\",\"pay_to\":\"0x22db3a9686ee5261e7bf3ed4f91277232e8076e6\",\"payer\":\"0x82cef1cdc34d65cf690235dc24e823a6585a6f86\",\"tx_sig\":\"0x0d6aeb3e873b13f4bd1a35f89b293f6b0cce37e87d8251431e039505323a4f76\"},\"tool\":\"get_sol_price\",\"v\":\"iussum-sla/0.1\"}",
+ "sha": "20e641b2fc9bd3ab23cb60be084ecf8afd449bc2f387e73b5932301fe49f3e91",
+ "labels": {
+  "payment": "real settled mainnet USDC transfer to the AgentFeed treasury, read from chain",
+  "receipt": "signed with a stand-in seller key, AgentFeed has no signer deployed",
+  "body": "fixture shaped like the published sample, paired with this payment by the case builder"
+ }
+}

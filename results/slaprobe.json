@@ -1,0 +1,9 @@
+{
+  "address": "0xCe9a72c04908AEE41DeBF5Dbe0e0E3ce1884c002",
+  "out": {
+    "solana": "{\"head\": \"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"result\\\":{\\\"blockTime\\\":1794575116,\\\"meta\\\":{\\\"computeUnitsConsumed\\\":13180,\\\"costUnits\\\":15582,\\\"err\\\":null,\\\"fee\\\":10001,\\\"innerInstructions\\\":[],\\\"logMessa\", \"len\": 4436, \"status\": 200}",
+    "base-receipt": "{\"head\": \"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"sla-probe-2\\\",\\\"result\\\":{\\\"type\\\":\\\"0x2\\\",\\\"status\\\":\\\"0x1\\\",\\\"cumulativeGasUsed\\\":\\\"0x8b7c6\\\",\\\"logs\\\":[{\\\"address\\\":\\\"0x833589fcd6edb6e08f4c7c32d4f71b54bd\", \"len\": 2515, \"status\": 200}",
+    "base-block": "{\"head\": \"{\\\"jsonrpc\\\":\\\"2.0\\\",\\\"id\\\":\\\"sla-probe-3\\\",\\\"result\\\":{\\\"hash\\\":\\\"0xffd4c187ec3972755fc80d26aba048a280b44a21d0226401da7d7f8854cee673\\\",\\\"parentHash\\\":\\\"0xf355c7c4aa21e1805678b6\", \"len\": 4649, \"status\": 200}",
+    "status": "{\"head\": \"<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n<meta charset=\\\"utf-8\\\">\\n<title>Error</title>\\n</head>\\n<body>\\n<pre>Cannot POST /api/status</pre>\\n</body>\\n</html>\\n\", \"len\": 150, \"status\": 404}"
+  }
+}

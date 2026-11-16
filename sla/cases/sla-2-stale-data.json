@@ -1,0 +1,27 @@
+{
+ "id": "sla-2-stale-data",
+ "title": "SOL price data 90 minutes old",
+ "network": "solana",
+ "tool": "get_sol_price",
+ "payment_tx": "3snzDHXoGMRkndxtxcF7o7TRzuEzJ4Vt9JTQwqN84fTtq5EWZSdAG4LbchXnecaLY1Rm8P57xG6QNn5k177UzD7f",
+ "chain_facts": {
+  "amount": "1000",
+  "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "payer": "Gack9UtqfeZxFA1LqeqjLgC3JGuD7rS6CsSHKoXsD4Tu",
+  "pay_to": "4a8o45skRPcyjAdyR8yES215Swvh8uTpZD6KLarhxCJ7",
+  "block_time": 1792861029
+ },
+ "served_at": 1792861033,
+ "expected": [
+  "refund",
+  "stale_data",
+  "deterministic"
+ ],
+ "bundle_json": "{\"complaint\":\"stale\",\"delivery\":{\"body\":\"{\\\"tool\\\":\\\"get_sol_price\\\",\\\"data\\\":{\\\"symbol\\\":\\\"SOL\\\",\\\"price\\\":98.4,\\\"confidence\\\":null,\\\"publish_time\\\":1792855633,\\\"source\\\":\\\"on-chain DEX mid\\\"},\\\"paid\\\":true}\",\"receipt\":{\"body_sha256\":\"5a8b51fb2012e3b70f5a5dfbb05590952f03dcd841c9ad8f6ad136f921658fda\",\"http_status\":200,\"resource\":\"https://x402.ochinimus.app/api/sol-price\",\"seller\":\"ESJuUvueY6retnmo3sq6sJdiswvzWt13VthwhArvpuKS\",\"served_at\":1792861033,\"signature\":\"sK+49TwngqUGEQEjZhEY+ru906CafKklg13cGdEWteppRRtM+HG6BA/lf8TXrvYu3agW+b2juI9RY5gu9kGBBA==\",\"tool\":\"get_sol_price\",\"tx_sig\":\"3snzDHXoGMRkndxtxcF7o7TRzuEzJ4Vt9JTQwqN84fTtq5EWZSdAG4LbchXnecaLY1Rm8P57xG6QNn5k177UzD7f\",\"v\":\"iussum-sla/0.1\"}},\"payment\":{\"amount\":\"1000\",\"asset\":\"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v\",\"network\":\"solana\",\"pay_to\":\"4a8o45skRPcyjAdyR8yES215Swvh8uTpZD6KLarhxCJ7\",\"payer\":\"Gack9UtqfeZxFA1LqeqjLgC3JGuD7rS6CsSHKoXsD4Tu\",\"tx_sig\":\"3snzDHXoGMRkndxtxcF7o7TRzuEzJ4Vt9JTQwqN84fTtq5EWZSdAG4LbchXnecaLY1Rm8P57xG6QNn5k177UzD7f\"},\"tool\":\"get_sol_price\",\"v\":\"iussum-sla/0.1\"}",
+ "sha": "2422cb46c7c25cd4552dfe91c44e44b439c34bc87fe6bf4d8648280cdf1fdf7f",
+ "labels": {
+  "payment": "real settled mainnet USDC transfer to the AgentFeed treasury, read from chain",
+  "receipt": "signed with a stand-in seller key, AgentFeed has no signer deployed",
+  "body": "fixture shaped like the published sample, paired with this payment by the case builder"
+ }
+}

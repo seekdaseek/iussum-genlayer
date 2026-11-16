@@ -1,0 +1,11 @@
+{
+ "address": "0x49838F1Bfe771bDF20186C6c07a8E436680a1e69",
+ "deploy_tx": "0x117025c42a9de88fcb2ebc76113db45ef096a3116d8a43126b0cf1989d0dcf8c",
+ "seller_key": "ESJuUvueY6retnmo3sq6sJdiswvzWt13VthwhArvpuKS",
+ "deployed_at": "2026-11-16T17:02:25.383Z",
+ "seen": {
+  "PROPOSING": 213,
+  "ACCEPTED": 4528,
+  "FINALIZED": 39305
+ }
+}

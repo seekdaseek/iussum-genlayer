@@ -1,0 +1,27 @@
+{
+ "id": "sla-1-delivered-ok",
+ "title": "Fresh SOL price, right shape",
+ "network": "solana",
+ "tool": "get_sol_price",
+ "payment_tx": "5i6um8xJKLW76M3ArrBsNXNY4oeHoM9ZT9DhEiLqHyTy9YjyjKXtjBT5X4MRqvL5UYvHLzuhQHxJ9aGcT1RxWkJr",
+ "chain_facts": {
+  "amount": "1000",
+  "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "payer": "Gack9UtqfeZxFA1LqeqjLgC3JGuD7rS6CsSHKoXsD4Tu",
+  "pay_to": "4a8o45skRPcyjAdyR8yES215Swvh8uTpZD6KLarhxCJ7",
+  "block_time": 1794575116
+ },
+ "served_at": 1794575120,
+ "expected": [
+  "no_refund",
+  "delivered_ok",
+  "deterministic"
+ ],
+ "bundle_json": "{\"complaint\":\"the price looked wrong, refund me\",\"delivery\":{\"body\":\"{\\\"tool\\\":\\\"get_sol_price\\\",\\\"data\\\":{\\\"symbol\\\":\\\"SOL\\\",\\\"price\\\":107.061,\\\"confidence\\\":null,\\\"publish_time\\\":1794575095,\\\"source\\\":\\\"on-chain DEX mid\\\"},\\\"paid\\\":true}\",\"receipt\":{\"body_sha256\":\"8b3b89fed82076ff10f4b48c303673bb32faf70af634473dfad8e5f402dc8ad9\",\"http_status\":200,\"resource\":\"https://x402.ochinimus.app/api/sol-price\",\"seller\":\"ESJuUvueY6retnmo3sq6sJdiswvzWt13VthwhArvpuKS\",\"served_at\":1794575120,\"signature\":\"L2/PMxrM78XalgMbT+WwMaMlB8yLqIsqA1E3+eFkNLl4aUGCT4Mtj2MTgPDy7d8KOFga6v8lE4ZmaNsmzimkAQ==\",\"tool\":\"get_sol_price\",\"tx_sig\":\"5i6um8xJKLW76M3ArrBsNXNY4oeHoM9ZT9DhEiLqHyTy9YjyjKXtjBT5X4MRqvL5UYvHLzuhQHxJ9aGcT1RxWkJr\",\"v\":\"iussum-sla/0.1\"}},\"payment\":{\"amount\":\"1000\",\"asset\":\"EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v\",\"network\":\"solana\",\"pay_to\":\"4a8o45skRPcyjAdyR8yES215Swvh8uTpZD6KLarhxCJ7\",\"payer\":\"Gack9UtqfeZxFA1LqeqjLgC3JGuD7rS6CsSHKoXsD4Tu\",\"tx_sig\":\"5i6um8xJKLW76M3ArrBsNXNY4oeHoM9ZT9DhEiLqHyTy9YjyjKXtjBT5X4MRqvL5UYvHLzuhQHxJ9aGcT1RxWkJr\"},\"tool\":\"get_sol_price\",\"v\":\"iussum-sla/0.1\"}",
+ "sha": "d5aa14ae43baccc9e2d95d480dcf80a8eeb31403d92ad5f231f1945d02958956",
+ "labels": {
+  "payment": "real settled mainnet USDC transfer to the AgentFeed treasury, read from chain",
+  "receipt": "signed with a stand-in seller key, AgentFeed has no signer deployed",
+  "body": "fixture shaped like the published sample, paired with this payment by the case builder"
+ }
+}

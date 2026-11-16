@@ -1,0 +1,75 @@
+[
+ {
+  "id": "sla-1-delivered-ok",
+  "title": "Fresh SOL price, right shape",
+  "network": "solana",
+  "tool": "get_sol_price",
+  "expected": [
+   "no_refund",
+   "delivered_ok",
+   "deterministic"
+  ]
+ },
+ {
+  "id": "sla-2-stale-data",
+  "title": "SOL price data 90 minutes old",
+  "network": "solana",
+  "tool": "get_sol_price",
+  "expected": [
+   "refund",
+   "stale_data",
+   "deterministic"
+  ]
+ },
+ {
+  "id": "sla-3-schema-mismatch",
+  "title": "Funding rate answer without venues",
+  "network": "solana",
+  "tool": "get_funding_rate",
+  "expected": [
+   "refund",
+   "schema_mismatch",
+   "deterministic"
+  ]
+ },
+ {
+  "id": "sla-4-over-window",
+  "title": "Receipt dated a day after the payment",
+  "network": "solana",
+  "tool": "get_sol_price",
+  "expected": [
+   "could_not_decide",
+   "insufficient_evidence",
+   "refusal"
+  ]
+ },
+ {
+  "id": "sla-5-base-delivered-ok",
+  "title": "Fresh BTC price paid on Base",
+  "network": "base",
+  "tool": "get_btc_price",
+  "expected": [
+   "no_refund",
+   "delivered_ok",
+   "deterministic"
+  ]
+ },
+ {
+  "id": "sla-6-grey-age",
+  "title": "BTC price 5 minutes old, promise is 2",
+  "network": "solana",
+  "tool": "get_btc_price",
+  "expected": null
+ },
+ {
+  "id": "sla-7-wrong-resource",
+  "title": "BTC data returned from the SOL route",
+  "network": "base",
+  "tool": "get_sol_price",
+  "expected": [
+   "refund",
+   "wrong_resource",
+   "deterministic"
+  ]
+ }
+]

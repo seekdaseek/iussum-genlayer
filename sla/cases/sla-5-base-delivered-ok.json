@@ -1,0 +1,27 @@
+{
+ "id": "sla-5-base-delivered-ok",
+ "title": "Fresh BTC price paid on Base",
+ "network": "base",
+ "tool": "get_btc_price",
+ "payment_tx": "0xc75db1a1d4c1f8b44a3a0285734b876a4a22343bfe58ebd40fd11b9c7969622b",
+ "chain_facts": {
+  "amount": "1000",
+  "asset": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+  "payer": "0x82cef1cdc34d65cf690235dc24e823a6585a6f86",
+  "pay_to": "0x22db3a9686ee5261e7bf3ed4f91277232e8076e6",
+  "block_time": 1794799156
+ },
+ "served_at": 1794799159,
+ "expected": [
+  "no_refund",
+  "delivered_ok",
+  "deterministic"
+ ],
+ "bundle_json": "{\"complaint\":\"bad data\",\"delivery\":{\"body\":\"{\\\"tool\\\":\\\"get_btc_price\\\",\\\"data\\\":{\\\"symbol\\\":\\\"BTC\\\",\\\"price\\\":64744.8,\\\"confidence\\\":null,\\\"publish_time\\\":1794799144,\\\"source\\\":\\\"on-chain DEX mid\\\"},\\\"paid\\\":true}\",\"receipt\":{\"body_sha256\":\"12fccd758c6b5ea45ec5b9d97ed6e0ee74f2af752703a66ad11dc0430069f7a9\",\"http_status\":200,\"resource\":\"https://x402.ochinimus.app/api/btc-price\",\"seller\":\"ESJuUvueY6retnmo3sq6sJdiswvzWt13VthwhArvpuKS\",\"served_at\":1794799159,\"signature\":\"ATsOc7HY+eA2WNSashQZRH4YOTA8EKWJPURe1QuPFtSEeyQMydsVE6DNMNh2FMWB9rCM/lz/i5i9X95f0VBjDg==\",\"tool\":\"get_btc_price\",\"tx_sig\":\"0xc75db1a1d4c1f8b44a3a0285734b876a4a22343bfe58ebd40fd11b9c7969622b\",\"v\":\"iussum-sla/0.1\"}},\"payment\":{\"amount\":\"1000\",\"asset\":\"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913\",\"network\":\"base\",\"pay_to\":\"0x22db3a9686ee5261e7bf3ed4f91277232e8076e6\",\"payer\":\"0x82cef1cdc34d65cf690235dc24e823a6585a6f86\",\"tx_sig\":\"0xc75db1a1d4c1f8b44a3a0285734b876a4a22343bfe58ebd40fd11b9c7969622b\"},\"tool\":\"get_btc_price\",\"v\":\"iussum-sla/0.1\"}",
+ "sha": "dd065e110b36af74c7b54f7979dceb3eff9476ab678d870e8e9969be161e15f9",
+ "labels": {
+  "payment": "real settled mainnet USDC transfer to the AgentFeed treasury, read from chain",
+  "receipt": "signed with a stand-in seller key, AgentFeed has no signer deployed",
+  "body": "fixture shaped like the published sample, paired with this payment by the case builder"
+ }
+}
