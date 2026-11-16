@@ -41,3 +41,4 @@ export function pinnedKeyOk(cfg, c) {
   const seller = c.receipt?.seller ?? c.bundle?.delivery?.receipt?.seller;
   return !seller || String(cfg.seller_keys ?? "").split(",").includes(seller);
 }
+export const modelLabel = (m) => (typeof m === "string" ? m.replace(/^[A-Za-z0-9_.-]+\//, "") : m);

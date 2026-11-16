@@ -1,4 +1,4 @@
-import { canon, sha256Hex, bundleFromCase, newTag, nextStep, outcome, matches, statusLine, explorerTx, solanaTx, pinnedKeyOk } from "./lib.mjs";
+import { canon, sha256Hex, bundleFromCase, newTag, nextStep, outcome, matches, statusLine, explorerTx, solanaTx, pinnedKeyOk, modelLabel } from "./lib.mjs";
 
 const GL = window.GL;
 const $ = (id) => document.getElementById(id);
@@ -100,7 +100,7 @@ async function readStored(address, sha, tag) {
 }
 
 const tally = (tx) => { const t = {}; for (const v of Object.values(tx?.consensus_data?.votes ?? {})) t[v] = (t[v] ?? 0) + 1; return Object.entries(t).map(([k, v]) => `${v} ${k}`).join(", "); };
-const leaderModel = (tx) => { const l = tx?.consensus_data?.leader_receipt; const r = Array.isArray(l) ? l[0] : l; return r?.node_config?.primary_model?.model ?? r?.node_config?.model ?? null; };
+const leaderModel = (tx) => { const l = tx?.consensus_data?.leader_receipt; const r = Array.isArray(l) ? l[0] : l; return modelLabel(r?.node_config?.primary_model?.model ?? r?.node_config?.model ?? null); };
 
 async function judge() {
   if (!selected || busy) return;
