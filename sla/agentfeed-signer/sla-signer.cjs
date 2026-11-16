@@ -9,17 +9,16 @@
 // through to the original end() with the answer as it was. It reads the settlement from the PAYMENT-RESPONSE header that
 // @x402/express sets before it releases the held response; it never talks to a facilitator or a chain.
 //
-// Mount it BEFORE the payment middleware, so that its wrapped end() is the one @x402/express finally calls after settling:
-//   app.use(slaSigner({ enabled: process.env.SLA_SIGN === '1', seedHex: readKeyFile(process.env.SLA_SIGN_KEY_FILE) }));
-//   app.use(paymentMiddleware(...));
-import crypto from "node:crypto";
+// CommonJS, because AgentFeed's server.js is CommonJS. Mount it BEFORE the payment layer, so that its wrapped end() is the one
+// @x402/express (and lib/x402v1.js) finally call after settling. See sla/SERVER-STEPS.md for the exact line.
+const crypto = require("node:crypto");
 
-export const HOST = "https://x402.ochinimus.app";
-export const TOOL_BY_PATH = { "/api/sol-price": "get_sol_price", "/api/btc-price": "get_btc_price", "/api/funding-rate": "get_funding_rate" };
+const HOST = "https://x402.ochinimus.app";
+const TOOL_BY_PATH = { "/api/sol-price": "get_sol_price", "/api/btc-price": "get_btc_price", "/api/funding-rate": "get_funding_rate" };
 const B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 const PKCS8 = Buffer.from("302e020100300506032b657004220420", "hex");
 
-export function b58encode(buf) {
+function b58encode(buf) {
   let n = BigInt("0x" + (buf.length ? buf.toString("hex") : "0")), out = "";
   while (n > 0n) { out = B58[Number(n % 58n)] + out; n /= 58n; }
   let z = 0; while (z < buf.length && buf[z] === 0) z++;
@@ -27,13 +26,13 @@ export function b58encode(buf) {
 }
 
 // canonical JSON as the court's python `canon` writes it: sorted keys, no spaces, raw UTF-8
-export function canon(o) {
+function canon(o) {
   if (Array.isArray(o)) return "[" + o.map(canon).join(",") + "]";
   if (o && typeof o === "object") return "{" + Object.keys(o).sort().map((k) => JSON.stringify(k) + ":" + canon(o[k])).join(",") + "}";
   return JSON.stringify(o);
 }
 
-export function slaSigner({ enabled = false, seedHex = "", now = Date.now, tools = TOOL_BY_PATH, host = HOST } = {}) {
+function slaSigner({ enabled = false, seedHex = "", now = Date.now, tools = TOOL_BY_PATH, host = HOST } = {}) {
   let key = null, pub = null;
   if (enabled && /^[0-9a-f]{64}$/i.test(seedHex || "")) {
     try {
@@ -66,3 +65,5 @@ export function slaSigner({ enabled = false, seedHex = "", now = Date.now, tools
     next();
   };
 }
+
+module.exports = { HOST, TOOL_BY_PATH, b58encode, canon, slaSigner };

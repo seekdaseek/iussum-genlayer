@@ -11,6 +11,7 @@ export function safePath(root, urlPath) {
   if (p.includes("\0") || p.includes("\\")) return null;
   if (p.split("/").some((seg) => seg === ".." || (seg.startsWith(".") && seg.length > 0))) return null;
   if (p === "/" || p === "") p = "/index.html";
+  else if (p.endsWith("/")) p += "index.html";
   const full = path.join(root, p);
   return full === root || full.startsWith(root + path.sep) ? full : null;
 }
@@ -26,6 +27,11 @@ export function createServer(root) {
     const file = safePath(root, req.url ?? "/");
     if (!file) { res.writeHead(400); return res.end("bad path"); }
     fs.stat(file, (err, st) => {
+      if (!err && st.isDirectory() && !(req.url ?? "").split("?")[0].endsWith("/")) {
+        const [u, q] = (req.url ?? "").split("?");
+        res.writeHead(301, { Location: u + "/" + (q ? "?" + q : "") });
+        return res.end();
+      }
       if (err || !st.isFile()) { res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" }); return res.end("not found"); }
       res.writeHead(200, { ...headersFor(file), "Content-Length": st.size });
       if (req.method === "HEAD") return res.end();

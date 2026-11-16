@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { EventEmitter } from "node:events";
 import { spawnSync } from "node:child_process";
 import crypto from "node:crypto";
-import { slaSigner, canon, b58encode, TOOL_BY_PATH } from "../../sla/agentfeed-signer/sla-signer.js";
+import sla from "../../sla/agentfeed-signer/sla-signer.cjs";
+const { slaSigner, canon, b58encode, TOOL_BY_PATH } = sla;
 
 const SEED = "0b".repeat(32);
 const TX = "5i6um8xJKLW76M3ArrBsNXNY4oeHoM9ZT9DhEiLqHyTy9YjyjKXtjBT5X4MRqvL5UYvHLzuhQHxJ9aGcT1RxWkJr";

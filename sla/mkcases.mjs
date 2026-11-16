@@ -6,7 +6,8 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { canon, b58encode, HOST, TOOL_BY_PATH } from "./agentfeed-signer/sla-signer.js";
+import sla from "./agentfeed-signer/sla-signer.cjs";
+const { canon, b58encode, HOST, TOOL_BY_PATH } = sla;
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "sla/cases");
