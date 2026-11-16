@@ -1,4 +1,4 @@
-import { canon, sha256Hex, bundleFromCase, newTag, nextStep, outcome, matches, statusLine, explorerTx, solanaTx, pinnedKeyOk, modelLabel } from "./lib.mjs";
+import { canon, sha256Hex, bundleFromCase, newTag, nextStep, outcome, matches, statusLine, explorerTx, solanaTx, pinnedKeyOk, modelLabel } from "./lib.mjs?v=2583e4b8b2";
 
 const GL = window.GL;
 const $ = (id) => document.getElementById(id);
@@ -156,7 +156,7 @@ function render(o, attempts, tx, address, ms) {
 }
 
 async function main() {
-  data = await (await fetch("cases.json")).json();
+  data = await (await fetch("cases.json?v=2583e4b8b2")).json();
   renderPicker();
   $("judge").addEventListener("click", judge);
   const q = new URLSearchParams(location.search).get("case");

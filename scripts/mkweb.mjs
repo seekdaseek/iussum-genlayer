@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib.mjs";
+import { stampVersion } from "./stamp-web.mjs";
 const J = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, f), "utf8"));
 const LABELS = {
   "real-1-onpurpose-quote": ["On purpose, no receipt", "A one-off price quote bought as asked. With no seller receipt the court has only the signed purpose and the chain facts, so the shipping contract answers could_not_decide."],
@@ -27,3 +28,4 @@ const pinned = [fs.readFileSync(path.join(ROOT, "sets/test-seller.pub"), "utf8")
 fs.writeFileSync(path.join(ROOT, "web/cases.json"), JSON.stringify({ instance: "0xc33059A88dFD4602d0D0cc2403Cf5C3a94Dc0B5e", pinned_keys: pinned, rpc_url: "https://api.devnet.solana.com", cases: out }));
 fs.copyFileSync(path.join(ROOT, "contracts/mandate_court.py"), path.join(ROOT, "web/contract/mandate_court.py"));
 console.log(out.length, "cases; pinned keys", pinned.split(",").length);
+console.log("asset version", stampVersion(path.join(ROOT, "web")));
