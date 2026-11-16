@@ -30,5 +30,11 @@ def test_generated_file_is_current():
 
 def test_mandate_court_logic_is_not_copied_whole():
     s = (ROOT / "contracts/sla_court.py").read_text()
-    for forbidden in ("class MandateCourt", "def scope_violations", "def extract_grant", "def verify_receipt(", "def mandate_v02_id"):
+    for forbidden in ("class MandateCourt", "def scope_violations", "def extract_grant", "def mandate_v02_id"):
         assert forbidden not in s
+
+
+def test_receipt_check_is_the_sla_one():
+    a = segs(ROOT / "contracts/mandate_court.py", ("verify_receipt",), ())
+    b = segs(ROOT / "contracts/sla_court.py", ("verify_receipt",), ())
+    assert a["verify_receipt"] != b["verify_receipt"] and "iussum-sla/0.1 receipt" in b["verify_receipt"]

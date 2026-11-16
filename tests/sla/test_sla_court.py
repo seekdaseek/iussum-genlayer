@@ -170,11 +170,29 @@ def test_status_unreachable_does_not_crash_the_model_path(court, chain, direct_v
     assert r["path"] == "model" and '"service_ok":null' in prompts[0]
 
 
-def test_validator_must_match_verdict_and_reason(court, chain, direct_vm):
-    from gltest.direct import wasi_mock  # noqa: F401
-    llm(direct_vm, "refund", "stale_data")
-    r = judge(court, GREY())
-    assert r["verdict"] == "refund"
+def _leader(direct_vm, court, v="refund", reason="stale_data"):
+    llm(direct_vm, v, reason, reasoning="leader words")
+    court.judge(*GREY(), RUN)
+
+
+def test_validator_accepts_same_pair_different_prose(court, chain, direct_vm):
+    _leader(direct_vm, court)
+    direct_vm.clear_mocks(); llm(direct_vm, "refund", "stale_data", reasoning="other words")
+    assert direct_vm.run_validator(leader_result={"verdict": "refund", "reason": "stale_data", "reasoning": "x"}, index=-1) is True
+
+
+@pytest.mark.parametrize("mine", [("no_refund", "delivered_ok"), ("could_not_decide", "insufficient_evidence")])
+def test_validator_rejects_any_difference(court, chain, direct_vm, mine):
+    _leader(direct_vm, court)
+    direct_vm.clear_mocks(); llm(direct_vm, *mine)
+    assert direct_vm.run_validator(leader_result={"verdict": "refund", "reason": "stale_data", "reasoning": "x"}, index=-1) is False
+
+
+def test_validator_rejects_invalid_own_answer_and_errored_leader(court, chain, direct_vm):
+    _leader(direct_vm, court)
+    direct_vm.clear_mocks(); llm(direct_vm, "refund", "delivered_ok")
+    assert direct_vm.run_validator(leader_result={"verdict": "refund", "reason": "stale_data", "reasoning": "x"}, index=-1) is False
+    assert direct_vm.run_validator(leader_error=Exception("boom"), index=-1) is False
 
 
 # ---- plain-code endings: the case ends there, no model, no verdict on the delivery ------------------------------------------
